@@ -1,4 +1,4 @@
-namespace SocialMediaStreamToIptv.Processors
+namespace SocialMediaStreamToM3U.Processors
 {
     public interface IYouTubeStreamProcessor
     {

@@ -2,9 +2,9 @@
 
 using NuciCLI;
 
-using SocialMediaStreamToIptv.Processors;
+using SocialMediaStreamToM3U.Processors;
 
-namespace SocialMediaStreamToIptv
+namespace SocialMediaStreamToM3U
 {
     public class Program
     {

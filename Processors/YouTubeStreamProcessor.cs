@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 using HtmlAgilityPack;
 
-namespace SocialMediaStreamToIptv.Processors
+namespace SocialMediaStreamToM3U.Processors
 {
     public sealed class YouTubeStreamProcessor : IYouTubeStreamProcessor
     {
