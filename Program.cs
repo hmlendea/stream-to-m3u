@@ -19,10 +19,18 @@ namespace SocialMediaStreamToM3U
                 IYouTubeStreamProcessor processor = new YouTubeStreamProcessor();
 
                 string channelId = CliArgumentsReader.GetOptionValue(args, YtChannelIdOptions);
-                string streamTitle = CliArgumentsReader.GetOptionValue(args, YtTitleOptions);
+                string playlistUrl;
 
-                string playlistUrl = processor.GetPlaylistUrl(channelId, streamTitle);
-                
+                if (CliArgumentsReader.HasOption(args, YtTitleOptions))
+                {
+                    string streamTitle = CliArgumentsReader.GetOptionValue(args, YtTitleOptions);
+                    playlistUrl = processor.GetPlaylistUrl(channelId, streamTitle);
+                }
+                else
+                {
+                    playlistUrl = processor.GetPlaylistUrl(channelId);
+                }
+
                 Console.WriteLine(playlistUrl);
                 return;
             }
