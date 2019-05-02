@@ -8,9 +8,11 @@ namespace SocialMediaStreamToM3U
 {
     public class Program
     {
-        static string[] YtProcessorOptions = { "--yt", "--youtube" };
-        static string[] YtChannelIdOptions = { "-c", "--channel" };
-        static string[] YtTitleOptions = { "-t", "--title" };
+        static string[] YouTubeProcessorOptions = { "--yt", "--youtube" };
+        static string[] TwitchProcessorOptions = { "--twitch" };
+
+        static string[] ChannelIdOptions = { "-c", "--channel" };
+        static string[] TitleOptions = { "-t", "--title" };
 
         public static void Main(string[] args)
         {
@@ -24,9 +26,13 @@ namespace SocialMediaStreamToM3U
 
             try
             {
-                if (CliArgumentsReader.HasOption(args, YtProcessorOptions))
+                if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
                 {
-                    url =  GetYouTubeStreamUrl(args);
+                    url = GetYouTubeStreamUrl(args);
+                }
+                else if (CliArgumentsReader.HasOption(args, TwitchProcessorOptions))
+                {
+                    url = GetTwitchStreamUrl(args);
                 }
             }
             catch { }
@@ -42,18 +48,25 @@ namespace SocialMediaStreamToM3U
         static string GetYouTubeStreamUrl(string[] args)
         {
             IYouTubeStreamProcessor processor = new YouTubeStreamProcessor();
+            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
 
-            string channelId = CliArgumentsReader.GetOptionValue(args, YtChannelIdOptions);
-
-            if (CliArgumentsReader.HasOption(args, YtTitleOptions))
+            if (CliArgumentsReader.HasOption(args, TitleOptions))
             {
-                string streamTitle = CliArgumentsReader.GetOptionValue(args, YtTitleOptions);
+                string streamTitle = CliArgumentsReader.GetOptionValue(args, TitleOptions);
                 return processor.GetPlaylistUrl(channelId, streamTitle);
             }
             else
             {
                 return processor.GetPlaylistUrl(channelId);
             }
+        }
+
+        static string GetTwitchStreamUrl(string[] args)
+        {
+            ITwitchProcessor processor = new TwitchProcessor();
+            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
+
+            return processor.GetPlaylistUrl(channelId);
         }
 
         static bool IsUrlValid(string url)
