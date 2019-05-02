@@ -39,9 +39,6 @@ namespace SocialMediaStreamToM3U.Processors
             string html = DownloadPageHtml(channelUrl);
             string streamId = Regex.Match(html, StreamIdFirstPatternFormat).Groups[1].Value;
 
-            Console.WriteLine(channelUrl);
-            Console.WriteLine(streamId);
-
             return string.Format(YouTubeStreamUrlFormat, streamId);
         }
 
