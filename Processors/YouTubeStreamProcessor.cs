@@ -2,8 +2,6 @@ using System;
 using System.Net;
 using System.Text.RegularExpressions;
 
-using HtmlAgilityPack;
-
 namespace SocialMediaStreamToM3U.Processors
 {
     public sealed class YouTubeStreamProcessor : IYouTubeStreamProcessor
