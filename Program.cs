@@ -2,6 +2,7 @@
 
 using NuciCLI;
 
+using SocialMediaStreamToM3U.Net;
 using SocialMediaStreamToM3U.Processors;
 
 namespace SocialMediaStreamToM3U
@@ -13,6 +14,13 @@ namespace SocialMediaStreamToM3U
 
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
+
+        static readonly IFileDownloader downloader;
+
+        static Program()
+        {
+            downloader = new FileDownloader(); 
+        }
 
         public static void Main(string[] args)
         {
@@ -47,7 +55,7 @@ namespace SocialMediaStreamToM3U
 
         static string GetYouTubeStreamUrl(string[] args)
         {
-            IYouTubeStreamProcessor processor = new YouTubeStreamProcessor();
+            IYouTubeStreamProcessor processor = new YouTubeStreamProcessor(downloader);
             string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
 
             if (CliArgumentsReader.HasOption(args, TitleOptions))

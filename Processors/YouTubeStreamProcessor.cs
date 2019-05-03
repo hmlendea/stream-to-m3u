@@ -2,6 +2,8 @@ using System;
 using System.Net;
 using System.Text.RegularExpressions;
 
+using SocialMediaStreamToM3U.Net;
+
 namespace SocialMediaStreamToM3U.Processors
 {
     public sealed class YouTubeStreamProcessor : IYouTubeStreamProcessor
@@ -13,6 +15,13 @@ namespace SocialMediaStreamToM3U.Processors
         static string StreamIdFirstPatternFormat = $"title=\".*\".*href=\"\\/watch\\?v=([a-zA-Z0-9]*)\"";
         static string StreamIdByTitlePatternFormat = $"title=\"{{0}}\".*href=\"\\/watch\\?v=([a-zA-Z0-9]*)\"";
         static string ManifestUrlPattern = "\"hlsManifestUrl\\\\\": *\\\\\"(.*\\.m3u8)\\\\\"";
+
+        readonly IFileDownloader downloader;
+
+        public YouTubeStreamProcessor(IFileDownloader downloader)
+        {
+            this.downloader = downloader;
+        }
 
         public string GetPlaylistUrl(
             string channelId)
@@ -36,7 +45,7 @@ namespace SocialMediaStreamToM3U.Processors
         string GetYouTubeStreamUrl(string channelId)
         {
             string channelUrl = string.Format(YouTubeChannelUrlFormat,channelId);
-            string html = DownloadPageHtml(channelUrl);
+            string html = downloader.Download(channelUrl);
             string streamId = Regex.Match(html, StreamIdFirstPatternFormat).Groups[1].Value;
 
             return string.Format(YouTubeStreamUrlFormat, streamId);
@@ -45,7 +54,7 @@ namespace SocialMediaStreamToM3U.Processors
         string GetYouTubeStreamUrl(string channelId, string streamTitle)
         {
             string channelUrl = string.Format(YouTubeChannelUrlFormat,channelId);
-            string html = DownloadPageHtml(channelUrl);
+            string html = downloader.Download(channelUrl);
 
             string escapedStreamTitle = streamTitle
                 .Replace("(", "\\(")
@@ -59,20 +68,12 @@ namespace SocialMediaStreamToM3U.Processors
 
         string GetYouTubeStreamPlaylistUrl(string streamUrl)
         {
-            string html = DownloadPageHtml(streamUrl);
+            string html = downloader.Download(streamUrl);
 
             string playlistRelativeUrl = Regex.Match(html, ManifestUrlPattern).Groups[1].Value;
             string playlistAbsoluteUrl = playlistRelativeUrl.Replace("\\/", "/");
 
             return playlistAbsoluteUrl;
-        }
-
-        string DownloadPageHtml(string url)
-        {
-            using (WebClient downloader = new WebClient())
-            {
-                return downloader.DownloadString(url);
-            }
         }
     }
 }
