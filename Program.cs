@@ -9,6 +9,7 @@ namespace SocialMediaStreamToM3U
 {
     public class Program
     {
+        static string[] SeeNowProcessorOptions = { "--seenow" };
         static string[] YouTubeProcessorOptions = { "--yt", "--youtube" };
         static string[] TwitchProcessorOptions = { "--twitch" };
 
@@ -34,7 +35,11 @@ namespace SocialMediaStreamToM3U
 
             try
             {
-                if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
+                if (CliArgumentsReader.HasOption(args, SeeNowProcessorOptions))
+                {
+                    url = GetSeeNowStreamUrl(args);
+                }
+                else if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
                 {
                     url = GetYouTubeStreamUrl(args);
                 }
@@ -51,6 +56,14 @@ namespace SocialMediaStreamToM3U
             }
 
             return null;
+        }
+
+        static string GetSeeNowStreamUrl(string[] args)
+        {
+            ISeeNowProcessor processor = new SeeNowProcessor(downloader);
+            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
+
+            return processor.GetPlaylistUrl(channelId);
         }
 
         static string GetYouTubeStreamUrl(string[] args)

@@ -33,7 +33,6 @@ namespace SocialMediaStreamToM3U.Processors
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Console.WriteLine(response.StatusCode);
                 return null;
             }
 
