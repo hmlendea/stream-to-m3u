@@ -1,9 +1,9 @@
 using System;
 using System.Text.RegularExpressions;
 
-using SocialMediaStreamToM3U.Net;
+using StreamToM3U.Net;
 
-namespace SocialMediaStreamToM3U.Processors
+namespace StreamToM3U.Processors
 {
     public sealed class SeeNowProcessor : ISeeNowProcessor
     {

@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace SocialMediaStreamToM3U.Utils
+namespace StreamToM3U.Utils
 {
     public static class WebDriverHandler
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace SocialMediaStreamToM3U.Net
+namespace StreamToM3U.Net
 {
     public interface IFileDownloader : IDisposable
     {

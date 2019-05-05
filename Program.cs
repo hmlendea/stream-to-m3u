@@ -2,10 +2,10 @@
 
 using NuciCLI;
 
-using SocialMediaStreamToM3U.Net;
-using SocialMediaStreamToM3U.Processors;
+using StreamToM3U.Net;
+using StreamToM3U.Processors;
 
-namespace SocialMediaStreamToM3U
+namespace StreamToM3U
 {
     public class Program
     {

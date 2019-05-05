@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.com/hmlendea/stream-to-m3u.svg?branch=master)](https://travis-ci.com/hmlendea/stream-to-m3u)
 
-# Social Media Stream to M3U link
+# Stream to M3U
 
-Retrieves the M3U playlist URL for a given social media stream
+Retrieves the M3U playlist URL for a given live stream
 
 Currently supports:
   - YouTube

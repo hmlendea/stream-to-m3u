@@ -4,10 +4,10 @@ using System.Text.RegularExpressions;
 using NuciWeb;
 using OpenQA.Selenium;
 
-using SocialMediaStreamToM3U.Net;
-using SocialMediaStreamToM3U.Utils;
+using StreamToM3U.Net;
+using StreamToM3U.Utils;
 
-namespace SocialMediaStreamToM3U.Processors
+namespace StreamToM3U.Processors
 {
     public sealed class TvSportHdProcessor : WebProcessor, ITvSportHdProcessor
     {

@@ -1,4 +1,4 @@
-namespace SocialMediaStreamToM3U.Processors
+namespace StreamToM3U.Processors
 {
     public interface ITvSportHdProcessor
     {

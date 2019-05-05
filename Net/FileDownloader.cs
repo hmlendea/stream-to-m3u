@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace SocialMediaStreamToM3U.Net
+namespace StreamToM3U.Net
 {
     public sealed class FileDownloader : IFileDownloader
     {
