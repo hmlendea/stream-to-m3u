@@ -9,9 +9,10 @@ namespace SocialMediaStreamToM3U
 {
     public class Program
     {
-        static string[] SeeNowProcessorOptions = { "--seenow" };
         static string[] YouTubeProcessorOptions = { "--yt", "--youtube" };
         static string[] TwitchProcessorOptions = { "--twitch" };
+        static string[] SeeNowProcessorOptions = { "--seenow" };
+        static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
 
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
@@ -46,6 +47,10 @@ namespace SocialMediaStreamToM3U
                 else if (CliArgumentsReader.HasOption(args, TwitchProcessorOptions))
                 {
                     url = GetTwitchStreamUrl(args);
+                }
+                else if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
+                {
+                    url = GetTvSportHdStreamUrl(args);
                 }
             }
             catch { }
@@ -85,6 +90,14 @@ namespace SocialMediaStreamToM3U
         static string GetTwitchStreamUrl(string[] args)
         {
             ITwitchProcessor processor = new TwitchProcessor();
+            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
+
+            return processor.GetPlaylistUrl(channelId);
+        }
+
+        static string GetTvSportHdStreamUrl(string[] args)
+        {
+            ITvSportHdProcessor processor = new TvSportHdProcessor(downloader);
             string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
 
             return processor.GetPlaylistUrl(channelId);

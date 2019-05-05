@@ -5,11 +5,13 @@
 Retrieves the M3U playlist URL for a given social media stream
 
 Currently supports:
-  - SeeNow
-    - By channel ID
   - YouTube
     - By channel ID + stream title
     - By channel ID (gets the first available live stream)
   - Twitch
+    - By channel ID
+  - SeeNow
+    - By channel ID
+  - TvSportHd
     - By channel ID
     
