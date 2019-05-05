@@ -16,6 +16,7 @@ namespace SocialMediaStreamToM3U
 
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
+        static string[] UrlOptions = { "-u", "--url" };
 
         static readonly IFileDownloader downloader;
 
@@ -36,11 +37,7 @@ namespace SocialMediaStreamToM3U
 
             try
             {
-                if (CliArgumentsReader.HasOption(args, SeeNowProcessorOptions))
-                {
-                    url = GetSeeNowStreamUrl(args);
-                }
-                else if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
+                if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
                 {
                     url = GetYouTubeStreamUrl(args);
                 }
@@ -48,9 +45,17 @@ namespace SocialMediaStreamToM3U
                 {
                     url = GetTwitchStreamUrl(args);
                 }
+                else if (CliArgumentsReader.HasOption(args, SeeNowProcessorOptions))
+                {
+                    url = GetSeeNowStreamUrl(args);
+                }
                 else if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
                 {
                     url = GetTvSportHdStreamUrl(args);
+                }
+                else
+                {
+                    url = GetOtherStreamUrl(args);
                 }
             }
             catch { }
@@ -103,6 +108,14 @@ namespace SocialMediaStreamToM3U
             return processor.GetPlaylistUrl(channelId);
         }
 
+        static string GetOtherStreamUrl(string[] args)
+        {
+            IOtherProcessor processor = new OtherProcessor(downloader);
+            string url = args[2];
+
+            return processor.GetPlaylistUrl(url);
+        }
+
         static bool IsUrlValid(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
@@ -110,7 +123,14 @@ namespace SocialMediaStreamToM3U
                 return false;
             }
 
-            bool isUrl = Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult);
+            Uri uriResult;
+            bool isUrl = Uri.TryCreate(url, UriKind.Absolute, out uriResult);
+
+            if (uriResult is null)
+            {
+                return false;
+            }
+
             bool isHttp = uriResult.Scheme == Uri.UriSchemeHttp;
             bool isHttps =  uriResult.Scheme == Uri.UriSchemeHttps;
 
