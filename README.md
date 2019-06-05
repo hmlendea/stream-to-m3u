@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/hmlendea/social-media-stream-to-m3u.svg?branch=master)](https://travis-ci.com/hmlendea/social-media-stream-to-m3u)
+[![Build Status](https://travis-ci.com/hmlendea/stream-to-m3u.svg?branch=master)](https://travis-ci.com/hmlendea/stream-to-m3u)
 
 # Social Media Stream to M3U link
 
