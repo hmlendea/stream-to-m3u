@@ -13,6 +13,7 @@ namespace StreamToM3U
         static string[] TwitchProcessorOptions = { "--twitch" };
         static string[] SeeNowProcessorOptions = { "--seenow" };
         static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
+        static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
 
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
@@ -52,6 +53,10 @@ namespace StreamToM3U
                 else if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
                 {
                     url = GetTvSportHdStreamUrl(args);
+                }
+                else if (CliArgumentsReader.HasOption(args, AntenaPlayProccessorOptions))
+                {
+                    url = GetAntenaPlayStreamUrl(args);
                 }
                 else
                 {
@@ -103,6 +108,14 @@ namespace StreamToM3U
         static string GetTvSportHdStreamUrl(string[] args)
         {
             ITvSportHdProcessor processor = new TvSportHdProcessor(downloader);
+            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
+
+            return processor.GetPlaylistUrl(channelId);
+        }
+
+        static string GetAntenaPlayStreamUrl(string[] args)
+        {
+            IAntenaPlayProcessor processor = new AntenaPlayProcessor(downloader);
             string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
 
             return processor.GetPlaylistUrl(channelId);
