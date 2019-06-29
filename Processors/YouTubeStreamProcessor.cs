@@ -12,7 +12,7 @@ namespace StreamToM3U.Processors
         static string YouTubeChannelUrlFormat => $"{YouTubeUrl}/channel/{{0}}";
         static string YouTubeStreamUrlFormat => $"{YouTubeUrl}/watch?v={{0}}";
 
-        static string StreamIdFirstPatternFormat = $"title=\".*\".*href=\"\\/watch\\?v=([a-zA-Z0-9]*)\"";
+        static string StreamIdFirstPatternFormat = $"href=\"\\/watch\\?v=([a-zA-Z0-9\\-]*)\"";
         static string StreamIdByTitlePatternFormat = $"title=\"{{0}}\".*href=\"\\/watch\\?v=([a-zA-Z0-9]*)\"";
         static string ManifestUrlPattern = "\"hlsManifestUrl\\\\\": *\\\\\"(.*\\.m3u8)\\\\\"";
 
