@@ -124,7 +124,7 @@ namespace StreamToM3U
         static string GetOtherStreamUrl(string[] args)
         {
             IOtherProcessor processor = new OtherProcessor(downloader);
-            string url = args[2];
+            string url = CliArgumentsReader.GetOptionValue(args, UrlOptions);
 
             return processor.GetPlaylistUrl(url);
         }
