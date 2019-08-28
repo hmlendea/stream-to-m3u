@@ -51,15 +51,17 @@ function cleanup {
     rm -rf "$PUBLISH_DIR"
 }
 
+function build-release {
+    dotnet-pub $1
+    package $1
+}
+
 prepare
 
-dotnet-pub win-x64
-package win-x64
-
-dotnet-pub linux-x64
-package linux-x64
-
-dotnet-pub linux-arm
-package linux-arm
+build-release win-x64
+build-release osx-x64
+build-release linux-x64
+build-release linux-arm
+build-release linux-arm64
 
 cleanup
