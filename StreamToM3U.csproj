@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="NuciCLI" Version="1.3.0.1" />
+    <PackageReference Include="NuciDAL" Version="1.1.1" />
     <PackageReference Include="NuciExtensions" Version="1.3.2" />
     <PackageReference Include="NuciWeb" Version="1.1.2" />
     <PackageReference Include="Selenium.Support" Version="3.14.0" />
