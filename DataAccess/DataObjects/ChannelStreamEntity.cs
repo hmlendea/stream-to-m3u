@@ -6,8 +6,12 @@ namespace StreamToM3U.DataAccess.DataObjects
     {
         public string ChannelName { get; set; }
 
-        public string ProcessorId { get; set; }
+        public string Provider { get; set; }
 
-        public string Argument1 { get; set; }
+        public string ChannelId { get; set; }
+
+        public string Title { get; set; }
+
+        public string Url { get; set; }
     }
 }
