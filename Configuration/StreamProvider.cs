@@ -1,4 +1,4 @@
-namespace StreamToM3U.Service.Models
+namespace StreamToM3U.Configuration
 {
     public enum StreamProvider
     {
