@@ -15,12 +15,12 @@ namespace StreamToM3U.Service
     {
         readonly IFileDownloader fileDownloader;
         readonly IPlaylistUrlRetriever urlRetriever;
-        readonly Repository<ChannelStreamEntity> channelStreamRepository;
+        readonly IRepository<ChannelStreamEntity> channelStreamRepository;
 
         public PlaylistFileGenerator(
             IFileDownloader fileDownloader,
             IPlaylistUrlRetriever urlRetriever,
-            Repository<ChannelStreamEntity> channelStreamRepository)
+            IRepository<ChannelStreamEntity> channelStreamRepository)
         {
             this.fileDownloader = fileDownloader;
             this.urlRetriever = urlRetriever;
@@ -30,16 +30,24 @@ namespace StreamToM3U.Service
         public void GeneratePlaylist(string inputFile, string outputFile)
         {
             IEnumerable<ChannelStream> channelStreams = channelStreamRepository.GetAll().ToServiceModels();
-
-            string playlist = "#EXTM3U" + Environment.NewLine;
+            IList<string> playlistLines = new List<string>();
+            
+            playlistLines.Add("#EXTM3U");
 
             foreach (ChannelStream channelStream in channelStreams)
             {
-                playlist += $"#EXTINF:-1,{channelStream.ChannelName}";
-                playlist += urlRetriever.GetStreamUrl(channelStream);
+                string url = urlRetriever.GetStreamUrl(channelStream);
+
+                if (string.IsNullOrWhiteSpace(url))
+                {
+                    continue;
+                }
+
+                playlistLines.Add($"#EXTINF:-1,{channelStream.ChannelName}");
+                playlistLines.Add(url);
             }
 
-            File.WriteAllText(outputFile, playlist);
+            File.WriteAllLines(outputFile, playlistLines);
         }
     }
 }

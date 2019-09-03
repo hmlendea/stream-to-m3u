@@ -4,8 +4,8 @@ namespace StreamToM3U.Configuration
 {
     public sealed class Options
     {
-        static string[] InputFileOptions = { "-i" };
-        static string[] OutputFileOptions = { "-o" };
+        static string[] InputFileOptions = { "-i", "--input" };
+        static string[] OutputFileOptions = { "-o", "--output" };
         
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
@@ -30,10 +30,10 @@ namespace StreamToM3U.Configuration
         {
             Options options = new Options();
             options.Provider = DetermineProviderFromArgs(args);
-            options.InputFile = GetArgumentIfExists(InputFileOptions);
-            options.OutputFile = GetArgumentIfExists(OutputFileOptions, "playlist.m3u");
-            options.Title = GetArgumentIfExists(TitleOptions);
-            options.Url = GetArgumentIfExists(UrlOptions);
+            options.InputFile = GetArgumentIfExists(args, InputFileOptions);
+            options.OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u");
+            options.Title = GetArgumentIfExists(args, TitleOptions);
+            options.Url = GetArgumentIfExists(args, UrlOptions);
 
             return options;
         }
@@ -68,14 +68,14 @@ namespace StreamToM3U.Configuration
             return StreamProvider.Unknown;
         }
 
-        static string GetArgumentIfExists(string[] argumentOptions)
-            => GetArgumentIfExists(argumentOptions, null);
+        static string GetArgumentIfExists(string[] args, string[] argumentOptions)
+            => GetArgumentIfExists(args, argumentOptions, null);
 
-        static string GetArgumentIfExists(string[] argumentOptions, string fallbackValue)
+        static string GetArgumentIfExists(string[] args, string[] argumentOptions, string fallbackValue)
         {
-            if (CliArgumentsReader.HasOption(argumentOptions))
+            if (CliArgumentsReader.HasOption(args, argumentOptions))
             {
-                return CliArgumentsReader.GetOptionValue(argumentOptions);
+                return CliArgumentsReader.GetOptionValue(args, argumentOptions);
             }
 
             return fallbackValue;
