@@ -3,22 +3,13 @@ using System;
 using NuciCLI;
 
 using StreamToM3U.Net;
+using StreamToM3U.Service.Models;
 using StreamToM3U.Service.Processors;
 
 namespace StreamToM3U.Service
 {
     public sealed class PlaylistUrlRetriever : IPlaylistUrlRetriever
     {
-        static string[] ChannelIdOptions = { "-c", "--channel" };
-        static string[] TitleOptions = { "-t", "--title" };
-        static string[] UrlOptions = { "-u", "--url" };
-
-        static string[] YouTubeProcessorOptions = { "--yt", "--youtube" };
-        static string[] TwitchProcessorOptions = { "--twitch" };
-        static string[] SeeNowProcessorOptions = { "--seenow" };
-        static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
-        static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
-
         readonly IFileDownloader downloader;
 
         public PlaylistUrlRetriever(IFileDownloader downloader)
@@ -26,38 +17,12 @@ namespace StreamToM3U.Service
             this.downloader = downloader;
         }
 
-        public string GetStreamUrl(string[] args)
-        {
-            string url = null;
+        public string GetStreamUrl(StreamProvider provider, string argument1)
+            => GetStreamUrl(provider, argument1, null);
 
-            try
-            {
-                if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
-                {
-                    url = GetYouTubeStreamUrl(args);
-                }
-                else if (CliArgumentsReader.HasOption(args, TwitchProcessorOptions))
-                {
-                    url = GetTwitchStreamUrl(args);
-                }
-                else if (CliArgumentsReader.HasOption(args, SeeNowProcessorOptions))
-                {
-                    url = GetSeeNowStreamUrl(args);
-                }
-                else if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
-                {
-                    url = GetTvSportHdStreamUrl(args);
-                }
-                else if (CliArgumentsReader.HasOption(args, AntenaPlayProccessorOptions))
-                {
-                    url = GetAntenaPlayStreamUrl(args);
-                }
-                else
-                {
-                    url = GetOtherStreamUrl(args);
-                }
-            }
-            catch { }
+        public string GetStreamUrl(StreamProvider provider, string argument1, string argument2)
+        {
+            string url = FindStreamUrl(provider, argument1, argument2);
 
             if (IsUrlValid(url))
             {
@@ -67,22 +32,43 @@ namespace StreamToM3U.Service
             return null;
         }
 
-        string GetSeeNowStreamUrl(string[] args)
+        string FindStreamUrl(StreamProvider provider, string argument1, string argument2)
         {
-            ISeeNowProcessor processor = new SeeNowProcessor(downloader);
-            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
-
-            return processor.GetPlaylistUrl(channelId);
+            try
+            {
+                switch (provider)
+                {
+                    case StreamProvider.YouTube:
+                        return GetYouTubeStreamUrl(argument1, argument2);
+                    
+                    case StreamProvider.Twitch:
+                        return GetTwitchStreamUrl(argument1);
+                    
+                    case StreamProvider.SeeNow:
+                        return GetSeeNowStreamUrl(argument1);
+                    
+                    case StreamProvider.TvSportHd:
+                        return GetTvSportHdStreamUrl(argument1);
+                    
+                    case StreamProvider.AntenaPlay:
+                        return GetAntenaPlayStreamUrl(argument1);
+                    
+                    default:
+                        return GetOtherStreamUrl(argument1);
+                }
+            }
+            catch
+            {
+                return null;
+            }
         }
 
-        string GetYouTubeStreamUrl(string[] args)
+        string GetYouTubeStreamUrl(string channelId, string streamTitle)
         {
             IYouTubeStreamProcessor processor = new YouTubeStreamProcessor(downloader);
-            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
 
-            if (CliArgumentsReader.HasOption(args, TitleOptions))
+            if (!string.IsNullOrWhiteSpace(streamTitle))
             {
-                string streamTitle = CliArgumentsReader.GetOptionValue(args, TitleOptions);
                 return processor.GetPlaylistUrl(channelId, streamTitle);
             }
             else
@@ -91,35 +77,34 @@ namespace StreamToM3U.Service
             }
         }
 
-        string GetTwitchStreamUrl(string[] args)
+        string GetTwitchStreamUrl(string channelId)
         {
             ITwitchProcessor processor = new TwitchProcessor();
-            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
 
             return processor.GetPlaylistUrl(channelId);
         }
 
-        string GetTvSportHdStreamUrl(string[] args)
+        string GetSeeNowStreamUrl(string channelId)
+        {
+            ISeeNowProcessor processor = new SeeNowProcessor(downloader);
+            return processor.GetPlaylistUrl(channelId);
+        }
+
+        string GetTvSportHdStreamUrl(string channelId)
         {
             ITvSportHdProcessor processor = new TvSportHdProcessor(downloader);
-            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
-
             return processor.GetPlaylistUrl(channelId);
         }
 
-        string GetAntenaPlayStreamUrl(string[] args)
+        string GetAntenaPlayStreamUrl(string channelId)
         {
             IAntenaPlayProcessor processor = new AntenaPlayProcessor(downloader);
-            string channelId = CliArgumentsReader.GetOptionValue(args, ChannelIdOptions);
-
             return processor.GetPlaylistUrl(channelId);
         }
 
-        string GetOtherStreamUrl(string[] args)
+        string GetOtherStreamUrl(string url)
         {
             IOtherProcessor processor = new OtherProcessor(downloader);
-            string url = CliArgumentsReader.GetOptionValue(args, UrlOptions);
-
             return processor.GetPlaylistUrl(url);
         }
 
