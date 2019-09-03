@@ -32,10 +32,28 @@
     <ChannelId>UCLidj8wzlO9SV6k0XDQ4SEg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>Canal33</Id>
+    <ChannelName>RO: Canal33</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>canal-33</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>Ciresarii</Id>
     <ChannelName>RO: Ciresarii</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCDpZjv-s2rft4FJwXs55j3g</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>CNS</Id>
+    <ChannelName>RO: CNS TV</ChannelName>
+    <Provider>Twitch</Provider>
+    <ChannelId>cnstv1994</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ExclusivTV</Id>
+    <ChannelName>RO: Exclusiv TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCOUSlooyiaPIG6DZOTPSClQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>FRF</Id>
@@ -62,6 +80,12 @@
     <ChannelId>UCN4OWQYlgJzFq-and_if6rA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>NeptunTV</Id>
+    <ChannelName>RO: Neptun TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>neptun-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>RomaniaTV</Id>
     <ChannelName>RO: România TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -72,5 +96,17 @@
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TVCityBucuresti</Id>
+    <ChannelName>RO: TV City București</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>tv-city</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>VoceaBasarabiei</Id>
+    <ChannelName>RO: Vocea Basarabiei</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC645Zlz-PDBWM1kQgSDB_xg</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
