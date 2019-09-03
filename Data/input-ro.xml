@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ChannelStreamEntity>
+    <Id>AgroTV</Id>
+    <ChannelName>RO: Agro TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Antena3</Id>
+    <ChannelName>RO: Antena 3</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://live.antena3.ro/</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ArcadiaTV</Id>
+    <ChannelName>RO: AracadiaTV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCySoNg54OYL6oImf7XhJaUA</ChannelId>
+    <Title>ArcadiaTV World (Română)</Title>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>BrasovTV</Id>
+    <ChannelName>RO: Brasov TV</ChannelName>
+    <Provider>Twitch</Provider>
+    <ChannelId>brasovtv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>BucurestiTV</Id>
+    <ChannelName>RO: București TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCLidj8wzlO9SV6k0XDQ4SEg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Ciresarii</Id>
+    <ChannelName>RO: Ciresarii</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCDpZjv-s2rft4FJwXs55j3g</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>FRF</Id>
+    <ChannelName>RO: FRF TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCthNI7cE3k5nTodcga2yBZg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ImpactTV</Id>
+    <ChannelName>RO: Impact TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCgjKoxF0smCvd0JpraXRXCw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>LitoralTV</Id>
+    <ChannelName>RO: Litoral TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC18hkjEsebdr-UFbwHcaOxg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>NCN</Id>
+    <ChannelName>RO: NCN TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCN4OWQYlgJzFq-and_if6rA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomaniaTV</Id>
+    <ChannelName>RO: România TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCF5GcyFOwtMGiuNWioA9fOQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TrinitasTV</Id>
+    <ChannelName>RO: Trinitas TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
+  </ChannelStreamEntity>
+</ArrayOfChannelStreamEntity>
