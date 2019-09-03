@@ -17,15 +17,23 @@ namespace StreamToM3U
         {
             Options options = Options.FromArguments(args);
             IServiceProvider serviceProvider = new ServiceCollection()
+                .AddSingleton<IRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
                 .AddSingleton<IFileDownloader, FileDownloader>()
                 .AddSingleton<IPlaylistUrlRetriever, PlaylistUrlRetriever>()
-                .AddSingleton<IRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
+                .AddSingleton<IPlaylistFileGenerator, PlaylistFileGenerator>()
                 .BuildServiceProvider();
 
-            IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
-            string playlistUrl = urlRetriever.GetStreamUrl(options);
-
-            Console.WriteLine(playlistUrl);
+            if (string.IsNullOrWhiteSpace(options.InputFile))
+            {
+                IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
+                string playlistUrl = urlRetriever.GetStreamUrl(options);
+                Console.WriteLine(playlistUrl);
+            }
+            else
+            {
+                IPlaylistFileGenerator fileGenerator = serviceProvider.GetService<IPlaylistFileGenerator>();
+                fileGenerator.GeneratePlaylist(options.InputFile, options.OutputFile);
+            }
         }
     }
 }
