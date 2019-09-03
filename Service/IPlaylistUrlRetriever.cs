@@ -1,11 +1,9 @@
-using StreamToM3U.Service.Models;
+using StreamToM3U.Configuration;
 
 namespace StreamToM3U.Service
 {
     public interface IPlaylistUrlRetriever
     {
-        string GetStreamUrl(StreamProvider provider, string argument1);
-
-        string GetStreamUrl(StreamProvider provider, string argument1, string argument2);
+        string GetStreamUrl(Options options);
     }
 }

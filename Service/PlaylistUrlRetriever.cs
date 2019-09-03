@@ -1,9 +1,7 @@
 using System;
 
-using NuciCLI;
-
+using StreamToM3U.Configuration;
 using StreamToM3U.Net;
-using StreamToM3U.Service.Models;
 using StreamToM3U.Service.Processors;
 
 namespace StreamToM3U.Service
@@ -17,12 +15,9 @@ namespace StreamToM3U.Service
             this.downloader = downloader;
         }
 
-        public string GetStreamUrl(StreamProvider provider, string argument1)
-            => GetStreamUrl(provider, argument1, null);
-
-        public string GetStreamUrl(StreamProvider provider, string argument1, string argument2)
+        public string GetStreamUrl(Options options)
         {
-            string url = FindStreamUrl(provider, argument1, argument2);
+            string url = FindStreamUrl(options);
 
             if (IsUrlValid(url))
             {
@@ -32,29 +27,29 @@ namespace StreamToM3U.Service
             return null;
         }
 
-        string FindStreamUrl(StreamProvider provider, string argument1, string argument2)
+        string FindStreamUrl(Options options)
         {
             try
             {
-                switch (provider)
+                switch (options.Provider)
                 {
                     case StreamProvider.YouTube:
-                        return GetYouTubeStreamUrl(argument1, argument2);
+                        return GetYouTubeStreamUrl(options);
                     
                     case StreamProvider.Twitch:
-                        return GetTwitchStreamUrl(argument1);
+                        return GetTwitchStreamUrl(options);
                     
                     case StreamProvider.SeeNow:
-                        return GetSeeNowStreamUrl(argument1);
+                        return GetSeeNowStreamUrl(options);
                     
                     case StreamProvider.TvSportHd:
-                        return GetTvSportHdStreamUrl(argument1);
+                        return GetTvSportHdStreamUrl(options);
                     
                     case StreamProvider.AntenaPlay:
-                        return GetAntenaPlayStreamUrl(argument1);
+                        return GetAntenaPlayStreamUrl(options);
                     
                     default:
-                        return GetOtherStreamUrl(argument1);
+                        return GetOtherStreamUrl(options);
                 }
             }
             catch
@@ -63,49 +58,48 @@ namespace StreamToM3U.Service
             }
         }
 
-        string GetYouTubeStreamUrl(string channelId, string streamTitle)
+        string GetYouTubeStreamUrl(Options options)
         {
             IYouTubeStreamProcessor processor = new YouTubeStreamProcessor(downloader);
 
-            if (!string.IsNullOrWhiteSpace(streamTitle))
+            if (!string.IsNullOrWhiteSpace(options.Title))
             {
-                return processor.GetPlaylistUrl(channelId, streamTitle);
+                return processor.GetPlaylistUrl(options.ChannelId, options.Title);
             }
             else
             {
-                return processor.GetPlaylistUrl(channelId);
+                return processor.GetPlaylistUrl(options.ChannelId);
             }
         }
 
-        string GetTwitchStreamUrl(string channelId)
+        string GetTwitchStreamUrl(Options options)
         {
             ITwitchProcessor processor = new TwitchProcessor();
-
-            return processor.GetPlaylistUrl(channelId);
+            return processor.GetPlaylistUrl(options.ChannelId);
         }
 
-        string GetSeeNowStreamUrl(string channelId)
+        string GetSeeNowStreamUrl(Options options)
         {
             ISeeNowProcessor processor = new SeeNowProcessor(downloader);
-            return processor.GetPlaylistUrl(channelId);
+            return processor.GetPlaylistUrl(options.ChannelId);
         }
 
-        string GetTvSportHdStreamUrl(string channelId)
+        string GetTvSportHdStreamUrl(Options options)
         {
             ITvSportHdProcessor processor = new TvSportHdProcessor(downloader);
-            return processor.GetPlaylistUrl(channelId);
+            return processor.GetPlaylistUrl(options.ChannelId);
         }
 
-        string GetAntenaPlayStreamUrl(string channelId)
+        string GetAntenaPlayStreamUrl(Options options)
         {
             IAntenaPlayProcessor processor = new AntenaPlayProcessor(downloader);
-            return processor.GetPlaylistUrl(channelId);
+            return processor.GetPlaylistUrl(options.ChannelId);
         }
 
-        string GetOtherStreamUrl(string url)
+        string GetOtherStreamUrl(Options options)
         {
             IOtherProcessor processor = new OtherProcessor(downloader);
-            return processor.GetPlaylistUrl(url);
+            return processor.GetPlaylistUrl(options.Url);
         }
 
         bool IsUrlValid(string url)
