@@ -65,7 +65,7 @@ namespace StreamToM3U.Configuration
                 return StreamProvider.AntenaPlay;
             }
             
-            return StreamProvider.Unknown;
+            return StreamProvider.Other;
         }
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions)

@@ -2,7 +2,7 @@ namespace StreamToM3U.Configuration
 {
     public enum StreamProvider
     {
-        Unknown,
+        Other,
         YouTube,
         Twitch,
         SeeNow,
