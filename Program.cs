@@ -19,7 +19,7 @@ namespace StreamToM3U
             IServiceProvider serviceProvider = new ServiceCollection()
                 .AddSingleton<IFileDownloader, FileDownloader>()
                 .AddSingleton<IPlaylistUrlRetriever, PlaylistUrlRetriever>()
-                .AddSingleton<IRepository<ChannelStreamEntity>>(x => new CsvRepository<ChannelStreamEntity>(options.InputFile))
+                .AddSingleton<IRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
                 .BuildServiceProvider();
 
             IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();

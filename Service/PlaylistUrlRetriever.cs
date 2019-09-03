@@ -2,6 +2,7 @@ using System;
 
 using StreamToM3U.Configuration;
 using StreamToM3U.Net;
+using StreamToM3U.Service.Models;
 using StreamToM3U.Service.Processors;
 
 namespace StreamToM3U.Service
@@ -25,6 +26,17 @@ namespace StreamToM3U.Service
             }
 
             return null;
+        }
+
+        public string GetStreamUrl(ChannelStream channelStream)
+        {
+            Options options = new Options();
+            options.Provider = channelStream.Provider;
+            options.ChannelId = channelStream.ChannelId;
+            options.Title = channelStream.Title;
+            options.Url = channelStream.Url;
+            
+            return GetStreamUrl(options);
         }
 
         string FindStreamUrl(Options options)

@@ -5,6 +5,8 @@ namespace StreamToM3U.Configuration
     public sealed class Options
     {
         static string[] InputFileOptions = { "-i" };
+        static string[] OutputFileOptions = { "-o" };
+        
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
         static string[] UrlOptions = { "-u", "--url" };
@@ -18,11 +20,10 @@ namespace StreamToM3U.Configuration
         public StreamProvider Provider { get; set; }
 
         public string InputFile { get; set; }
+        public string OutputFile { get; set; }
 
         public string ChannelId { get; set; }
-
         public string Title { get; set; }
-
         public string Url { get; set; }
 
         public static Options FromArguments(string[] args)
@@ -30,6 +31,7 @@ namespace StreamToM3U.Configuration
             Options options = new Options();
             options.Provider = DetermineProviderFromArgs(args);
             options.InputFile = GetArgumentIfExists(InputFileOptions);
+            options.OutputFile = GetArgumentIfExists(OutputFileOptions, "playlist.m3u");
             options.Title = GetArgumentIfExists(TitleOptions);
             options.Url = GetArgumentIfExists(UrlOptions);
 
@@ -67,13 +69,16 @@ namespace StreamToM3U.Configuration
         }
 
         static string GetArgumentIfExists(string[] argumentOptions)
+            => GetArgumentIfExists(argumentOptions, null);
+
+        static string GetArgumentIfExists(string[] argumentOptions, string fallbackValue)
         {
             if (CliArgumentsReader.HasOption(argumentOptions))
             {
                 return CliArgumentsReader.GetOptionValue(argumentOptions);
             }
 
-            return null;
+            return fallbackValue;
         }
     }
 }
