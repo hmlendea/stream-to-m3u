@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 using StreamToM3U.Net;
 using StreamToM3U.Utils;
 
-namespace StreamToM3U.Processors
+namespace StreamToM3U.Service.Processors
 {
     public sealed class AntenaPlayProcessor : WebProcessor, IAntenaPlayProcessor
     {
