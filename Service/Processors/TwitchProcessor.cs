@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace StreamToM3U.Processors
+namespace StreamToM3U.Service.Processors
 {
     public sealed class TwitchProcessor : ITwitchProcessor
     {

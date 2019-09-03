@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 using StreamToM3U.Net;
 
-namespace StreamToM3U.Processors
+namespace StreamToM3U.Service.Processors
 {
     public sealed class YouTubeStreamProcessor : IYouTubeStreamProcessor
     {

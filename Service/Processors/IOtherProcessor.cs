@@ -1,4 +1,4 @@
-namespace StreamToM3U.Processors
+namespace StreamToM3U.Service.Processors
 {
     public interface IOtherProcessor
     {
