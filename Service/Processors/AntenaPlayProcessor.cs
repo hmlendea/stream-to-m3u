@@ -54,7 +54,7 @@ namespace StreamToM3U.Service.Processors
 
         void RegisterAccount()
         {
-            By acceptGdprButtonSelector = By.XPath("//*[@id='gdpr']/div/div/a[2]/button");
+            By acceptGdprButtonSelector = By.XPath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button");
             By emailInputSelector = By.Name("email");
             By passwordInputSelector = By.Name("password");
             By firstNameInputSelector = By.Name("firstname");
