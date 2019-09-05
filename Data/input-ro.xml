@@ -7,10 +7,40 @@
     <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Antena3</Id>
+    <Id>Antena1</Id>
+    <ChannelName>RO: Antena 1</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>antena1</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Antena3-AntenaPlay</Id>
+    <ChannelName>RO: Antena 3</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>antena3</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Antena3-OfficialWebsite</Id>
     <ChannelName>RO: Antena 3</ChannelName>
     <Provider>Other</Provider>
     <Url>https://live.antena3.ro/</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>AntenaInternational</Id>
+    <ChannelName>RO: Antena Internațional</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>antena-international</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Antena-Monden</Id>
+    <ChannelName>RO: Antena Monden</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>antena-monden</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>AntenaStars</Id>
+    <ChannelName>RO: Antena Stars</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>antena-stars</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ArcadiaTV</Id>
@@ -56,6 +86,18 @@
     <ChannelId>cnstv1994</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>ComedyPlay</Id>
+    <ChannelName>RO: Comedy Play</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>comedy-play</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>CookPlay</Id>
+    <ChannelName>RO: Cook &amp; Play</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>cookplay</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -68,10 +110,10 @@
     <ChannelId>UCthNI7cE3k5nTodcga2yBZg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>ImpactTV</Id>
-    <ChannelName>RO: Impact TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCgjKoxF0smCvd0JpraXRXCw</ChannelId>
+    <Id>HappyChannel</Id>
+    <ChannelName>RO: Happy Channel</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>happy-channel</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>LitoralTV</Id>
@@ -114,5 +156,11 @@
     <ChannelName>RO: Vocea Basarabiei</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UC645Zlz-PDBWM1kQgSDB_xg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ZuTV</Id>
+    <ChannelName>RO: Zu TV</ChannelName>
+    <Provider>AntenaPlay</Provider>
+    <ChannelId>zu-tv</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
