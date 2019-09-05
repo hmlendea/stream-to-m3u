@@ -32,10 +32,16 @@
     <ChannelId>UCLidj8wzlO9SV6k0XDQ4SEg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Canal33</Id>
+    <Id>Canal33-SeeNow</Id>
     <ChannelName>RO: Canal33</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>canal-33</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Canal33-YouTube</Id>
+    <ChannelName>RO: Canal33</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>UChXVCKn5sa-e-bNXjX47lJw</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Ciresarii</Id>
