@@ -14,4 +14,18 @@
     <ChannelId>UCihCtNZnFkG62U4na9JsPJQ</ChannelId>
     <Title>Fallout 76 Appalachia Radio (Live 24/7)</Title>
   </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>NasaTV</Id>
+    <ChannelName>INT: NASA TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCLA_DiR1FfKNvjuUpBHmylQ</ChannelId>
+    <Title>NASA Live: Official Stream of NASA TV</Title>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>NasaTV</Id>
+    <ChannelName>INT: NASA TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCLA_DiR1FfKNvjuUpBHmylQ</ChannelId>
+    <Title>NASA Live: Official Stream of NASA TV</Title>
+  </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
