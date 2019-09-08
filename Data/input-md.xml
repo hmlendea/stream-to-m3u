@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ChannelStreamEntity>
+    <Id>JurnalTV</Id>
+    <ChannelName>MD: Jurnal TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCJYCClZe1UppC6q3XJ4Mp2A</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>VoceaBasarabiei</Id>
+    <ChannelName>MD: Vocea Basarabiei</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC645Zlz-PDBWM1kQgSDB_xg</ChannelId>
+  </ChannelStreamEntity>
+</ArrayOfChannelStreamEntity>
