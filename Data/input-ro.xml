@@ -140,6 +140,12 @@
     <ChannelId>UC18hkjEsebdr-UFbwHcaOxg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>LookPlus</Id>
+    <ChannelName>RO: Look Plus</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://lookplus.ro/lookplus-live/</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>NCN</Id>
     <ChannelName>RO: NCN TV</ChannelName>
     <Provider>YouTube</Provider>

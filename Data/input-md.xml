@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>AxialTV</Id>
+    <ChannelName>MD: Axial TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC1bwPIsDGCs2fOs3SeKMIJA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>JurnalTV</Id>
     <ChannelName>MD: Jurnal TV</ChannelName>
     <Provider>YouTube</Provider>
