@@ -10,7 +10,7 @@ namespace StreamToM3U.Service.Processors
         static string[] PlaylistUrlPatterns =
         {
             "\"(http.*\\.m3u[^\"]*)\"",
-            "'(http.*\\.m3u[^\"]*)'"
+            "'(http.*\\.m3u[^']*)'"
         };
 
         readonly IFileDownloader downloader;
