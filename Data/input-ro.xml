@@ -98,10 +98,22 @@
     <ChannelId>cookplay</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>CorneaTV</Id>
+    <ChannelName>RO: Cornea TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>http://corneatv.ro/index.html</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCOUSlooyiaPIG6DZOTPSClQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>FRB</Id>
+    <ChannelName>RO: FRB TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCZDhK7aWMpa7SC5VufduE2Q</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>FRF</Id>
@@ -114,6 +126,12 @@
     <ChannelName>RO: Happy Channel</ChannelName>
     <Provider>AntenaPlay</Provider>
     <ChannelId>happy-channel</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>InfoPescar</Id>
+    <ChannelName>RO: Info Pescar</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCVxrKwK_5dgtY-_UbiET7wA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>LitoralTV</Id>
@@ -134,6 +152,36 @@
     <ChannelId>neptun-tv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>PartenerTV</Id>
+    <ChannelName>RO: Partener TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCARYheWlRLEsEEYzWEH3JYA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomaniaTV</Id>
+    <ChannelName>RO: România TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCF5GcyFOwtMGiuNWioA9fOQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomanTV</Id>
+    <ChannelName>RO: Roman TV</ChannelName>
+    <Provider>Twitch</Provider>
+    <ChannelId>romantv__</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>SalajeanulTV</Id>
+    <ChannelName>RO: Sălăjeanul TV</ChannelName>
+    <Provider>Twitch</Provider>
+    <ChannelId>salajeanultv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TeleEuropaNova</Id>
+    <ChannelName>RO: TeleEuropa Nova</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC_1E3SA2Q6KcoussBp-2YmQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>TrinitasTV</Id>
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -144,6 +192,12 @@
     <ChannelName>RO: TV City București</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>tv-city</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TVTotal</Id>
+    <ChannelName>RO: TV Total</ChannelName>
+    <Provider>Twitch</Provider>
+    <ChannelId>tvtotalvaslui</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZuTV</Id>
