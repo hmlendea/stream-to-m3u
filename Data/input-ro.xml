@@ -134,12 +134,6 @@
     <ChannelId>neptun-tv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>RomaniaTV</Id>
-    <ChannelName>RO: România TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCF5GcyFOwtMGiuNWioA9fOQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>TrinitasTV</Id>
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -150,12 +144,6 @@
     <ChannelName>RO: TV City București</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>tv-city</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>VoceaBasarabiei</Id>
-    <ChannelName>RO: Vocea Basarabiei</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC645Zlz-PDBWM1kQgSDB_xg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZuTV</Id>
