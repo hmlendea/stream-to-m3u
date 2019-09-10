@@ -1,38 +1,43 @@
+using System.Threading.Tasks;
+
 using NuciWeb;
 using OpenQA.Selenium;
 
+using StreamToM3U.Service.Models;
 using StreamToM3U.Utils;
 
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class TvSportHdProcessor : WebProcessor, ITvSportHdProcessor
+    public sealed class TvSportHdProcessor : IProcessor
     {
         static string TvSportHdUrl => "http://www.tv-sport-hd.com";
         static string ChannelUrlFormat => $"{TvSportHdUrl}/channel/tvs.php?ch={{0}}";
 
         const string PlaylistUrlPattern = "file: *\"(http[^\"]*)\"";
 
+        readonly IWebProcessor webProcessor;
+
         public TvSportHdProcessor()
-            : base(WebDriverHandler.WebDriver)
         {
+            this.webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
         }
 
-        public string GetPlaylistUrl(string channelId)
+        public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
-            string channelUrl = string.Format(ChannelUrlFormat, channelId);
+            string channelUrl = string.Format(ChannelUrlFormat, streamInfo.ChannelId);
             string playlistUrl = GetPlaylistUrlFromPage(channelUrl);
 
             WebDriverHandler.WebDriver.Dispose();
-            return playlistUrl;
+            return Task.FromResult(playlistUrl);
         }
 
         string GetPlaylistUrlFromPage(string url)
         {
-            GoToUrl(url);
+            webProcessor.GoToUrl(url);
             SwitchToVideoIframe();
 
             By playlistUrlSelector = By.XPath(@"//*[@id='playerDIV_html5_api']/source");
-            WaitForElementToExist(playlistUrlSelector);
+            webProcessor.WaitForElementToExist(playlistUrlSelector);
 
             return WebDriverHandler.WebDriver
                 .FindElement(playlistUrlSelector)
@@ -42,7 +47,7 @@ namespace StreamToM3U.Service.Processors
         void SwitchToVideoIframe()
         {
             By iframeSelector = By.Id("thatframe");
-            WaitForElementToExist(iframeSelector);
+            webProcessor.WaitForElementToExist(iframeSelector);
 
             IWebElement iframe = WebDriverHandler.WebDriver.FindElement(iframeSelector);
             WebDriverHandler.WebDriver.SwitchTo().Frame(iframe);
