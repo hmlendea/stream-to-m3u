@@ -24,10 +24,12 @@ namespace StreamToM3U.Service.Processors
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
+            WebDriverHandler.GainLock();
+
             string channelUrl = string.Format(ChannelUrlFormat, streamInfo.ChannelId);
             string playlistUrl = GetPlaylistUrlFromPage(channelUrl);
 
-            WebDriverHandler.WebDriver.Dispose();
+            WebDriverHandler.ReleaseLock();
             return Task.FromResult(playlistUrl);
         }
 
