@@ -1,10 +1,6 @@
-using System;
-using System.Text.RegularExpressions;
-
 using NuciWeb;
 using OpenQA.Selenium;
 
-using StreamToM3U.Net;
 using StreamToM3U.Utils;
 
 namespace StreamToM3U.Service.Processors
@@ -16,12 +12,9 @@ namespace StreamToM3U.Service.Processors
 
         const string PlaylistUrlPattern = "file: *\"(http[^\"]*)\"";
 
-        readonly IFileDownloader downloader;
-
-        public TvSportHdProcessor(IFileDownloader downloader)
+        public TvSportHdProcessor()
             : base(WebDriverHandler.WebDriver)
         {
-            this.downloader = downloader;
         }
 
         public string GetPlaylistUrl(string channelId)

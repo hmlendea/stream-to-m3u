@@ -1,9 +1,11 @@
+using System.Threading.Tasks;
+
 namespace StreamToM3U.Service.Processors
 {
     public interface IYouTubeStreamProcessor
     {
-        string GetPlaylistUrl(string channelId);
+        Task<string> GetUrlAsync(string channelId);
         
-        string GetPlaylistUrl(string channelId, string streamTitle);
+        Task<string> GetUrlAsync(string channelId, string streamTitle);
     }
 }

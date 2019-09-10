@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace StreamToM3U.Service.Processors
@@ -17,7 +18,7 @@ namespace StreamToM3U.Service.Processors
         const string TokenPattern = "\"token\": *\"({.*})\",";
         const string SignaturePattern = "\"sig\": *\"([a-z0-9]*)\"";
 
-        public string GetPlaylistUrl(string channelId)
+        public async Task<string> GetUrlAsync(string channelId)
         {
             string endpoint = $"{TwitchApiChannelsUrl}/{channelId}/access_token/";
 
@@ -29,7 +30,7 @@ namespace StreamToM3U.Service.Processors
             request.Headers["User-Agent"] = "[{\"key\":\"User-Agent\",\"value\":\"Mozilla/5.0 (Windows NT 6.3; rv:43.0) Gecko/20100101 Firefox/43.0 Seamonkey/2.40\",\"description\":\"\",\"type\":\"text\",\"enabled\":true}]";
             request.Headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            HttpWebResponse response = (HttpWebResponse)(await request.GetResponseAsync());
 
             if (response.StatusCode != HttpStatusCode.OK)
             {

@@ -1,7 +1,5 @@
-using System;
 using System.Text.RegularExpressions;
-
-using StreamToM3U.Net;
+using System.Threading.Tasks;
 
 namespace StreamToM3U.Service.Processors
 {
@@ -20,9 +18,9 @@ namespace StreamToM3U.Service.Processors
             this.downloader = downloader;
         }
 
-        public string GetPlaylistUrl(string url)
+        public async Task<string> GetUrlAsync(string url)
         {
-            string html = downloader.TryDownload(url);
+            string html = await downloader.TryDownloadStringAsync(url);
             
             foreach (string pattern in PlaylistUrlPatterns)
             {

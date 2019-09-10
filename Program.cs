@@ -6,7 +6,6 @@ using NuciDAL.Repositories;
 
 using StreamToM3U.Configuration;
 using StreamToM3U.DataAccess.DataObjects;
-using StreamToM3U.Net;
 using StreamToM3U.Service;
 
 namespace StreamToM3U

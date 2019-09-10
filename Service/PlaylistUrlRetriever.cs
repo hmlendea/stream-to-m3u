@@ -1,7 +1,6 @@
 using System;
 
 using StreamToM3U.Configuration;
-using StreamToM3U.Net;
 using StreamToM3U.Service.Models;
 using StreamToM3U.Service.Processors;
 
@@ -76,42 +75,42 @@ namespace StreamToM3U.Service
 
             if (!string.IsNullOrWhiteSpace(options.Title))
             {
-                return processor.GetPlaylistUrl(options.ChannelId, options.Title);
+                return processor.GetUrlAsync(options.ChannelId, options.Title).Result;
             }
             else
             {
-                return processor.GetPlaylistUrl(options.ChannelId);
+                return processor.GetUrlAsync(options.ChannelId).Result;
             }
         }
 
         string GetTwitchStreamUrl(Options options)
         {
             ITwitchProcessor processor = new TwitchProcessor();
-            return processor.GetPlaylistUrl(options.ChannelId);
+            return processor.GetUrlAsync(options.ChannelId).Result;
         }
 
         string GetSeeNowStreamUrl(Options options)
         {
             ISeeNowProcessor processor = new SeeNowProcessor(downloader);
-            return processor.GetPlaylistUrl(options.ChannelId);
+            return processor.GetUrlAsync(options.ChannelId).Result;
         }
 
         string GetTvSportHdStreamUrl(Options options)
         {
-            ITvSportHdProcessor processor = new TvSportHdProcessor(downloader);
+            ITvSportHdProcessor processor = new TvSportHdProcessor();
             return processor.GetPlaylistUrl(options.ChannelId);
         }
 
         string GetAntenaPlayStreamUrl(Options options)
         {
-            IAntenaPlayProcessor processor = new AntenaPlayProcessor(downloader);
+            IAntenaPlayProcessor processor = new AntenaPlayProcessor();
             return processor.GetPlaylistUrl(options.ChannelId);
         }
 
         string GetOtherStreamUrl(Options options)
         {
             IOtherProcessor processor = new OtherProcessor(downloader);
-            return processor.GetPlaylistUrl(options.Url);
+            return processor.GetUrlAsync(options.Url).Result;
         }
 
         bool IsUrlValid(string url)

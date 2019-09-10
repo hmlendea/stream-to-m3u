@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace StreamToM3U.Service.Processors
 {
     public interface ITwitchProcessor
     {
-        string GetPlaylistUrl(string channelId);
+        Task<string> GetUrlAsync(string channelId);
     }
 }

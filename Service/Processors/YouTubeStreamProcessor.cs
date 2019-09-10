@@ -1,8 +1,5 @@
-using System;
-using System.Net;
 using System.Text.RegularExpressions;
-
-using StreamToM3U.Net;
+using System.Threading.Tasks;
 
 namespace StreamToM3U.Service.Processors
 {
@@ -23,38 +20,35 @@ namespace StreamToM3U.Service.Processors
             this.downloader = downloader;
         }
 
-        public string GetPlaylistUrl(
-            string channelId)
+        public async Task<string> GetUrlAsync(string channelId)
         {
-            string streamUrl = GetYouTubeStreamUrl(channelId);
-            string playlistUrl = GetYouTubeStreamPlaylistUrl(streamUrl);
+            string streamUrl = await GetYouTubeStreamUrl(channelId);
+            string playlistUrl = await GetYouTubeStreamPlaylistUrl(streamUrl);
 
             return playlistUrl;
         }
 
-        public string GetPlaylistUrl(
-            string channelId,
-            string streamTitle)
+        public async Task<string> GetUrlAsync(string channelId, string streamTitle)
         {
-            string streamUrl = GetYouTubeStreamUrl(channelId, streamTitle);
-            string playlistUrl = GetYouTubeStreamPlaylistUrl(streamUrl);
+            string streamUrl = await GetYouTubeStreamUrl(channelId, streamTitle);
+            string playlistUrl = await GetYouTubeStreamPlaylistUrl(streamUrl);
 
             return playlistUrl;
         }
 
-        string GetYouTubeStreamUrl(string channelId)
+        async Task<string> GetYouTubeStreamUrl(string channelId)
         {
             string channelUrl = string.Format(YouTubeChannelUrlFormat,channelId);
-            string html = downloader.Download(channelUrl);
+            string html = await downloader.TryDownloadStringAsync(channelUrl);
             string streamId = Regex.Match(html, StreamIdFirstPatternFormat).Groups[1].Value;
 
             return string.Format(YouTubeStreamUrlFormat, streamId);
         }
 
-        string GetYouTubeStreamUrl(string channelId, string streamTitle)
+        async Task<string> GetYouTubeStreamUrl(string channelId, string streamTitle)
         {
             string channelUrl = string.Format(YouTubeChannelUrlFormat,channelId);
-            string html = downloader.Download(channelUrl);
+            string html = await downloader.TryDownloadStringAsync(channelUrl);
 
             string escapedStreamTitle = streamTitle
                 .Replace("(", "\\(")
@@ -66,9 +60,9 @@ namespace StreamToM3U.Service.Processors
             return string.Format(YouTubeStreamUrlFormat, streamId);
         }
 
-        string GetYouTubeStreamPlaylistUrl(string streamUrl)
+        async Task<string> GetYouTubeStreamPlaylistUrl(string streamUrl)
         {
-            string html = downloader.Download(streamUrl);
+            string html = await downloader.TryDownloadStringAsync(streamUrl);
 
             string playlistRelativeUrl = Regex.Match(html, ManifestUrlPattern).Groups[1].Value;
             string playlistAbsoluteUrl = playlistRelativeUrl.Replace("\\/", "/");

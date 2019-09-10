@@ -1,11 +1,9 @@
-using System;
 using System.Text.RegularExpressions;
 
 using NuciExtensions;
 using NuciWeb;
 using OpenQA.Selenium;
 
-using StreamToM3U.Net;
 using StreamToM3U.Utils;
 
 namespace StreamToM3U.Service.Processors
@@ -18,12 +16,9 @@ namespace StreamToM3U.Service.Processors
 
         const string StreamUrlPattern = "streamURL: \"([^\"]*)\"";
 
-        readonly IFileDownloader downloader;
-
-        public AntenaPlayProcessor(IFileDownloader downloader)
+        public AntenaPlayProcessor()
             : base(WebDriverHandler.WebDriver)
         {
-            this.downloader = downloader;
         }
 
         public string GetPlaylistUrl(string channelId)
