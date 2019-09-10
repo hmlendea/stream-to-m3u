@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace StreamToM3U.Service.Processors
 {
     public interface IOtherProcessor
     {
-        string GetPlaylistUrl(string url);
+        Task<string> GetUrlAsync(string url);
     }
 }

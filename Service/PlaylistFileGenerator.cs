@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 
 using NuciDAL.Repositories;
 
 using StreamToM3U.DataAccess.DataObjects;
-using StreamToM3U.Net;
 using StreamToM3U.Service.Mapping;
 using StreamToM3U.Service.Models;
 
