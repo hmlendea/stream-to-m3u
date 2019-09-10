@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>A7TV</Id>
+    <ChannelName>RO: A7 TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCvXWhITuhnvUyHu4idMrgkA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ActualitateaTV</Id>
+    <ChannelName>RO: Actualitatea TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCQ7O9qFKHWCUjdo0LY5Y_bg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>AgroTV</Id>
     <ChannelName>RO: Agro TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>AlphaMediaTV</Id>
+    <ChannelName>RO: Alpha Media TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCqsQTFXog6e33iBVDrcpW9g</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Antena1</Id>
@@ -62,6 +80,12 @@
     <ChannelId>UCLidj8wzlO9SV6k0XDQ4SEg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>CampusTVBuzau</Id>
+    <ChannelName>RO: Campus TV Buzău</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCO95hBJLPXVFgfdl0Mned5Q</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>Canal33-SeeNow</Id>
     <ChannelName>RO: Canal33</ChannelName>
     <Provider>SeeNow</Provider>
@@ -104,6 +128,12 @@
     <Url>http://corneatv.ro/index.html</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>CromtelTV</Id>
+    <ChannelName>RO: Cromtel TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCdlBPCArmbMFmzhZVU8bfiA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -126,6 +156,18 @@
     <ChannelName>RO: Happy Channel</ChannelName>
     <Provider>AntenaPlay</Provider>
     <ChannelId>happy-channel</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Inedit TV</Id>
+    <ChannelName>RO: Inedit TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCb5oLgptGbLwArcnQFQkCeg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>InfinitTV</Id>
+    <ChannelName>RO: Infinit TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCIhtlsPqlSkTxLkKd5D-x3w</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>InfoPescar</Id>
@@ -186,6 +228,12 @@
     <ChannelName>RO: TeleEuropa Nova</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UC_1E3SA2Q6KcoussBp-2YmQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TLPlus</Id>
+    <ChannelName>RO: TL Plus</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCFfbREhxM9QBAhqgHOaAbRg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>TrinitasTV</Id>
