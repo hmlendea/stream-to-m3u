@@ -15,9 +15,9 @@ namespace StreamToM3U.Service
             this.downloader = downloader;
         }
 
-        public string GetStreamUrl(Options options)
+        public string GetStreamUrl(StreamInfo streamInfo)
         {
-            string url = FindStreamUrl(options);
+            string url = FindStreamUrl(streamInfo);
 
             if (IsUrlValid(url))
             {
@@ -29,25 +29,20 @@ namespace StreamToM3U.Service
 
         public string GetStreamUrl(ChannelStream channelStream)
         {
-            Options options = new Options();
-            options.Provider = channelStream.Provider;
-            options.ChannelId = channelStream.ChannelId;
-            options.Title = channelStream.Title;
-            options.Url = channelStream.Url;
+            StreamInfo streamInfo = new StreamInfo();
+            streamInfo.Provider = channelStream.Provider;
+            streamInfo.ChannelId = channelStream.ChannelId;
+            streamInfo.Title = channelStream.Title;
+            streamInfo.Url = channelStream.Url;
             
-            return GetStreamUrl(options);
+            return GetStreamUrl(streamInfo);
         }
 
-        string FindStreamUrl(Options options)
+        string FindStreamUrl(StreamInfo streamInfo)
         {
-            StreamInfo streamInfo = new StreamInfo();
-            streamInfo.ChannelId = options.ChannelId;
-            streamInfo.Title = options.Title;
-            streamInfo.Url = options.Url;
-
             try
             {
-                switch (options.Provider)
+                switch (streamInfo.Provider)
                 {
                     case StreamProvider.YouTube:
                         return GetYouTubeStreamUrl(streamInfo);
@@ -59,10 +54,10 @@ namespace StreamToM3U.Service
                         return GetSeeNowStreamUrl(streamInfo);
                     
                     case StreamProvider.TvSportHd:
-                        return GetTvSportHdStreamUrl(options);
+                        return GetTvSportHdStreamUrl(streamInfo);
                     
                     case StreamProvider.AntenaPlay:
-                        return GetAntenaPlayStreamUrl(options);
+                        return GetAntenaPlayStreamUrl(streamInfo);
                     
                     default:
                         return GetOtherStreamUrl(streamInfo);
@@ -92,16 +87,16 @@ namespace StreamToM3U.Service
             return processor.GetUrlAsync(streamInfo).Result;
         }
 
-        string GetTvSportHdStreamUrl(Options options)
+        string GetTvSportHdStreamUrl(StreamInfo streamInfo)
         {
-            ITvSportHdProcessor processor = new TvSportHdProcessor();
-            return processor.GetPlaylistUrl(options.ChannelId);
+            IProcessor processor = new TvSportHdProcessor();
+            return processor.GetUrlAsync(streamInfo).Result;
         }
 
-        string GetAntenaPlayStreamUrl(Options options)
+        string GetAntenaPlayStreamUrl(StreamInfo streamInfo)
         {
-            IAntenaPlayProcessor processor = new AntenaPlayProcessor();
-            return processor.GetPlaylistUrl(options.ChannelId);
+            IProcessor processor = new AntenaPlayProcessor();
+            return processor.GetUrlAsync(streamInfo).Result;
         }
 
         string GetOtherStreamUrl(StreamInfo streamInfo)

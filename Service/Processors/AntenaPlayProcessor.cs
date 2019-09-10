@@ -1,47 +1,53 @@
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 using NuciExtensions;
 using NuciWeb;
 using OpenQA.Selenium;
 
+using StreamToM3U.Service.Models;
 using StreamToM3U.Utils;
 
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class AntenaPlayProcessor : WebProcessor, IAntenaPlayProcessor
+    public sealed class AntenaPlayProcessor : IProcessor
     {
         static string HomeUrl => "https://antenaplay.ro";
         static string RegistrationUrl => $"{HomeUrl}/cont-nou";
+        static string LogOutUrl => $"{HomeUrl}/logout";
         static string ChannelUrlFormat => $"{HomeUrl}/live/{{0}}";
 
         const string StreamUrlPattern = "streamURL: \"([^\"]*)\"";
 
+        readonly IWebProcessor webProcessor;
+
         public AntenaPlayProcessor()
-            : base(WebDriverHandler.WebDriver)
         {
+            this.webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
         }
 
-        public string GetPlaylistUrl(string channelId)
+        public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
-            string url = string.Format(ChannelUrlFormat, channelId);
+            string url = string.Format(ChannelUrlFormat, streamInfo.ChannelId);
 
             RegisterAccount();
-            GoToUrl(url);
+            webProcessor.GoToUrl(url);
             
             string playlistUrl = GetStreamUrlFromPageSource();
 
-            WebDriverHandler.WebDriver.Quit();
+            LogOut();
+            webProcessor.Dispose();
 
-            return playlistUrl;
+            return Task.FromResult(playlistUrl);
         }
 
         string GetStreamUrlFromPageSource()
         {
             By startStreamButtonSelector = By.Id("start-video");
 
-            Click(startStreamButtonSelector);
+            webProcessor.Click(startStreamButtonSelector);
 
-            string html = GetPageSource();
+            string html = webProcessor.GetPageSource();
             string streamUrl = Regex.Match(html, StreamUrlPattern).Groups[1].Value;
 
             return streamUrl;
@@ -58,20 +64,25 @@ namespace StreamToM3U.Service.Processors
             By submitButtonSelector = By.XPath(@"//form/button");
             By smsValidationButtonSelector = By.Id("js-btn-sms");
 
-            GoToUrl(RegistrationUrl);
+            webProcessor.GoToUrl(RegistrationUrl);
 
-            Click(acceptGdprButtonSelector);
+            webProcessor.Click(acceptGdprButtonSelector);
 
-            SetText(emailInputSelector, GenerateRandomEmail());
-            SetText(passwordInputSelector, GenerateRandomString());
-            SetText(firstNameInputSelector, GenerateRandomName());
-            SetText(lastNameInputSelector, GenerateRandomName());
+            webProcessor.SetText(emailInputSelector, GenerateRandomEmail());
+            webProcessor.SetText(passwordInputSelector, GenerateRandomString());
+            webProcessor.SetText(firstNameInputSelector, GenerateRandomName());
+            webProcessor.SetText(lastNameInputSelector, GenerateRandomName());
 
-            UpdateCheckbox(tosCheckboxSelector, true);
+            webProcessor.UpdateCheckbox(tosCheckboxSelector, true);
             
-            Click(submitButtonSelector);
+            webProcessor.Click(submitButtonSelector);
 
-            WaitForElementToBeVisible(smsValidationButtonSelector);
+            webProcessor.WaitForElementToBeVisible(smsValidationButtonSelector);
+        }
+
+        void LogOut()
+        {
+            webProcessor.GoToUrl(LogOutUrl);
         }
 
         string GenerateRandomEmail()

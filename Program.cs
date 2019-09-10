@@ -7,6 +7,7 @@ using NuciDAL.Repositories;
 using StreamToM3U.Configuration;
 using StreamToM3U.DataAccess.DataObjects;
 using StreamToM3U.Service;
+using StreamToM3U.Service.Models;
 
 namespace StreamToM3U
 {
@@ -24,8 +25,15 @@ namespace StreamToM3U
 
             if (string.IsNullOrWhiteSpace(options.InputFile))
             {
+                StreamInfo streamInfo = new StreamInfo();
+                streamInfo.Provider = options.Provider;
+                streamInfo.ChannelId = options.ChannelId;
+                streamInfo.Title = options.Title;
+                streamInfo.Url = options.Url;
+
                 IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
-                string playlistUrl = urlRetriever.GetStreamUrl(options);
+                string playlistUrl = urlRetriever.GetStreamUrl(streamInfo);
+                
                 Console.WriteLine(playlistUrl);
             }
             else
