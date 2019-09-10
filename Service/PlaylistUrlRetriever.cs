@@ -40,18 +40,23 @@ namespace StreamToM3U.Service
 
         string FindStreamUrl(Options options)
         {
+            StreamInfo streamInfo = new StreamInfo();
+            streamInfo.ChannelId = options.ChannelId;
+            streamInfo.Title = options.Title;
+            streamInfo.Url = options.Url;
+
             try
             {
                 switch (options.Provider)
                 {
                     case StreamProvider.YouTube:
-                        return GetYouTubeStreamUrl(options);
+                        return GetYouTubeStreamUrl(streamInfo);
                     
                     case StreamProvider.Twitch:
-                        return GetTwitchStreamUrl(options);
+                        return GetTwitchStreamUrl(streamInfo);
                     
                     case StreamProvider.SeeNow:
-                        return GetSeeNowStreamUrl(options);
+                        return GetSeeNowStreamUrl(streamInfo);
                     
                     case StreamProvider.TvSportHd:
                         return GetTvSportHdStreamUrl(options);
@@ -60,7 +65,7 @@ namespace StreamToM3U.Service
                         return GetAntenaPlayStreamUrl(options);
                     
                     default:
-                        return GetOtherStreamUrl(options);
+                        return GetOtherStreamUrl(streamInfo);
                 }
             }
             catch
@@ -69,30 +74,22 @@ namespace StreamToM3U.Service
             }
         }
 
-        string GetYouTubeStreamUrl(Options options)
+        string GetYouTubeStreamUrl(StreamInfo streamInfo)
         {
-            IYouTubeStreamProcessor processor = new YouTubeStreamProcessor(downloader);
-
-            if (!string.IsNullOrWhiteSpace(options.Title))
-            {
-                return processor.GetUrlAsync(options.ChannelId, options.Title).Result;
-            }
-            else
-            {
-                return processor.GetUrlAsync(options.ChannelId).Result;
-            }
+            IProcessor processor = new YouTubeStreamProcessor(downloader);
+            return processor.GetUrlAsync(streamInfo).Result;
         }
 
-        string GetTwitchStreamUrl(Options options)
+        string GetTwitchStreamUrl(StreamInfo streamInfo)
         {
-            ITwitchProcessor processor = new TwitchProcessor();
-            return processor.GetUrlAsync(options.ChannelId).Result;
+            IProcessor processor = new TwitchProcessor();
+            return processor.GetUrlAsync(streamInfo).Result;
         }
 
-        string GetSeeNowStreamUrl(Options options)
+        string GetSeeNowStreamUrl(StreamInfo streamInfo)
         {
-            ISeeNowProcessor processor = new SeeNowProcessor(downloader);
-            return processor.GetUrlAsync(options.ChannelId).Result;
+            IProcessor processor = new SeeNowProcessor(downloader);
+            return processor.GetUrlAsync(streamInfo).Result;
         }
 
         string GetTvSportHdStreamUrl(Options options)
@@ -107,10 +104,10 @@ namespace StreamToM3U.Service
             return processor.GetPlaylistUrl(options.ChannelId);
         }
 
-        string GetOtherStreamUrl(Options options)
+        string GetOtherStreamUrl(StreamInfo streamInfo)
         {
-            IOtherProcessor processor = new OtherProcessor(downloader);
-            return processor.GetUrlAsync(options.Url).Result;
+            IProcessor processor = new OtherProcessor(downloader);
+            return processor.GetUrlAsync(streamInfo).Result;
         }
 
         bool IsUrlValid(string url)

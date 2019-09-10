@@ -32,6 +32,7 @@ namespace StreamToM3U.Configuration
             options.Provider = DetermineProviderFromArgs(args);
             options.InputFile = GetArgumentIfExists(args, InputFileOptions);
             options.OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u");
+            options.ChannelId = GetArgumentIfExists(args, ChannelIdOptions);
             options.Title = GetArgumentIfExists(args, TitleOptions);
             options.Url = GetArgumentIfExists(args, UrlOptions);
 
