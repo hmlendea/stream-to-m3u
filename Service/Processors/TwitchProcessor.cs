@@ -6,9 +6,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
+using StreamToM3U.Service.Models;
+
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class TwitchProcessor : ITwitchProcessor
+    public sealed class TwitchProcessor : IProcessor
     {
         static string TwitchApiUrl => "https://api.twitch.tv/api";
         static string TwitchApiChannelsUrl => $"{TwitchApiUrl}/channels";
@@ -18,9 +20,9 @@ namespace StreamToM3U.Service.Processors
         const string TokenPattern = "\"token\": *\"({.*})\",";
         const string SignaturePattern = "\"sig\": *\"([a-z0-9]*)\"";
 
-        public async Task<string> GetUrlAsync(string channelId)
+        public async Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
-            string endpoint = $"{TwitchApiChannelsUrl}/{channelId}/access_token/";
+            string endpoint = $"{TwitchApiChannelsUrl}/{streamInfo.ChannelId}/access_token/";
 
             UriBuilder uriBuilder = new UriBuilder(endpoint);
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uriBuilder.Uri);
@@ -48,7 +50,7 @@ namespace StreamToM3U.Service.Processors
 
                 return string.Format(
                     PlaylistUrlFormat,
-                    channelId,
+                    streamInfo.ChannelId,
                     UrlEcodeToken(token),
                     signature);
             }

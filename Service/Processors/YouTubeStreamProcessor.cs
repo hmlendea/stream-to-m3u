@@ -1,9 +1,11 @@
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+using StreamToM3U.Service.Models;
+
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class YouTubeStreamProcessor : IYouTubeStreamProcessor
+    public sealed class YouTubeStreamProcessor : IProcessor
     {
         static string YouTubeUrl => "https://www.youtube.com";
         static string YouTubeChannelUrlFormat => $"{YouTubeUrl}/channel/{{0}}";
@@ -20,7 +22,17 @@ namespace StreamToM3U.Service.Processors
             this.downloader = downloader;
         }
 
-        public async Task<string> GetUrlAsync(string channelId)
+        public async Task<string> GetUrlAsync(StreamInfo streamInfo)
+        {
+            if (!string.IsNullOrWhiteSpace(streamInfo.Title))
+            {
+                return await GetUrlAsync(streamInfo.ChannelId, streamInfo.Title);
+            }
+
+            return await GetUrlAsync(streamInfo.ChannelId);
+        }
+
+        async Task<string> GetUrlAsync(string channelId)
         {
             string streamUrl = await GetYouTubeStreamUrl(channelId);
             string playlistUrl = await GetYouTubeStreamPlaylistUrl(streamUrl);
@@ -28,7 +40,7 @@ namespace StreamToM3U.Service.Processors
             return playlistUrl;
         }
 
-        public async Task<string> GetUrlAsync(string channelId, string streamTitle)
+        async Task<string> GetUrlAsync(string channelId, string streamTitle)
         {
             string streamUrl = await GetYouTubeStreamUrl(channelId, streamTitle);
             string playlistUrl = await GetYouTubeStreamPlaylistUrl(streamUrl);
