@@ -134,6 +134,12 @@
     <ChannelId>UCdlBPCArmbMFmzhZVU8bfiA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>EtnoTV</Id>
+    <ChannelName>RO: Etno TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>etno-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -176,6 +182,12 @@
     <ChannelId>UCVxrKwK_5dgtY-_UbiET7wA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>KissTV</Id>
+    <ChannelName>RO: Kiss TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>kiss-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>LitoralTV</Id>
     <ChannelName>RO: Litoral TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -186,6 +198,24 @@
     <ChannelName>RO: Look Plus</ChannelName>
     <Provider>Other</Provider>
     <Url>https://lookplus.ro/lookplus-live/</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>MagicTV</Id>
+    <ChannelName>RO: Magic TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>magic-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Național24</Id>
+    <ChannelName>RO: Național 24</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>n24</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>NationalTV</Id>
+    <ChannelName>RO: Național TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>national-tv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>NCN</Id>
@@ -206,7 +236,25 @@
     <ChannelId>UCARYheWlRLEsEEYzWEH3JYA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>RomaniaTV</Id>
+    <Id>RealitateaTV</Id>
+    <ChannelName>RO: Realitatea TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>realitatea-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RockTV</Id>
+    <ChannelName>RO: Rock TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>rock-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomaniaTV-SeeNow</Id>
+    <ChannelName>RO: România TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>rtv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomaniaTV-YouTube</Id>
     <ChannelName>RO: România TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCF5GcyFOwtMGiuNWioA9fOQ</ChannelId>
@@ -236,7 +284,13 @@
     <ChannelId>UCFfbREhxM9QBAhqgHOaAbRg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>TrinitasTV</Id>
+    <Id>TrinitasTV-SeeNow</Id>
+    <ChannelName>RO: Trinitas TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>trinitas-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TrinitasTV-YouTube</Id>
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
@@ -252,6 +306,12 @@
     <ChannelName>RO: TV Total</ChannelName>
     <Provider>Twitch</Provider>
     <ChannelId>tvtotalvaslui</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>UTV</Id>
+    <ChannelName>RO: U TV</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>utv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZuTV</Id>
