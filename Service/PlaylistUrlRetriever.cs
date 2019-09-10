@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 using StreamToM3U.Configuration;
 using StreamToM3U.Service.Models;
@@ -15,9 +16,9 @@ namespace StreamToM3U.Service
             this.downloader = downloader;
         }
 
-        public string GetStreamUrl(StreamInfo streamInfo)
+        public async Task<string> GetStreamUrlAsync(StreamInfo streamInfo)
         {
-            string url = FindStreamUrl(streamInfo);
+            string url = await FindStreamUrl(streamInfo);
 
             if (IsUrlValid(url))
             {
@@ -27,7 +28,7 @@ namespace StreamToM3U.Service
             return null;
         }
 
-        public string GetStreamUrl(ChannelStream channelStream)
+        public async Task<string> GetStreamUrlAsync(ChannelStream channelStream)
         {
             StreamInfo streamInfo = new StreamInfo();
             streamInfo.Provider = channelStream.Provider;
@@ -35,33 +36,16 @@ namespace StreamToM3U.Service
             streamInfo.Title = channelStream.Title;
             streamInfo.Url = channelStream.Url;
             
-            return GetStreamUrl(streamInfo);
+            return await GetStreamUrlAsync(streamInfo);
         }
 
-        string FindStreamUrl(StreamInfo streamInfo)
+        async Task<string> FindStreamUrl(StreamInfo streamInfo)
         {
+            IProcessor processor = CreateProcessor(streamInfo.Provider);
+            
             try
             {
-                switch (streamInfo.Provider)
-                {
-                    case StreamProvider.YouTube:
-                        return GetYouTubeStreamUrl(streamInfo);
-                    
-                    case StreamProvider.Twitch:
-                        return GetTwitchStreamUrl(streamInfo);
-                    
-                    case StreamProvider.SeeNow:
-                        return GetSeeNowStreamUrl(streamInfo);
-                    
-                    case StreamProvider.TvSportHd:
-                        return GetTvSportHdStreamUrl(streamInfo);
-                    
-                    case StreamProvider.AntenaPlay:
-                        return GetAntenaPlayStreamUrl(streamInfo);
-                    
-                    default:
-                        return GetOtherStreamUrl(streamInfo);
-                }
+                return await processor.GetUrlAsync(streamInfo);
             }
             catch
             {
@@ -69,40 +53,28 @@ namespace StreamToM3U.Service
             }
         }
 
-        string GetYouTubeStreamUrl(StreamInfo streamInfo)
+        IProcessor CreateProcessor(StreamProvider provider)
         {
-            IProcessor processor = new YouTubeStreamProcessor(downloader);
-            return processor.GetUrlAsync(streamInfo).Result;
-        }
-
-        string GetTwitchStreamUrl(StreamInfo streamInfo)
-        {
-            IProcessor processor = new TwitchProcessor();
-            return processor.GetUrlAsync(streamInfo).Result;
-        }
-
-        string GetSeeNowStreamUrl(StreamInfo streamInfo)
-        {
-            IProcessor processor = new SeeNowProcessor(downloader);
-            return processor.GetUrlAsync(streamInfo).Result;
-        }
-
-        string GetTvSportHdStreamUrl(StreamInfo streamInfo)
-        {
-            IProcessor processor = new TvSportHdProcessor();
-            return processor.GetUrlAsync(streamInfo).Result;
-        }
-
-        string GetAntenaPlayStreamUrl(StreamInfo streamInfo)
-        {
-            IProcessor processor = new AntenaPlayProcessor();
-            return processor.GetUrlAsync(streamInfo).Result;
-        }
-
-        string GetOtherStreamUrl(StreamInfo streamInfo)
-        {
-            IProcessor processor = new OtherProcessor(downloader);
-            return processor.GetUrlAsync(streamInfo).Result;
+            switch (provider)
+            {
+                case StreamProvider.YouTube:
+                    return new YouTubeStreamProcessor(downloader);
+                
+                case StreamProvider.Twitch:
+                    return new TwitchProcessor();
+                
+                case StreamProvider.SeeNow:
+                    return new SeeNowProcessor(downloader);
+                
+                case StreamProvider.TvSportHd:
+                    return new TvSportHdProcessor();
+                
+                case StreamProvider.AntenaPlay:
+                    return new AntenaPlayProcessor();
+                
+                default:
+                    return new OtherProcessor(downloader);
+            }
         }
 
         bool IsUrlValid(string url)
