@@ -49,12 +49,6 @@
     <ChannelId>antena-international</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Antena-Monden</Id>
-    <ChannelName>RO: Antena Monden</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>antena-monden</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>AntenaStars</Id>
     <ChannelName>RO: Antena Stars</ChannelName>
     <Provider>AntenaPlay</Provider>
@@ -108,18 +102,6 @@
     <ChannelName>RO: CNS TV</ChannelName>
     <Provider>Twitch</Provider>
     <ChannelId>cnstv1994</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ComedyPlay</Id>
-    <ChannelName>RO: Comedy Play</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>comedy-play</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>CookPlay</Id>
-    <ChannelName>RO: Cook &amp; Play</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>cookplay</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>CorneaTV</Id>
@@ -222,12 +204,6 @@
     <ChannelName>RO: NCN TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCN4OWQYlgJzFq-and_if6rA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>NeptunTV</Id>
-    <ChannelName>RO: Neptun TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>neptun-tv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>PartenerTV</Id>
