@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>Bloomberg</Id>
+    <ChannelName>INT: Bloomberg</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCUMZ7gohGI9HcU9VNsr2FJQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>FalloutRadio</Id>
     <ChannelName>INT: Fallout Radio</ChannelName>
     <Provider>YouTube</Provider>
@@ -22,10 +28,9 @@
     <Title>NASA Live: Official Stream of NASA TV</Title>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>NasaTV</Id>
-    <ChannelName>INT: NASA TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCLA_DiR1FfKNvjuUpBHmylQ</ChannelId>
-    <Title>NASA Live: Official Stream of NASA TV</Title>
+    <Id>TV5Monde</Id>
+    <ChannelName>INT: TV5MONDE</ChannelName>
+    <Provider>SeeNow</Provider>
+    <ChannelId>tv5-monde</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
