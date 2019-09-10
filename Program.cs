@@ -32,7 +32,7 @@ namespace StreamToM3U
                 streamInfo.Url = options.Url;
 
                 IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
-                string playlistUrl = urlRetriever.GetStreamUrl(streamInfo);
+                string playlistUrl = urlRetriever.GetStreamUrlAsync(streamInfo).Result;
                 
                 Console.WriteLine(playlistUrl);
             }

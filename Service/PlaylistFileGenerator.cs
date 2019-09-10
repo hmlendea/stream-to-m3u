@@ -34,7 +34,7 @@ namespace StreamToM3U.Service
 
             foreach (ChannelStream channelStream in channelStreams)
             {
-                string url = urlRetriever.GetStreamUrl(channelStream);
+                string url = urlRetriever.GetStreamUrlAsync(channelStream).Result;
 
                 if (string.IsNullOrWhiteSpace(url))
                 {

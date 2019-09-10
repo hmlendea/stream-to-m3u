@@ -1,11 +1,13 @@
+using System.Threading.Tasks;
+
 using StreamToM3U.Service.Models;
 
 namespace StreamToM3U.Service
 {
     public interface IPlaylistUrlRetriever
     {
-        string GetStreamUrl(StreamInfo streamInfo);
+        Task<string> GetStreamUrlAsync(StreamInfo streamInfo);
 
-        string GetStreamUrl(ChannelStream channelStream);
+        Task<string> GetStreamUrlAsync(ChannelStream channelStream);
     }
 }
