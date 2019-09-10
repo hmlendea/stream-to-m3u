@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 using NuciDAL.Repositories;
 
@@ -32,18 +33,24 @@ namespace StreamToM3U.Service
             
             playlistLines.Add("#EXTM3U");
 
+            List<Task> tasks = new List<Task>();
+
             foreach (ChannelStream channelStream in channelStreams)
             {
-                string url = urlRetriever.GetStreamUrlAsync(channelStream).Result;
-
-                if (string.IsNullOrWhiteSpace(url))
+                Task task = Task.Run(async () =>
                 {
-                    continue;
-                }
+                    string url = await urlRetriever.GetStreamUrlAsync(channelStream);
 
-                playlistLines.Add($"#EXTINF:-1,{channelStream.ChannelName}");
-                playlistLines.Add(url);
+                    if (!string.IsNullOrWhiteSpace(url))
+                    {
+                        playlistLines.Add($"#EXTINF:-1,{channelStream.ChannelName}\n{url}");
+                    }
+                });
+
+                tasks.Add(task);
             }
+
+            Task.WaitAll(tasks.ToArray());
 
             File.WriteAllLines(outputFile, playlistLines);
         }
