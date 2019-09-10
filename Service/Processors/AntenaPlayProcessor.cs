@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 using NuciExtensions;
@@ -28,6 +29,8 @@ namespace StreamToM3U.Service.Processors
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
+            WebDriverHandler.GainLock();
+
             string url = string.Format(ChannelUrlFormat, streamInfo.ChannelId);
 
             RegisterAccount();
@@ -35,9 +38,7 @@ namespace StreamToM3U.Service.Processors
             
             string playlistUrl = GetStreamUrlFromPageSource();
 
-            LogOut();
-            webProcessor.Dispose();
-
+            ClearResources();
             return Task.FromResult(playlistUrl);
         }
 
@@ -66,7 +67,7 @@ namespace StreamToM3U.Service.Processors
 
             webProcessor.GoToUrl(RegistrationUrl);
 
-            webProcessor.Click(acceptGdprButtonSelector);
+            AcceptGdpr();
 
             webProcessor.SetText(emailInputSelector, GenerateRandomEmail());
             webProcessor.SetText(passwordInputSelector, GenerateRandomString());
@@ -80,9 +81,30 @@ namespace StreamToM3U.Service.Processors
             webProcessor.WaitForElementToBeVisible(smsValidationButtonSelector);
         }
 
-        void LogOut()
+        void AcceptGdpr()
+        {
+            By headerSelector = By.ClassName("header");
+            By acceptGdprButtonSelector = By.XPath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button");
+
+            webProcessor.WaitForAnyElementToBeVisible(headerSelector, acceptGdprButtonSelector);
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (webProcessor.IsElementVisible(acceptGdprButtonSelector))
+                {
+                    webProcessor.Click(acceptGdprButtonSelector);
+                    break;
+                }
+
+                webProcessor.Wait();
+            }
+        }
+
+        void ClearResources()
         {
             webProcessor.GoToUrl(LogOutUrl);
+            webProcessor.Dispose();
+            WebDriverHandler.ReleaseLock();
         }
 
         string GenerateRandomEmail()

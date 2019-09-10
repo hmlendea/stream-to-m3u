@@ -1,3 +1,5 @@
+using System.Threading;
+
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -6,18 +8,50 @@ namespace StreamToM3U.Utils
     public static class WebDriverHandler
     {
         static IWebDriver webDriver;
+        static object sync = new object();
+
+        public static bool IsWebDriverLocked { get; private set; }
 
         public static IWebDriver WebDriver
         {
             get
             {
-                if (webDriver is null)
+                lock (sync)
                 {
-                    webDriver = CreateDriver();
+                    if (webDriver is null)
+                    {
+                        webDriver = CreateDriver();
+                    }
+
+                    return webDriver;
+                }
+            }
+        }
+
+        public static void CloseDriver()
+        {
+            if (!(webDriver is null))
+            {
+                webDriver.Quit();
+            }
+        }
+
+        public static void GainLock()
+        {
+            lock (sync)
+            {
+                while (IsWebDriverLocked)
+                {
+                    Thread.Sleep(1000);
                 }
 
-                return webDriver;
+                IsWebDriverLocked = true;
             }
+        }
+
+        public static void ReleaseLock()
+        {
+            IsWebDriverLocked = false;
         }
 
         static IWebDriver CreateDriver()
