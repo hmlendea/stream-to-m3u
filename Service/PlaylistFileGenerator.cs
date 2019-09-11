@@ -83,6 +83,11 @@ namespace StreamToM3U.Service
             {
                 string content = fileDownloader.TryDownloadStringAsync(channel.Value).Result;
 
+                if (string.IsNullOrWhiteSpace(content))
+                {
+                    continue;
+                }
+
                 playlistLines.Add($"#EXTINF:-1,{channel.Key.ChannelName}");
                 playlistLines.Add(channel.Value);
             }
