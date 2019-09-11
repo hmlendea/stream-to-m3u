@@ -120,22 +120,23 @@ namespace StreamToM3U.Service
                 string channelFilePath = Path.Combine(Path.GetFullPath(options.OutputDirectory), fileName);
                 IList<string> channelFileLines = new List<string>();
 
-                channelFileLines.Add("#EXTM3U");
+                playlistLines.Add($"#EXTINF:-1,{channelName}");
+                    
+                if (string.IsNullOrWhiteSpace(options.Url))
+                {
+                    playlistLines.Add(channelFilePath);
+                }
+                else
+                {
+                    playlistLines.Add($"{options.Url}/{fileName}");
+                }
 
+                channelFileLines.Add("#EXTM3U");
+                
                 foreach (string url in channelUrls[channelName])
                 {
                     channelFileLines.Add($"#EXTINF:-1,{channelName}");
                     channelFileLines.Add(url);
-                    
-                    playlistLines.Add($"#EXTINF:-1,{channelName}");
-                    if (string.IsNullOrWhiteSpace(options.Url))
-                    {
-                        playlistLines.Add(channelFilePath);
-                    }
-                    else
-                    {
-                        playlistLines.Add($"{options.Url}/{fileName}");
-                    }
                 }
 
                 File.WriteAllLines(channelFilePath, channelFileLines);
