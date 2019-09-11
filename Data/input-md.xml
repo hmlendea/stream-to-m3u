@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>AgroTVMoldova</Id>
+    <ChannelName>RO: Agro TV Moldova</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCYMqPjq4aN1OGhEK4Ovd4pg</ChannelId>
+  </ChannelStreamEntity>
+    <ChannelStreamEntity>
     <Id>AxialTV</Id>
     <ChannelName>MD: Axial TV</ChannelName>
     <Provider>YouTube</Provider>

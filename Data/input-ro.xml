@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>6TV</Id>
+    <ChannelName>RO: 6 TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCWtYfI4WDxjjOmepETLkO2Q</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>A7TV</Id>
     <ChannelName>RO: A7 TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -13,10 +19,22 @@
     <ChannelId>UCQ7O9qFKHWCUjdo0LY5Y_bg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>AcumTV</Id>
+    <ChannelName>RO: Acum TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCTg1OGmF1-1z2svesZECHYQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>AgroTV</Id>
     <ChannelName>RO: Agro TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>AlfaOmegaTV</Id>
+    <ChannelName>RO: Alfa &amp; Omega TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCiGwx8Yg1dOAr78_5v-zTKQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>AlphaMediaTV</Id>
@@ -60,6 +78,18 @@
     <Provider>YouTube</Provider>
     <ChannelId>UCySoNg54OYL6oImf7XhJaUA</ChannelId>
     <Title>ArcadiaTV World (Română)</Title>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ArdealTV</Id>
+    <ChannelName>RO: Ardeal TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCqJjUHtCUaz-QwuKPUkL8Nw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>B1TV</Id>
+    <ChannelName>RO: B1 TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCeqNP-Wt7YNjPyH6XhMYPxw</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>BrasovTV</Id>
