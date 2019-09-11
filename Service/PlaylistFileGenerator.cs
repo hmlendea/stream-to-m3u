@@ -106,7 +106,15 @@ namespace StreamToM3U.Service
                 string path = Path.Combine(Path.GetFullPath(options.OutputDirectory), fileName);
 
                 File.WriteAllText(path, content);
-                playlistLines.Add(path);
+
+                if (string.IsNullOrWhiteSpace(options.Url))
+                {
+                    playlistLines.Add(path);
+                }
+                else
+                {
+                    playlistLines.Add($"{options.Url}/{fileName}");
+                }
             }
 
             File.WriteAllLines(playlistFilePath, playlistLines);
