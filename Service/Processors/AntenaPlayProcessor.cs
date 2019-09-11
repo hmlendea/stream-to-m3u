@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 
 using NuciExtensions;
@@ -13,6 +12,8 @@ namespace StreamToM3U.Service.Processors
 {
     public sealed class AntenaPlayProcessor : IProcessor
     {
+        static bool acceptedGdpr = false;
+
         static string HomeUrl => "https://antenaplay.ro";
         static string RegistrationUrl => $"{HomeUrl}/cont-nou";
         static string LogOutUrl => $"{HomeUrl}/logout";
@@ -49,14 +50,11 @@ namespace StreamToM3U.Service.Processors
             webProcessor.Click(startStreamButtonSelector);
 
             string html = webProcessor.GetPageSource();
-            string streamUrl = Regex.Match(html, StreamUrlPattern).Groups[1].Value;
-
-            return streamUrl;
+            return Regex.Match(html, StreamUrlPattern).Groups[1].Value;
         }
 
         void RegisterAccount()
         {
-            By acceptGdprButtonSelector = By.XPath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button");
             By emailInputSelector = By.Name("email");
             By passwordInputSelector = By.Name("password");
             By firstNameInputSelector = By.Name("firstname");
@@ -83,21 +81,17 @@ namespace StreamToM3U.Service.Processors
 
         void AcceptGdpr()
         {
-            By headerSelector = By.ClassName("header");
+            if (acceptedGdpr)
+            {
+                return;
+            }
+
             By acceptGdprButtonSelector = By.XPath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button");
 
-            webProcessor.WaitForAnyElementToBeVisible(headerSelector, acceptGdprButtonSelector);
+            webProcessor.WaitForElementToBeVisible(acceptGdprButtonSelector);
+            webProcessor.Click(acceptGdprButtonSelector);
 
-            for (int i = 0; i < 5; i++)
-            {
-                if (webProcessor.IsElementVisible(acceptGdprButtonSelector))
-                {
-                    webProcessor.Click(acceptGdprButtonSelector);
-                    break;
-                }
-
-                webProcessor.Wait();
-            }
+            acceptedGdpr = true;
         }
 
         void ClearResources()
