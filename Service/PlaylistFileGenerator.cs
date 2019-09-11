@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,11 +38,9 @@ namespace StreamToM3U.Service
             IEnumerable<ChannelStream> channelStreams = channelStreamRepository
                 .GetAll()
                 .ToServiceModels();
-            
 
-            Dictionary<string, string> foundChannels = new Dictionary<string, string>();
-
-
+            ConcurrentDictionary<ChannelStream, string> foundChannelUrls =
+                new ConcurrentDictionary<ChannelStream, string>();
             List<Task> tasks = new List<Task>();
 
             foreach (ChannelStream channelStream in channelStreams)
@@ -52,7 +51,7 @@ namespace StreamToM3U.Service
 
                     if (!string.IsNullOrWhiteSpace(url))
                     {
-                        foundChannels.Add(channelStream.ChannelName, url);
+                        foundChannelUrls.AddOrUpdate(channelStream, url);
                     }
                 });
 
@@ -61,31 +60,37 @@ namespace StreamToM3U.Service
 
             Task.WaitAll(tasks.ToArray());
 
+            Dictionary<ChannelStream, string> channelUrls = foundChannelUrls
+                .OrderBy(x => x.Key.ChannelName)
+                .ToDictionary(x => x.Key, x => x.Value);
+
             if (string.IsNullOrWhiteSpace(options.OutputDirectory))
             {
-                GeneratePlaylistFile(foundChannels);
+                GeneratePlaylistFile(channelUrls);
             }
             else
             {
-                GeneratePlaylistDirectory(foundChannels);
+                GeneratePlaylistDirectory(channelUrls);
             }
         }
 
-        public void GeneratePlaylistFile(Dictionary<string, string> channels)
+        public void GeneratePlaylistFile(Dictionary<ChannelStream, string> channelUrls)
         {
             IList<string> playlistLines = new List<string>();
             playlistLines.Add("#EXTM3U");
             
-            foreach (var channel in channels.OrderBy(x => x.Key))
+            foreach (var channel in channelUrls)
             {
-                playlistLines.Add($"#EXTINF:-1,{channel.Key}");
+                string content = fileDownloader.TryDownloadStringAsync(channel.Value).Result;
+
+                playlistLines.Add($"#EXTINF:-1,{channel.Key.ChannelName}");
                 playlistLines.Add(channel.Value);
             }
 
             File.WriteAllLines(options.OutputFile, playlistLines);
         }
 
-        public void GeneratePlaylistDirectory(Dictionary<string, string> channels)
+        public void GeneratePlaylistDirectory(Dictionary<ChannelStream, string> channelUrls)
         {
             if (!Directory.Exists(options.OutputDirectory))
             {
@@ -96,10 +101,9 @@ namespace StreamToM3U.Service
             IList<string> playlistLines = new List<string>();
             playlistLines.Add("#EXTM3U");
             
-            foreach (var channel in channels.OrderBy(x => x.Key))
+            foreach (var channel in channelUrls)
             {
-                playlistLines.Add($"#EXTINF:-1,{channel.Key}");
-                string fileName = GenerateChannelFileName(channel.Key);
+                string fileName = GenerateChannelFileName(channel.Key.Id);
 
                 // TODO: Broken async
                 string content = fileDownloader.TryDownloadStringAsync(channel.Value).Result;
