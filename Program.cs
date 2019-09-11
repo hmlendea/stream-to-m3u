@@ -21,6 +21,7 @@ namespace StreamToM3U
             Options options = Options.FromArguments(args);
 
             serviceProvider = new ServiceCollection()
+                .AddSingleton(options)
                 .AddSingleton<IRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
                 .AddSingleton<IFileDownloader, FileDownloader>()
                 .AddSingleton<IPlaylistUrlRetriever, PlaylistUrlRetriever>()
@@ -77,7 +78,7 @@ namespace StreamToM3U
         static void GetPlaylistForInputFile(Options options)
         {
             IPlaylistFileGenerator fileGenerator = serviceProvider.GetService<IPlaylistFileGenerator>();
-            fileGenerator.GeneratePlaylist(options.InputFile, options.OutputFile);
+            fileGenerator.GeneratePlaylist();
         }
     }
 }
