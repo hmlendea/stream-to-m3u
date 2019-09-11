@@ -39,9 +39,9 @@ namespace StreamToM3U.Service
                 .GetAll()
                 .ToServiceModels();
 
-            ConcurrentDictionary<ChannelStream, string> foundChannelUrls =
-                new ConcurrentDictionary<ChannelStream, string>();
             List<Task> tasks = new List<Task>();
+            ConcurrentDictionary<string, List<string>> foundChannelUrls =
+                new ConcurrentDictionary<string, List<string>>();
 
             foreach (ChannelStream channelStream in channelStreams)
             {
@@ -51,7 +51,12 @@ namespace StreamToM3U.Service
 
                     if (!string.IsNullOrWhiteSpace(url))
                     {
-                        foundChannelUrls.AddOrUpdate(channelStream, url);
+                        if (!foundChannelUrls.ContainsKey(channelStream.ChannelName))
+                        {
+                            foundChannelUrls.AddOrUpdate(channelStream.ChannelName, new List<string>());
+                        }
+
+                        foundChannelUrls[channelStream.ChannelName].Add(url);
                     }
                 });
 
@@ -60,8 +65,8 @@ namespace StreamToM3U.Service
 
             Task.WaitAll(tasks.ToArray());
 
-            Dictionary<ChannelStream, string> channelUrls = foundChannelUrls
-                .OrderBy(x => x.Key.ChannelName)
+            Dictionary<string, List<string>> channelUrls = foundChannelUrls
+                .OrderBy(x => x.Key)
                 .ToDictionary(x => x.Key, x => x.Value);
 
             if (string.IsNullOrWhiteSpace(options.OutputDirectory))
@@ -74,28 +79,31 @@ namespace StreamToM3U.Service
             }
         }
 
-        public void GeneratePlaylistFile(Dictionary<ChannelStream, string> channelUrls)
+        public void GeneratePlaylistFile(Dictionary<string, List<string>> channelUrls)
         {
             IList<string> playlistLines = new List<string>();
             playlistLines.Add("#EXTM3U");
             
-            foreach (var channel in channelUrls)
+            foreach (string channelName in channelUrls.Keys)
             {
-                string content = fileDownloader.TryDownloadStringAsync(channel.Value).Result;
-
-                if (string.IsNullOrWhiteSpace(content))
+                foreach (string url in channelUrls[channelName])
                 {
-                    continue;
-                }
+                    string content = fileDownloader.TryDownloadStringAsync(url).Result;
 
-                playlistLines.Add($"#EXTINF:-1,{channel.Key.ChannelName}");
-                playlistLines.Add(channel.Value);
+                    if (string.IsNullOrWhiteSpace(content))
+                    {
+                        continue;
+                    }
+
+                    playlistLines.Add($"#EXTINF:-1,{channelName}");
+                    playlistLines.Add(url);
+                }
             }
 
             File.WriteAllLines(options.OutputFile, playlistLines);
         }
 
-        public void GeneratePlaylistDirectory(Dictionary<ChannelStream, string> channelUrls)
+        public void GeneratePlaylistDirectory(Dictionary<string, List<string>> channelUrls)
         {
             if (!Directory.Exists(options.OutputDirectory))
             {
@@ -106,24 +114,31 @@ namespace StreamToM3U.Service
             IList<string> playlistLines = new List<string>();
             playlistLines.Add("#EXTM3U");
             
-            foreach (var channel in channelUrls)
+            foreach (string channelName in channelUrls.Keys)
             {
-                string fileName = GenerateChannelFileName(channel.Key.Id);
+                string fileName = GenerateChannelFileName(channelName);
+                string channelFilePath = Path.Combine(Path.GetFullPath(options.OutputDirectory), fileName);
+                IList<string> channelFileLines = new List<string>();
 
-                // TODO: Broken async
-                string content = fileDownloader.TryDownloadStringAsync(channel.Value).Result;
-                string path = Path.Combine(Path.GetFullPath(options.OutputDirectory), fileName);
+                channelFileLines.Add("#EXTM3U");
 
-                File.WriteAllText(path, content);
-
-                if (string.IsNullOrWhiteSpace(options.Url))
+                foreach (string url in channelUrls[channelName])
                 {
-                    playlistLines.Add(path);
+                    channelFileLines.Add($"#EXTINF:-1,{channelName}");
+                    channelFileLines.Add(url);
+                    
+                    playlistLines.Add($"#EXTINF:-1,{channelName}");
+                    if (string.IsNullOrWhiteSpace(options.Url))
+                    {
+                        playlistLines.Add(channelFilePath);
+                    }
+                    else
+                    {
+                        playlistLines.Add($"{options.Url}/{fileName}");
+                    }
                 }
-                else
-                {
-                    playlistLines.Add($"{options.Url}/{fileName}");
-                }
+
+                File.WriteAllLines(channelFilePath, channelFileLines);
             }
 
             File.WriteAllLines(playlistFilePath, playlistLines);
