@@ -37,7 +37,13 @@
     <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>AlbaCarolinaTV</Id>
+    <Id>TrinitasTV-OkLive</Id>
+    <ChannelName>RO: Trinitas TV</ChannelName>
+    <Provider>OkLive</Provider>
+    <ChannelId>1187725319915</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>AlbaCarolinaTV-YouTube</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCLuvOzOPZYI6dvsa2Wqn3wg</ChannelId>

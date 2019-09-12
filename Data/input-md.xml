@@ -13,6 +13,12 @@
     <ChannelId>UC1bwPIsDGCs2fOs3SeKMIJA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>PublikaTV</Id>
+    <ChannelName>RO: Publika TV</ChannelName>
+    <Provider>OkLive</Provider>
+    <ChannelId>367075001</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>JurnalTV</Id>
     <ChannelName>MD: Jurnal TV</ChannelName>
     <Provider>YouTube</Provider>
