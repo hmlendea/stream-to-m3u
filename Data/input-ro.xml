@@ -37,8 +37,8 @@
     <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>TrinitasTV-OkLive</Id>
-    <ChannelName>RO: Trinitas TV</ChannelName>
+    <Id>AlbaCarolinaTV-OkLive</Id>
+    <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>OkLive</Provider>
     <ChannelId>1187725319915</ChannelId>
   </ChannelStreamEntity>
@@ -337,7 +337,6 @@
     <Provider>YouTube</Provider>
     <ChannelId>UCuNDa2q_N0h08_ALQ6HvmiQ</ChannelId>
   </ChannelStreamEntity>
-  <ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZUTV</Id>
     <ChannelName>RO: ZU TV</ChannelName>
