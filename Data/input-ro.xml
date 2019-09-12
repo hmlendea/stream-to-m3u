@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>1TV</Id>
+    <ChannelName>RO: 1 TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC6gS1m0WPJQn_YQf0FNNhIA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>6TV</Id>
     <ChannelName>RO: 6 TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -29,6 +35,12 @@
     <ChannelName>RO: Agro TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>AlbaCarolinaTV</Id>
+    <ChannelName>RO: Alba Carolina TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCLuvOzOPZYI6dvsa2Wqn3wg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>AlfaOmegaTV</Id>
@@ -188,6 +200,12 @@
     <ChannelId>magic-tv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>MaramuresTV</Id>
+    <ChannelName>RO: Maramureș TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCm7K3WBh6dO-rIWdZVZwbFw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>Național24</Id>
     <ChannelName>RO: Național 24</ChannelName>
     <Provider>SeeNow</Provider>
@@ -288,5 +306,18 @@
     <ChannelName>RO: U TV</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>utv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>VTVValcea</Id>
+    <ChannelName>RO: VTV Vâlcea</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCuNDa2q_N0h08_ALQ6HvmiQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ZUTV</Id>
+    <ChannelName>RO: ZU TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCjfj9BWUjn-VwP0skweJNXA</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
