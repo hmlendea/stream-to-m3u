@@ -43,34 +43,10 @@
     <ChannelId>UCqsQTFXog6e33iBVDrcpW9g</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Antena1</Id>
-    <ChannelName>RO: Antena 1</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>antena1</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>Antena3-AntenaPlay</Id>
-    <ChannelName>RO: Antena 3</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>antena3</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>Antena3-OfficialWebsite</Id>
+    <Id>Antena3</Id>
     <ChannelName>RO: Antena 3</ChannelName>
     <Provider>Other</Provider>
     <Url>https://live.antena3.ro/</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AntenaInternational</Id>
-    <ChannelName>RO: Antena Internațional</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>antena-international</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AntenaStars</Id>
-    <ChannelName>RO: Antena Stars</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>antena-stars</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ArcadiaTV</Id>
@@ -168,12 +144,6 @@
     <ChannelName>RO: FRF TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCthNI7cE3k5nTodcga2yBZg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>HappyChannel</Id>
-    <ChannelName>RO: Happy Channel</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>happy-channel</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Inedit TV</Id>
@@ -318,11 +288,5 @@
     <ChannelName>RO: U TV</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>utv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ZuTV</Id>
-    <ChannelName>RO: Zu TV</ChannelName>
-    <Provider>AntenaPlay</Provider>
-    <ChannelId>zu-tv</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
