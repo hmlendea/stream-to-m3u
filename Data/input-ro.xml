@@ -230,6 +230,12 @@
     <ChannelId>UCN4OWQYlgJzFq-and_if6rA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>NETv</Id>
+    <ChannelName>RO: NETv</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCVGwew-Ld4Ya4zSVzdvvtOw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>PartenerTV</Id>
     <ChannelName>RO: Partener TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -272,6 +278,12 @@
     <ChannelId>salajeanultv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>SavurosTV</Id>
+    <ChannelName>RO: Savuros TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UClhvADSV4F4xkPMxxH7GRzA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>TeleEuropaNova</Id>
     <ChannelName>RO: TeleEuropa Nova</ChannelName>
     <Provider>YouTube</Provider>
@@ -294,6 +306,12 @@
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TVArad</Id>
+    <ChannelName>RO: TV Arad</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCm5clG3M4Y6LFpnFvDKqpQA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>TVCityBucuresti</Id>
