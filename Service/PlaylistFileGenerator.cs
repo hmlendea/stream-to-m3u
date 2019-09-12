@@ -53,7 +53,7 @@ namespace StreamToM3U.Service
                     {
                         if (!foundChannelUrls.ContainsKey(channelStream.ChannelName))
                         {
-                            foundChannelUrls.AddOrUpdate(channelStream.ChannelName, new List<string>());
+                            foundChannelUrls.TryAdd(channelStream.ChannelName, new List<string>());
                         }
 
                         foundChannelUrls[channelStream.ChannelName].Add(url);
