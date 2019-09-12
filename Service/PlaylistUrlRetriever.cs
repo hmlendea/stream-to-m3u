@@ -72,6 +72,9 @@ namespace StreamToM3U.Service
                 case StreamProvider.AntenaPlay:
                     return new AntenaPlayProcessor();
                 
+                case StreamProvider.OkLive:
+                    return new OkLiveProcessor(downloader);
+                
                 default:
                     return new OtherProcessor(downloader);
             }

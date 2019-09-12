@@ -17,6 +17,7 @@ namespace StreamToM3U.Configuration
         static string[] SeeNowProcessorOptions = { "--seenow" };
         static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
         static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
+        static string[] OkLiveProcessorOptions = { "--ok", "--oklive" };
 
         public StreamProvider Provider { get; set; }
 
@@ -67,6 +68,11 @@ namespace StreamToM3U.Configuration
             if (CliArgumentsReader.HasOption(args, AntenaPlayProccessorOptions))
             {
                 return StreamProvider.AntenaPlay;
+            }
+
+            if (CliArgumentsReader.HasOption(args, OkLiveProcessorOptions))
+            {
+                return StreamProvider.OkLive;
             }
             
             return StreamProvider.Other;

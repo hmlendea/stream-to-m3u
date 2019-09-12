@@ -7,6 +7,7 @@ namespace StreamToM3U.Configuration
         Twitch,
         SeeNow,
         TvSportHd,
-        AntenaPlay
+        AntenaPlay,
+        OkLive
     }
 }
