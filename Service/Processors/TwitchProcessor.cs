@@ -51,12 +51,12 @@ namespace StreamToM3U.Service.Processors
                 return string.Format(
                     PlaylistUrlFormat,
                     streamInfo.ChannelId,
-                    UrlEcodeToken(token),
+                    UrlEncodeToken(token),
                     signature);
             }
         }
 
-        private string UrlEcodeToken(string token)
+        private string UrlEncodeToken(string token)
         {
             string processedToken = token.Replace("\\\"", "\"");
 
