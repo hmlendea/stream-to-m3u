@@ -157,7 +157,7 @@ namespace StreamToM3U.Service
                 
                 foreach (string url in channelUrls[channelName])
                 {
-                    channelFileLines.Add($"#EXTINF:-1,{channelName}");
+                    channelFileLines.Add($"#EXT-X-STREAM-INF:BANDWIDTH=873");
                     channelFileLines.Add(url);
                 }
 
