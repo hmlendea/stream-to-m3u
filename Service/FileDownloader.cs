@@ -3,21 +3,26 @@ using System.Threading.Tasks;
 
 using NuciLog.Core;
 
+using StreamToM3U.Configuration;
 using StreamToM3U.Logging;
 
 namespace StreamToM3U.Service
 {
     public sealed class FileDownloader : IFileDownloader
     {
+        readonly ApplicationSettings applicationSettings;
         readonly ILogger logger;
         readonly HttpClient httpClient;
 
-        public FileDownloader(ILogger logger)
+        public FileDownloader(
+            ApplicationSettings applicationSettings,
+            ILogger logger)
         {
+            this.applicationSettings = applicationSettings;
             this.logger = logger;
 
             httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36");
+            httpClient.DefaultRequestHeaders.Add("User-Agent", applicationSettings.UserAgent);
         }
 
         public async Task<string> TryDownloadStringAsync(string url)
