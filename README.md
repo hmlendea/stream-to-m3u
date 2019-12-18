@@ -64,3 +64,42 @@ Each source will require a different set of arugments to indicate the desired li
 | Argument    | Description                                       | Optional  |
 |-------------|---------------------------------------------------|-----------|
 | --url<br>-u | The URL of the page that contains the live stream | Mandatory |
+
+## Running in background as a service
+
+**Note:** The following instructions only apply for *Linux* distributions using *systemd*.
+
+Create the following service file: /usr/lib/systemd/system/stream-to-m3u@.service
+```
+[Unit]
+Description=Stream to M3U (%i playlist)
+
+[Service]
+WorkingDirectory=/home/horatiu/services
+ExecStart=stream-to-m3u -i /home/horatiu/in.xml -O /srv/http/iptv/playlist-%i.m3u -u http://mydomain.com/iptv
+MemoryAccounting=yes
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Create the following timer file: /lib/systemd/system/stream-to-m3u.timer
+```
+[Unit]
+Description=Periodically creates an M3U playlist out of livestreams (%i playlist)
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=40min
+
+[Install]
+WantedBy=timers.target
+```
+
+Values that you might want to change:
+ - *OnBootSec*: the delay before the service is started after the OS is booted
+ - *OnUnitActiveSec*: how often the service will be triggered
+ - *MemoryMax*: RAM usage limit
+
+In the above example, the service will start 3 minutes after boot, and then again once every 40 minutes, being allocated 256M RAM per instance
