@@ -24,17 +24,25 @@ namespace StreamToM3U.Service
             string url = await FindStreamUrl(streamInfo);
             string content = await downloader.TryDownloadStringAsync(url);
 
-            List<string> httpSources = new List<string>();
+            List<string> contentLines = new List<string>();
 
             if (!string.IsNullOrWhiteSpace(content))
             {
-                httpSources = content
+                contentLines = content
                     .Replace("\r", "")
                     .Split("\n")
-                    .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith("#"))
-                    .Select(x=> ProcessStreamUrl(url, x))
                     .ToList();
             }
+
+            if (!contentLines.Any() || !contentLines.First().StartsWith("#EXTM3U"))
+            {
+                return null;
+            }
+
+            List<string> httpSources = contentLines
+                .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith("#"))
+                .Select(x=> ProcessStreamUrl(url, x))
+                .ToList();
 
             if (httpSources.Any())
             {
