@@ -9,6 +9,7 @@ namespace StreamToM3U.Service.Processors
     {
         static string YouTubeUrl => "https://www.youtube.com";
         static string YouTubeChannelUrlFormat => $"{YouTubeUrl}/channel/{{0}}";
+        static string YouTubeChannelStreamUrlFormat => $"{YouTubeUrl}/channel/{{0}}/live";
         static string YouTubeStreamUrlFormat => $"{YouTubeUrl}/watch?v={{0}}";
 
         static string StreamIdFirstPatternFormat = $"href=\"\\/watch\\?v=([a-zA-Z0-9\\-]*)\"";
@@ -34,7 +35,7 @@ namespace StreamToM3U.Service.Processors
 
         async Task<string> GetUrlAsync(string channelId)
         {
-            string streamUrl = await GetYouTubeStreamUrl(channelId);
+            string streamUrl = string.Format(YouTubeChannelStreamUrlFormat, channelId);
             string playlistUrl = await GetYouTubeStreamPlaylistUrl(streamUrl);
 
             return playlistUrl;
@@ -46,15 +47,6 @@ namespace StreamToM3U.Service.Processors
             string playlistUrl = await GetYouTubeStreamPlaylistUrl(streamUrl);
 
             return playlistUrl;
-        }
-
-        async Task<string> GetYouTubeStreamUrl(string channelId)
-        {
-            string channelUrl = string.Format(YouTubeChannelUrlFormat,channelId);
-            string html = await downloader.TryDownloadStringAsync(channelUrl);
-            string streamId = Regex.Match(html, StreamIdFirstPatternFormat).Groups[1].Value;
-
-            return string.Format(YouTubeStreamUrlFormat, streamId);
         }
 
         async Task<string> GetYouTubeStreamUrl(string channelId, string streamTitle)
