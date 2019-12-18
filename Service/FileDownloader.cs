@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace StreamToM3U.Service
             this.logger = logger;
 
             httpClient = new HttpClient();
+            httpClient.Timeout = TimeSpan.FromMilliseconds(applicationSettings.RequestTimeout);
             httpClient.DefaultRequestHeaders.Add("User-Agent", applicationSettings.UserAgent);
         }
 
