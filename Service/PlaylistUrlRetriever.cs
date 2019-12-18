@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using StreamToM3U.Configuration;
@@ -19,13 +22,50 @@ namespace StreamToM3U.Service
         public async Task<string> GetStreamUrlAsync(StreamInfo streamInfo)
         {
             string url = await FindStreamUrl(streamInfo);
+            string content = await downloader.TryDownloadStringAsync(url);
+
+            List<string> httpSources = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(content))
+            {
+                httpSources = content
+                    .Replace("\r", "")
+                    .Split("\n")
+                    .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith("#"))
+                    .Select(x=> ProcessStreamUrl(url, x))
+                    .ToList();
+            }
+
+            if (httpSources.Any())
+            {
+                if (httpSources.Count == 1)
+                {
+                    url = httpSources.First();
+                }
+                else if (
+                    httpSources.Last().EndsWith("m3u") ||
+                    httpSources.Last().EndsWith("m3u8"))
+                {
+                    url = httpSources.Last();
+                }
+            }
 
             if (IsUrlValid(url))
             {
                 return url;
             }
 
-            return null;
+            return url;
+        }
+
+        string ProcessStreamUrl(string playlistUrl, string streamUrl)
+        {
+            if (streamUrl.StartsWith("http"))
+            {
+                return streamUrl;
+            }
+
+            return Regex.Replace(playlistUrl, "[A-Za-z0-9_-]*\\.m3u[8]*\\?.*$", streamUrl);
         }
 
         public async Task<string> GetStreamUrlAsync(ChannelStream channelStream)
