@@ -18,6 +18,7 @@ namespace StreamToM3U
 {
     public class Program
     {
+        static ApplicationSettings applicationSettings;
         static NuciLoggerSettings nuciLoggerSettings;
         static IServiceProvider serviceProvider;
 
@@ -25,15 +26,16 @@ namespace StreamToM3U
         {
             IConfiguration config = LoadConfiguration();
 
+            applicationSettings = new ApplicationSettings();
             nuciLoggerSettings = new NuciLoggerSettings();
 
+            config.Bind(nameof(applicationSettings), applicationSettings);
             config.Bind(nameof(nuciLoggerSettings), nuciLoggerSettings);
 
             Options options = Options.FromArguments(args);
 
-            Console.WriteLine(nuciLoggerSettings.LogFilePath);
-
             serviceProvider = new ServiceCollection()
+                .AddSingleton(applicationSettings)
                 .AddSingleton(nuciLoggerSettings)
                 .AddSingleton(options)
                 .AddSingleton<IRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
