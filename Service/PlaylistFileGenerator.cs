@@ -181,7 +181,7 @@ namespace StreamToM3U.Service
                 .RemovePunctuation()
                 .Replace(" ", "");
             
-            return $"{normalisedChannelName}.m3u";
+            return $"{normalisedChannelName}.m3u8";
         }
     }
 }
