@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 using NuciDAL.Repositories;
 using NuciExtensions;
+using NuciLog.Core;
 
 using StreamToM3U.Configuration;
 using StreamToM3U.DataAccess.DataObjects;
+using StreamToM3U.Logging;
 using StreamToM3U.Service.Mapping;
 using StreamToM3U.Service.Models;
 
@@ -20,17 +22,20 @@ namespace StreamToM3U.Service
         readonly IPlaylistUrlRetriever urlRetriever;
         readonly Options options;
         readonly IRepository<ChannelStreamEntity> channelStreamRepository;
+        readonly ILogger logger;
 
         public PlaylistFileGenerator(
             IFileDownloader fileDownloader,
             IPlaylistUrlRetriever urlRetriever,
             Options options,
-            IRepository<ChannelStreamEntity> channelStreamRepository)
+            IRepository<ChannelStreamEntity> channelStreamRepository,
+            ILogger logger)
         {
             this.fileDownloader = fileDownloader;
             this.urlRetriever = urlRetriever;
             this.options = options;
             this.channelStreamRepository = channelStreamRepository;
+            this.logger = logger;
         }
 
         public void GeneratePlaylist()
@@ -45,12 +50,29 @@ namespace StreamToM3U.Service
 
             foreach (ChannelStream channelStream in channelStreams)
             {
+                logger.Info(
+                    MyOperation.ChannelStreamFetching,
+                    OperationStatus.Started,
+                    new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
+
                 Task task = Task.Run(async () =>
                 {
                     string url = await urlRetriever.GetStreamUrlAsync(channelStream);
 
-                    if (!string.IsNullOrWhiteSpace(url))
+                    if (string.IsNullOrWhiteSpace(url))
                     {
+                        logger.Debug(
+                            MyOperation.ChannelStreamFetching,
+                            OperationStatus.Failure,
+                            new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
+                    }
+                    else
+                    {
+                        logger.Debug(
+                            MyOperation.ChannelStreamFetching,
+                            OperationStatus.Success,
+                            new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
+
                         if (!foundChannelUrls.ContainsKey(channelStream.ChannelName))
                         {
                             foundChannelUrls.TryAdd(channelStream.ChannelName, new List<string>());
