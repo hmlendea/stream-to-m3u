@@ -72,11 +72,11 @@ Each source will require a different set of arugments to indicate the desired li
 Create the following service file: /usr/lib/systemd/system/stream-to-m3u@.service
 ```
 [Unit]
-Description=Stream to M3U (%i playlist)
+Description=Stream to M3U (%i channels)
 
 [Service]
-WorkingDirectory=/home/horatiu/services
-ExecStart=stream-to-m3u -i /home/horatiu/in.xml -O /srv/http/iptv/playlist-%i.m3u -u http://mydomain.com/iptv
+WorkingDirectory=[ABSOLUTE_PATH_TO_SERVICE_DIRECTORY]
+ExecStart=stream-to-m3u -i [ABSOLUTE_PATH_TO_SERVICE_DIRECTORY]/Data/input-%i.xml -O /srv/http/iptv/playlist-%i.m3u -u http://mydomain.com/iptv
 MemoryAccounting=yes
 MemoryMax=256M
 
@@ -87,7 +87,7 @@ WantedBy=multi-user.target
 Create the following timer file: /lib/systemd/system/stream-to-m3u.timer
 ```
 [Unit]
-Description=Periodically creates an M3U playlist out of livestreams (%i playlist)
+Description=Periodically creates an M3U playlist out of livestreams (%i channels)
 
 [Timer]
 OnBootSec=3min
