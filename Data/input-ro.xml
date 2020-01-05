@@ -248,6 +248,12 @@
     <ChannelId>UCARYheWlRLEsEEYzWEH3JYA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>PCGarage</Id>
+    <ChannelName>RO: PC Garage</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCioQHDZMMkcq4703aNrp9UQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>RealitateaTV</Id>
     <ChannelName>RO: Realitatea TV</ChannelName>
     <Provider>SeeNow</Provider>
