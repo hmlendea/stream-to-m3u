@@ -13,7 +13,7 @@ namespace StreamToM3U.Service.Processors
         static string YouTubeStreamUrlFormat => $"{YouTubeUrl}/watch?v={{0}}";
 
         static string StreamIdFirstPatternFormat = $"href=\"\\/watch\\?v=([a-zA-Z0-9\\-]*)\"";
-        static string StreamIdByTitlePatternFormat = $"title=\"{{0}}\".*href=\"\\/watch\\?v=([a-zA-Z0-9]*)\"";
+        static string StreamIdByTitlePatternFormat = "\"simpleText\":\"{0}\".*?\"url\":\"\\/watch\\?v=([a-zA-Z0-9-_]*)\"";
         static string ManifestUrlPattern = "\"hlsManifestUrl\\\\\": *\\\\\"(.*\\.m3u8)\\\\\"";
 
         readonly IFileDownloader downloader;
@@ -51,12 +51,13 @@ namespace StreamToM3U.Service.Processors
 
         async Task<string> GetYouTubeStreamUrl(string channelId, string streamTitle)
         {
-            string channelUrl = string.Format(YouTubeChannelUrlFormat,channelId);
+            string channelUrl = string.Format(YouTubeChannelUrlFormat, channelId);
             string html = await downloader.TryDownloadStringAsync(channelUrl);
 
             string escapedStreamTitle = streamTitle
                 .Replace("(", "\\(")
-                .Replace(")", "\\)");
+                .Replace(")", "\\)")
+                .Replace("/", "\\/");
 
             string streamIdPattern = string.Format(StreamIdByTitlePatternFormat, escapedStreamTitle);
             string streamId = Regex.Match(html, streamIdPattern).Groups[1].Value;
