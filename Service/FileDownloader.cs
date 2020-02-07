@@ -45,11 +45,12 @@ namespace StreamToM3U.Service
 
                 return result;
             }
-            catch
+            catch (Exception ex)
             {
                 logger.Verbose(
                     MyOperation.FileDownload,
                     OperationStatus.Failure,
+                    ex,
                     new LogInfo(MyLogInfoKey.Url, url));
 
                 return null;
