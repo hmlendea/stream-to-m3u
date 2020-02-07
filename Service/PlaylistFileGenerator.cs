@@ -48,44 +48,37 @@ namespace StreamToM3U.Service
             ConcurrentDictionary<string, List<string>> foundChannelUrls =
                 new ConcurrentDictionary<string, List<string>>();
 
-            foreach (ChannelStream channelStream in channelStreams)
+            Parallel.ForEach(channelStreams, async channelStream =>
             {
                 logger.Info(
                     MyOperation.ChannelStreamFetching,
                     OperationStatus.Started,
                     new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
 
-                Task task = Task.Run(async () =>
+                string url = urlRetriever.GetStreamUrlAsync(channelStream).Result;
+
+                if (string.IsNullOrWhiteSpace(url))
                 {
-                    string url = await urlRetriever.GetStreamUrlAsync(channelStream);
+                    logger.Debug(
+                        MyOperation.ChannelStreamFetching,
+                        OperationStatus.Failure,
+                        new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
+                }
+                else
+                {
+                    logger.Debug(
+                        MyOperation.ChannelStreamFetching,
+                        OperationStatus.Success,
+                        new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
 
-                    if (string.IsNullOrWhiteSpace(url))
+                    if (!foundChannelUrls.ContainsKey(channelStream.ChannelName))
                     {
-                        logger.Debug(
-                            MyOperation.ChannelStreamFetching,
-                            OperationStatus.Failure,
-                            new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
+                        foundChannelUrls.TryAdd(channelStream.ChannelName, new List<string>());
                     }
-                    else
-                    {
-                        logger.Debug(
-                            MyOperation.ChannelStreamFetching,
-                            OperationStatus.Success,
-                            new LogInfo(MyLogInfoKey.ChannelStreamId, channelStream.Id));
 
-                        if (!foundChannelUrls.ContainsKey(channelStream.ChannelName))
-                        {
-                            foundChannelUrls.TryAdd(channelStream.ChannelName, new List<string>());
-                        }
-
-                        foundChannelUrls[channelStream.ChannelName].Add(url);
-                    }
-                });
-
-                tasks.Add(task);
-            }
-
-            Task.WaitAll(tasks.ToArray());
+                    foundChannelUrls[channelStream.ChannelName].Add(url);
+                }
+            });
 
             Dictionary<string, List<string>> channelUrls = foundChannelUrls
                 .OrderBy(x => x.Key)
