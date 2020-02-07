@@ -76,7 +76,7 @@ Description=Stream to M3U (%i channels)
 
 [Service]
 WorkingDirectory=[ABSOLUTE_PATH_TO_SERVICE_DIRECTORY]
-ExecStart=stream-to-m3u -i [ABSOLUTE_PATH_TO_SERVICE_DIRECTORY]/Data/input-%i.xml -O /srv/http/iptv/playlist-%i.m3u -u http://mydomain.com/iptv
+ExecStart=[ABSOLUTE_PATH_TO_SERVICE_DIRECTORY]/StreamToM3U -i [ABSOLUTE_PATH_TO_SERVICE_DIRECTORY]/Data/input-%i.xml -O /srv/http/iptv/livestreams/%i -u http://mydomain.com/iptv
 MemoryAccounting=yes
 MemoryMax=256M
 
