@@ -206,6 +206,12 @@
     <Url>https://lookplus.ro/lookplus-live/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>LookSport</Id>
+    <ChannelName>RO: Look Sport</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://lookplus.ro/looksport-live/</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>MagicTV</Id>
     <ChannelName>RO: Magic TV</ChannelName>
     <Provider>SeeNow</Provider>
