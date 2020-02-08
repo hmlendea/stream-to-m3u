@@ -188,10 +188,22 @@
     <ChannelId>UCVxrKwK_5dgtY-_UbiET7wA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>JobTV</Id>
+    <ChannelName>RO: Job TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>http://jobtv.ro/index.html#/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>KissTV</Id>
     <ChannelName>RO: Kiss TV</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>kiss-tv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>LinkpressTV</Id>
+    <ChannelName>RO: Linkpress TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>http://independentmedia.network/lptv/index.html</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>LitoralTV</Id>
