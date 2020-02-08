@@ -13,13 +13,25 @@
     <ChannelId>UC1bwPIsDGCs2fOs3SeKMIJA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>FMFTV-YouTube</Id>
+    <ChannelName>MD: FMF TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCVh6jm3bUs7R9qxZp--PqXg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>PublikaTV</Id>
-    <ChannelName>RO: Publika TV</ChannelName>
+    <ChannelName>MD: Publika TV</ChannelName>
     <Provider>OkLive</Provider>
     <ChannelId>367075001</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>JurnalTV</Id>
+    <ChannelName>MD: Jurnal TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://www.jurnaltv.md/page/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>JurnalTV-YouTube</Id>
     <ChannelName>MD: Jurnal TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCJYCClZe1UppC6q3XJ4Mp2A</ChannelId>
