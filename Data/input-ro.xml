@@ -356,9 +356,15 @@
     <ChannelId>UCuNDa2q_N0h08_ALQ6HvmiQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>ZUTV</Id>
+    <Id>ZUTV-YouTube</Id>
     <ChannelName>RO: ZU TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCjfj9BWUjn-VwP0skweJNXA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ZUTV-PublicTV</Id>
+    <ChannelName>RO: ZU TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://radiozu.ro/live</Url>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
