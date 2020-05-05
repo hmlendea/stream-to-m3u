@@ -326,6 +326,12 @@
     <ChannelId>UCFfbREhxM9QBAhqgHOaAbRg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>TraditionalTV-OkLive</Id>
+    <ChannelName>RO: Tradițional TV</ChannelName>
+    <Provider>OkLive</Provider>
+    <ChannelId>1672412208740</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>TrinitasTV-SeeNow</Id>
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>SeeNow</Provider>
