@@ -43,6 +43,12 @@
     <ChannelId>1187725319915</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>AlbaCarolinaTV-Other</Id>
+    <ChannelName>RO: Alba Carolina TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://www.albacarolinatv.ro/live/</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>AlbaCarolinaTV-YouTube</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>YouTube</Provider>
