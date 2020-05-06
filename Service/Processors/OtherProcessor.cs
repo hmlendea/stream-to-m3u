@@ -1,6 +1,5 @@
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web;
 
 using StreamToM3U.Service.Models;
 
@@ -33,7 +32,6 @@ namespace StreamToM3U.Service.Processors
 
         async Task<string> CrawlPage(string url, int remainingRecurrency)
         {
-            System.Console.WriteLine(url + " @@@@@@@@@@@@@ " + remainingRecurrency);
             if (remainingRecurrency == 0)
             {
                 return null;

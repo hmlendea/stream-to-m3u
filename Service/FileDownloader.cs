@@ -77,6 +77,11 @@ namespace StreamToM3U.Service
 
         string NormaliseUrl(string url)
         {
+            if (url is null)
+            {
+                return null;
+            }
+            
             return HttpUtility
                 .UrlDecode(url)
                 .Replace("\\/", "/")
