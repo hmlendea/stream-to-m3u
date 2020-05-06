@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 using StreamToM3U.Configuration;
 using StreamToM3U.Service.Models;
@@ -63,7 +64,7 @@ namespace StreamToM3U.Service
                 return url;
             }
 
-            return url;
+            return NormaliseUrl(url);
         }
 
         string ProcessStreamUrl(string playlistUrl, string streamUrl)
@@ -147,6 +148,14 @@ namespace StreamToM3U.Service
             bool isHttps =  uriResult.Scheme == Uri.UriSchemeHttps;
 
             return isUrl && (isHttp || isHttps);
+        }
+
+        string NormaliseUrl(string url)
+        {
+            return HttpUtility
+                .UrlDecode(url)
+                .Replace("\\/", "/")
+                .Replace("#038;", "");
         }
     }
 }
