@@ -1,6 +1,8 @@
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 using NuciLog.Core;
 
@@ -29,19 +31,21 @@ namespace StreamToM3U.Service
 
         public async Task<string> TryDownloadStringAsync(string url)
         {
+            string normalisedUrl = NormaliseUrl(url);
+
             logger.Debug(
                 MyOperation.FileDownload,
                 OperationStatus.Started,
-                new LogInfo(MyLogInfoKey.Url, url));
+                new LogInfo(MyLogInfoKey.Url, normalisedUrl));
             
             try
             {
-                string result = await GetAsync(url);
+                string result = await GetAsync(normalisedUrl);
 
                 logger.Verbose(
                     MyOperation.FileDownload,
                     OperationStatus.Success,
-                    new LogInfo(MyLogInfoKey.Url, url));
+                    new LogInfo(MyLogInfoKey.Url, normalisedUrl));
 
                 return result;
             }
@@ -51,7 +55,7 @@ namespace StreamToM3U.Service
                     MyOperation.FileDownload,
                     OperationStatus.Failure,
                     ex,
-                    new LogInfo(MyLogInfoKey.Url, url));
+                    new LogInfo(MyLogInfoKey.Url, normalisedUrl));
 
                 return null;
             }
@@ -63,9 +67,20 @@ namespace StreamToM3U.Service
             {
                 using (HttpContent content = response.Content)
                 {
-                    return await content.ReadAsStringAsync();
+                    byte[] bytes = await content.ReadAsByteArrayAsync();
+                    string text = Encoding.UTF8.GetString(bytes);
+                    
+                    return text;
                 }
             }
+        }
+
+        string NormaliseUrl(string url)
+        {
+            return HttpUtility
+                .UrlDecode(url)
+                .Replace("\\/", "/")
+                .Replace("#038;", "");
         }
     }
 }
