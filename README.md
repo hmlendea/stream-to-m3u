@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml)
+
 # About
 
 Tool for retrieving the M3U playlist URL for a given live stream
