@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/hmlendea/stream-to-m3u.svg?branch=master)](https://travis-ci.com/hmlendea/stream-to-m3u)
-
 # About
 
 Tool for retrieving the M3U playlist URL for a given live stream
