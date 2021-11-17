@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/hmlendea/stream-to-m3u.svg?branch=master)](https://travis-ci.com/hmlendea/stream-to-m3u)
+[![Build Status](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml)
 
 # About
 
