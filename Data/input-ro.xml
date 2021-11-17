@@ -19,6 +19,12 @@
     <ChannelId>UCvXWhITuhnvUyHu4idMrgkA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>AccentTVOltenia</Id>
+    <ChannelName>RO: Accent TV Oltenia</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UC4qkYYfv4eOlxYIh0ZmbT7w</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ActualitateaTV</Id>
     <ChannelName>RO: Actualitatea TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -152,6 +158,24 @@
     <ChannelId>UCdlBPCArmbMFmzhZVU8bfiA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>DobrogeaTV</Id>
+    <ChannelName>RO: Dobrogea TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCc5vhBLfkX4MSOEwjismqHw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>EmiTV</Id>
+    <ChannelName>RO: emiTV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UClee_FZlEUVtRELUjMCSHgg</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ERCIS</Id>
+    <ChannelName>RO: Episcopia Romano-Catolică Iași</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCHRAvorhJibhiDFEDpKnNPQ</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>EtnoTV</Id>
     <ChannelName>RO: Etno TV</ChannelName>
     <Provider>SeeNow</Provider>
@@ -161,7 +185,7 @@
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
-    <ChannelId>UCOUSlooyiaPIG6DZOTPSClQ</ChannelId>
+    <ChannelId>UCu4vT0Dtt2NKX8dfutIuYRQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>FRB</Id>
@@ -240,6 +264,12 @@
     <ChannelName>RO: Maramureș TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCm7K3WBh6dO-rIWdZVZwbFw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>MariusTrifan</Id>
+    <ChannelName>RO: Televiziunea Marius Trifan</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCTrvfs2G5eAQrxjNFPpqXoA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Național24</Id>
@@ -350,6 +380,12 @@
     <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>TSTV</Id>
+    <ChannelName>RO: TSTV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCoYT16VfNY7OYFDsyBz_gnw</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>TVArad</Id>
     <ChannelName>RO: TV Arad</ChannelName>
     <Provider>YouTube</Provider>
@@ -372,6 +408,12 @@
     <ChannelName>RO: U TV</ChannelName>
     <Provider>SeeNow</Provider>
     <ChannelId>utv</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>VatraTV</Id>
+    <ChannelName>RO: Vatra TV</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCa6VbhuZbBvMzN967CGHxIg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>VTVValcea</Id>
