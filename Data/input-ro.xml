@@ -170,6 +170,12 @@
     <ChannelId>UCHRAvorhJibhiDFEDpKnNPQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>EtnoTV</Id>
+    <ChannelName>RO: Etno TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://etno.ro</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
