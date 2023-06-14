@@ -122,12 +122,6 @@
     <ChannelId>UCO95hBJLPXVFgfdl0Mned5Q</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Canal33-SeeNow</Id>
-    <ChannelName>RO: Canal33</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>canal-33</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>Canal33-YouTube</Id>
     <ChannelName>RO: Canal33</ChannelName>
     <Provider>YouTube</Provider>
@@ -176,12 +170,6 @@
     <ChannelId>UCHRAvorhJibhiDFEDpKnNPQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>EtnoTV</Id>
-    <ChannelName>RO: Etno TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>etno-tv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -224,12 +212,6 @@
     <Url>http://jobtv.ro/index.html#/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>KissTV</Id>
-    <ChannelName>RO: Kiss TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>kiss-tv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>LinkpressTV</Id>
     <ChannelName>RO: Linkpress TV</ChannelName>
     <Provider>Other</Provider>
@@ -254,12 +236,6 @@
     <Url>https://lookplus.ro/looksport-live/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>MagicTV</Id>
-    <ChannelName>RO: Magic TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>magic-tv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>MaramuresTV</Id>
     <ChannelName>RO: Maramureș TV</ChannelName>
     <Provider>YouTube</Provider>
@@ -270,18 +246,6 @@
     <ChannelName>RO: Televiziunea Marius Trifan</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCTrvfs2G5eAQrxjNFPpqXoA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>Național24</Id>
-    <ChannelName>RO: Național 24</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>n24</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>NationalTV</Id>
-    <ChannelName>RO: Național TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>national-tv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>NCN</Id>
@@ -308,25 +272,7 @@
     <ChannelId>UCioQHDZMMkcq4703aNrp9UQ</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>RealitateaTV</Id>
-    <ChannelName>RO: Realitatea TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>realitatea-tv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>RockTV</Id>
-    <ChannelName>RO: Rock TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>rock-tv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>RomaniaTV-SeeNow</Id>
-    <ChannelName>RO: România TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>rtv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>RomaniaTV-YouTube</Id>
+    <Id>RomaniaTV</Id>
     <ChannelName>RO: România TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCF5GcyFOwtMGiuNWioA9fOQ</ChannelId>
@@ -368,13 +314,7 @@
     <ChannelId>1672412208740</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>TrinitasTV-SeeNow</Id>
-    <ChannelName>RO: Trinitas TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>trinitas-tv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TrinitasTV-YouTube</Id>
+    <Id>TrinitasTV</Id>
     <ChannelName>RO: Trinitas TV</ChannelName>
     <Provider>YouTube</Provider>
     <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
@@ -392,22 +332,10 @@
     <ChannelId>UCm5clG3M4Y6LFpnFvDKqpQA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>TVCityBucuresti</Id>
-    <ChannelName>RO: TV City București</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>tv-city</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>TVTotal</Id>
     <ChannelName>RO: TV Total</ChannelName>
     <Provider>Twitch</Provider>
     <ChannelId>tvtotalvaslui</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>UTV</Id>
-    <ChannelName>RO: U TV</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>utv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>VatraTV</Id>

@@ -7,14 +7,13 @@ namespace StreamToM3U.Configuration
         static string[] InputFileOptions = { "-i", "--input" };
         static string[] OutputFileOptions = { "-o", "--output-file" };
         static string[] OutputDirectoryOptions = { "-O", "--output-dir", "--output-directory" };
-        
+
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
         static string[] UrlOptions = { "-u", "--url" };
 
         static string[] YouTubeProcessorOptions = { "--yt", "--youtube" };
         static string[] TwitchProcessorOptions = { "--twitch" };
-        static string[] SeeNowProcessorOptions = { "--seenow" };
         static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
         static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
         static string[] OkLiveProcessorOptions = { "--ok", "--oklive" };
@@ -55,11 +54,6 @@ namespace StreamToM3U.Configuration
                 return StreamProvider.Twitch;
             }
 
-            if (CliArgumentsReader.HasOption(args, SeeNowProcessorOptions))
-            {
-                return StreamProvider.SeeNow;
-            }
-
             if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
             {
                 return StreamProvider.TvSportHd;
@@ -74,7 +68,7 @@ namespace StreamToM3U.Configuration
             {
                 return StreamProvider.OkLive;
             }
-            
+
             return StreamProvider.Other;
         }
 
