@@ -20,7 +20,6 @@ The following arguments are used to indicate the source of the stream
 |--------------------------------------------------------------|---------------------------------|
 | --youtube<br>--yt                                            | Sets the source to YouTube      |
 | --twitch                                                     | Sets the source to Twitch       |
-| --seenow                                                     | Sets the source to SeeNow       |
 | --tvsporthd<br>--tvsport<br>--tvshd<br>--tvs                 | Sets the source to TV Sport HD  |
 | --antena-play<br>--antenaplay<br>--antena<br>--aplay<br>--ap | Sets the source to Antena Play  |
 
@@ -36,12 +35,6 @@ Each source will require a different set of arugments to indicate the desired li
 | --title<br>-t   | The title of the live stream | Optional  |
 
 ## Twitch
-
-| Argument        | Description                  | Optional  |
-|-----------------|------------------------------|-----------|
-| --channel<br>-c | The host channel ID          | Mandatory |
-
-## SeeNow
 
 | Argument        | Description                  | Optional  |
 |-----------------|------------------------------|-----------|

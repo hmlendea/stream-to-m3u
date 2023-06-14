@@ -5,7 +5,6 @@ namespace StreamToM3U.Configuration
         Other,
         YouTube,
         Twitch,
-        SeeNow,
         TvSportHd,
         AntenaPlay,
         OkLive

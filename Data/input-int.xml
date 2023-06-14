@@ -27,10 +27,4 @@
     <ChannelId>UCLA_DiR1FfKNvjuUpBHmylQ</ChannelId>
     <Title>NASA Live: Official Stream of NASA TV</Title>
   </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TV5Monde</Id>
-    <ChannelName>INT: TV5MONDE</ChannelName>
-    <Provider>SeeNow</Provider>
-    <ChannelId>tv5-monde</ChannelId>
-  </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>

@@ -84,14 +84,14 @@ namespace StreamToM3U.Service
             streamInfo.ChannelId = channelStream.ChannelId;
             streamInfo.Title = channelStream.Title;
             streamInfo.Url = channelStream.Url;
-            
+
             return await GetStreamUrlAsync(streamInfo);
         }
 
         async Task<string> FindStreamUrl(StreamInfo streamInfo)
         {
             IProcessor processor = CreateProcessor(streamInfo.Provider);
-            
+
             try
             {
                 return await processor.GetUrlAsync(streamInfo);
@@ -108,22 +108,19 @@ namespace StreamToM3U.Service
             {
                 case StreamProvider.YouTube:
                     return new YouTubeStreamProcessor(downloader);
-                
+
                 case StreamProvider.Twitch:
                     return new TwitchProcessor();
-                
-                case StreamProvider.SeeNow:
-                    return new SeeNowProcessor(downloader);
-                
+
                 case StreamProvider.TvSportHd:
                     return new TvSportHdProcessor();
-                
+
                 case StreamProvider.AntenaPlay:
                     return new AntenaPlayProcessor();
-                
+
                 case StreamProvider.OkLive:
                     return new OkLiveProcessor(downloader);
-                
+
                 default:
                     return new OtherProcessor(downloader);
             }
