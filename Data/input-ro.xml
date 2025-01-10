@@ -176,6 +176,12 @@
     <Url>https://etno.ro</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>EuroNewsRomania-YouTube</Id>
+    <ChannelName>RO: EuroNews România</ChannelName>
+    <Provider>YouTube</Provider>
+    <ChannelId>UCbATDExtWstHnwWELZnXNZA</ChannelId>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ExclusivTV</Id>
     <ChannelName>RO: Exclusiv TV</ChannelName>
     <Provider>YouTube</Provider>
