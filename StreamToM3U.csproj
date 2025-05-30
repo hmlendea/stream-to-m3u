@@ -13,19 +13,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
     <PackageReference Include="NuciCLI" Version="1.4.2" />
-    <PackageReference Include="NuciDAL" Version="1.1.1" />
-    <PackageReference Include="NuciExtensions" Version="1.5.0" />
+    <PackageReference Include="NuciDAL" Version="2.2.0" />
+    <PackageReference Include="NuciExtensions" Version="4.0.0" />
     <PackageReference Include="NuciLog" Version="1.1.0.1" />
     <PackageReference Include="NuciLog.Core" Version="2.3.1" />
-    <PackageReference Include="NuciWeb" Version="2.1.0" />
-    <PackageReference Include="Selenium.Support" Version="4.1.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
+    <PackageReference Include="NuciWeb" Version="2.2.4" />
+    <PackageReference Include="Selenium.Support" Version="4.33.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.33.0" />
   </ItemGroup>
 
   <ItemGroup>
