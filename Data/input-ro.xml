@@ -25,6 +25,14 @@
     <Url>https://live.antena3.ro/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>B1TV</Id>
+    <ChannelName>RO: B1 TV</ChannelName>
+    <Provider>Other</Provider>
+    <ChannelId>b1tv</ChannelId>
+    <Url>https://www.b1tv.ro/wp-json/strawberry/v1/live?v=1</Url>
+    <StreamBaseUrl>https://kithnos.cdn.dejacast.com/live</StreamBaseUrl>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>BrasovTV</Id>
     <ChannelName>RO: Brașov TV</ChannelName>
     <Provider>Twitch</Provider>
@@ -41,6 +49,12 @@
     <ChannelName>RO: Cornea TV</ChannelName>
     <Provider>Other</Provider>
     <Url>http://corneatv.ro/index.html</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>EtnoTV</Id>
+    <ChannelName>RO: Etno TV</ChannelName>
+    <Provider>Other</Provider>
+    <Url>https://etno.ro</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>JobTV</Id>
