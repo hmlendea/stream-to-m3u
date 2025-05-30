@@ -9,10 +9,10 @@ namespace StreamToM3U.Service.Processors
     public sealed class WebsiteProcessr(IFileDownloader downloader) : IProcessor
     {
         static readonly string[] PlaylistUrlPatterns =
-        {
+        [
             "\"(http[^\"']*\\.m3u[^\"']*)\"",
             "'(http[^\"']*\\.m3u[^\"']*)'"
-        };
+        ];
 
         readonly IFileDownloader downloader = downloader;
 

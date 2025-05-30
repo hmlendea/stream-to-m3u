@@ -4,19 +4,19 @@ namespace StreamToM3U.Configuration
 {
     public sealed class Options
     {
-        static readonly string[] InputFileOptions = { "-i", "--input" };
-        static readonly string[] OutputFileOptions = { "-o", "--output-file" };
-        static readonly string[] OutputDirectoryOptions = { "-O", "--output-dir", "--output-directory" };
+        static readonly string[] InputFileOptions = ["-i", "--input"];
+        static readonly string[] OutputFileOptions = ["-o", "--output-file"];
+        static readonly string[] OutputDirectoryOptions = ["-O", "--output-dir", "--output-directory"];
 
-        static readonly string[] ChannelIdOptions = { "-c", "--channel" };
-        static readonly string[] TitleOptions = { "-t", "--title" };
-        static readonly string[] UrlOptions = { "-u", "--url" };
-        static readonly string[] StreamBaseUrlOptions = { "-U", "--baseurl" };
+        static readonly string[] ChannelIdOptions = ["-c", "--channel"];
+        static readonly string[] TitleOptions = ["-t", "--title"];
+        static readonly string[] UrlOptions = ["-u", "--url"];
+        static readonly string[] StreamBaseUrlOptions = ["-U", "--baseurl"];
 
-        static readonly string[] TwitchProcessorOptions = { "--twitch" };
-        static readonly string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
-        static readonly string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
-        static readonly string[] OkLiveProcessorOptions = { "--ok", "--oklive" };
+        static readonly string[] TwitchProcessorOptions = ["--twitch"];
+        static readonly string[] TvSportHdProcessorOptions = ["--tvs", "--tvsport", "--tvshd", "--tvsporthd"];
+        static readonly string[] AntenaPlayProccessorOptions = ["--antena-play", "--antenaplay", "--antena", "--aplay", "--ap"];
+        static readonly string[] OkLiveProcessorOptions = ["--ok", "--oklive"];
 
         public StreamProvider Provider { get; set; }
 
