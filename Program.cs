@@ -79,7 +79,7 @@ namespace StreamToM3U
             }
             else
             {
-                GetPlaylistForInputFile(options);
+                GetPlaylistForInputFile();
             }
         }
 
@@ -100,13 +100,13 @@ namespace StreamToM3U
             Console.WriteLine(playlistUrl);
         }
 
-        static void GetPlaylistForInputFile(Options options)
-        {
-            IPlaylistFileGenerator fileGenerator = serviceProvider.GetService<IPlaylistFileGenerator>();
-            fileGenerator.GeneratePlaylist();
-        }
+        static void GetPlaylistForInputFile()
+            => serviceProvider
+                .GetService<IPlaylistFileGenerator>()
+                .GeneratePlaylist();
 
-        static IConfiguration LoadConfiguration() => new ConfigurationBuilder()
+        static IConfiguration LoadConfiguration()
+            => new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
     }

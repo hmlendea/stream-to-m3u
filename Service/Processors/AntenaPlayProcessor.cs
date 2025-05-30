@@ -23,10 +23,7 @@ namespace StreamToM3U.Service.Processors
 
         readonly IWebProcessor webProcessor;
 
-        public AntenaPlayProcessor()
-        {
-            webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
-        }
+        public AntenaPlayProcessor() => webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {

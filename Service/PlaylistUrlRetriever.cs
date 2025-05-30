@@ -130,11 +130,9 @@ namespace StreamToM3U.Service
         }
 
         static string NormaliseUrl(string url)
-        {
-            return HttpUtility
+            => HttpUtility
                 .UrlDecode(url)
                 .Replace("\\/", "/")
                 .Replace("#038;", "");
-        }
     }
 }

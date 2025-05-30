@@ -15,10 +15,7 @@ namespace StreamToM3U.Service.Processors
 
         readonly IWebProcessor webProcessor;
 
-        public TvSportHdProcessor()
-        {
-            webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
-        }
+        public TvSportHdProcessor() => webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {

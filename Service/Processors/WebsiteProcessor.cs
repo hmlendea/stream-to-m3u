@@ -16,10 +16,7 @@ namespace StreamToM3U.Service.Processors
 
         readonly IFileDownloader downloader = downloader;
 
-        public async Task<string> GetUrlAsync(StreamInfo streamInfo)
-        {
-            return await CrawlPage(streamInfo);
-        }
+        public async Task<string> GetUrlAsync(StreamInfo streamInfo) => await CrawlPage(streamInfo);
 
         async Task<string> CrawlPage(StreamInfo streamInfo)
         {

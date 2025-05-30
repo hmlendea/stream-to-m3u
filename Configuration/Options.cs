@@ -29,22 +29,17 @@ namespace StreamToM3U.Configuration
         public string Url { get; set; }
         public string StreamBaseUrl { get; set; }
 
-        public static Options FromArguments(string[] args)
+        public static Options FromArguments(string[] args) => new()
         {
-            Options options = new()
-            {
-                Provider = DetermineProviderFromArgs(args),
-                InputFile = GetArgumentIfExists(args, InputFileOptions),
-                OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u"),
-                OutputDirectory = GetArgumentIfExists(args, OutputDirectoryOptions),
-                ChannelId = GetArgumentIfExists(args, ChannelIdOptions),
-                Title = GetArgumentIfExists(args, TitleOptions),
-                Url = GetArgumentIfExists(args, UrlOptions),
-                StreamBaseUrl = GetArgumentIfExists(args, StreamBaseUrlOptions)
-            };
-
-            return options;
-        }
+            Provider = DetermineProviderFromArgs(args),
+            InputFile = GetArgumentIfExists(args, InputFileOptions),
+            OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u"),
+            OutputDirectory = GetArgumentIfExists(args, OutputDirectoryOptions),
+            ChannelId = GetArgumentIfExists(args, ChannelIdOptions),
+            Title = GetArgumentIfExists(args, TitleOptions),
+            Url = GetArgumentIfExists(args, UrlOptions),
+            StreamBaseUrl = GetArgumentIfExists(args, StreamBaseUrlOptions)
+        };
 
         static StreamProvider DetermineProviderFromArgs(string[] args)
         {

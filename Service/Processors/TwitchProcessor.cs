@@ -14,8 +14,7 @@ namespace StreamToM3U.Service.Processors
     {
         static string TwitchApiUrl => "https://api.twitch.tv/api";
         static string TwitchApiChannelsUrl => $"{TwitchApiUrl}/channels";
-        static string PlaylistUrlFormat =>
-            "http://usher.twitch.tv/api/channel/hls/{0}.m3u8?player=twitchweb&token={1}&sig={2}";
+        static string PlaylistUrlFormat => "http://usher.twitch.tv/api/channel/hls/{0}.m3u8?player=twitchweb&token={1}&sig={2}";
 
         const string TokenPattern = "\"token\": *\"({.*})\",";
         const string SignaturePattern = "\"sig\": *\"([a-z0-9]*)\"";
@@ -56,12 +55,8 @@ namespace StreamToM3U.Service.Processors
         }
 
         private static string UrlEncodeToken(string token)
-        {
-            string processedToken = token.Replace("\\\"", "\"");
-
-            return HttpUtility
-                .UrlEncode(processedToken)
+            => HttpUtility
+                .UrlEncode(token.Replace("\\\"", "\""))
                 .Replace("+", "%20");
-        }
     }
 }

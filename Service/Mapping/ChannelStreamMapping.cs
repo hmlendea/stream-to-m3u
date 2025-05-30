@@ -10,27 +10,18 @@ namespace StreamToM3U.Service.Mapping
 {
     static class ChannelStreamMapping
     {
-        internal static ChannelStream ToServiceModel(this ChannelStreamEntity dataObject)
+        internal static ChannelStream ToServiceModel(this ChannelStreamEntity dataObject) => new()
         {
-            ChannelStream serviceModel = new()
-            {
-                Id = dataObject.Id,
-                ChannelName = dataObject.ChannelName,
-                Provider = Enum.Parse<StreamProvider>(dataObject.Provider, true),
-                ChannelId = dataObject.ChannelId,
-                Title = dataObject.Title,
-                Url = dataObject.Url,
-                StreamBaseUrl = dataObject.StreamBaseUrl
-            };
-
-            return serviceModel;
-        }
+            Id = dataObject.Id,
+            ChannelName = dataObject.ChannelName,
+            Provider = Enum.Parse<StreamProvider>(dataObject.Provider, true),
+            ChannelId = dataObject.ChannelId,
+            Title = dataObject.Title,
+            Url = dataObject.Url,
+            StreamBaseUrl = dataObject.StreamBaseUrl
+        };
 
         internal static IEnumerable<ChannelStream> ToServiceModels(this IEnumerable<ChannelStreamEntity> dataObjects)
-        {
-            IEnumerable<ChannelStream> serviceModels = dataObjects.Select(dataObject => dataObject.ToServiceModel());
-
-            return serviceModels;
-        }
+            => dataObjects.Select(dataObject => dataObject.ToServiceModel());
     }
 }

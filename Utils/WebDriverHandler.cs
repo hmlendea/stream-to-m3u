@@ -25,10 +25,7 @@ namespace StreamToM3U.Utils
             }
         }
 
-        public static void CloseDriver()
-        {
-            webDriver?.Quit();
-        }
+        public static void CloseDriver() => webDriver?.Quit();
 
         public static void GainLock()
         {
@@ -43,10 +40,7 @@ namespace StreamToM3U.Utils
             }
         }
 
-        public static void ReleaseLock()
-        {
-            IsWebDriverLocked = false;
-        }
+        public static void ReleaseLock() => IsWebDriverLocked = false;
 
         static IWebDriver CreateDriver()
         {

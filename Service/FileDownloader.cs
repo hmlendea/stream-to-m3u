@@ -26,6 +26,7 @@ namespace StreamToM3U.Service
             {
                 Timeout = TimeSpan.FromMilliseconds(applicationSettings.RequestTimeout)
             };
+
             httpClient.DefaultRequestHeaders.Add("User-Agent", applicationSettings.UserAgent);
         }
 
