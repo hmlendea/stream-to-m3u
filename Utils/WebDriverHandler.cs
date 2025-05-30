@@ -8,7 +8,7 @@ namespace StreamToM3U.Utils
     public static class WebDriverHandler
     {
         static IWebDriver webDriver;
-        static object sync = new object();
+        static readonly Lock sync = new();
 
         public static bool IsWebDriverLocked { get; private set; }
 
@@ -18,10 +18,7 @@ namespace StreamToM3U.Utils
             {
                 lock (sync)
                 {
-                    if (webDriver is null)
-                    {
-                        webDriver = CreateDriver();
-                    }
+                    webDriver ??= CreateDriver();
 
                     return webDriver;
                 }
@@ -30,10 +27,7 @@ namespace StreamToM3U.Utils
 
         public static void CloseDriver()
         {
-            if (!(webDriver is null))
-            {
-                webDriver.Quit();
-            }
+            webDriver?.Quit();
         }
 
         public static void GainLock()
@@ -56,8 +50,11 @@ namespace StreamToM3U.Utils
 
         static IWebDriver CreateDriver()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.PageLoadStrategy = PageLoadStrategy.None;
+            ChromeOptions options = new()
+            {
+                PageLoadStrategy = PageLoadStrategy.None
+            };
+
             options.AddArgument("--silent");
 			options.AddArgument("--disable-translate");
 			options.AddArgument("--disable-infobars");

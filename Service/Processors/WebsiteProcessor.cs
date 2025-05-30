@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -7,20 +6,15 @@ using StreamToM3U.Service.Models;
 
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class WebsiteProcessr : IProcessor
+    public sealed class WebsiteProcessr(IFileDownloader downloader) : IProcessor
     {
-        static string[] PlaylistUrlPatterns =
+        static readonly string[] PlaylistUrlPatterns =
         {
             "\"(http[^\"']*\\.m3u[^\"']*)\"",
             "'(http[^\"']*\\.m3u[^\"']*)'"
         };
 
-        readonly IFileDownloader downloader;
-
-        public WebsiteProcessr(IFileDownloader downloader)
-        {
-            this.downloader = downloader;
-        }
+        readonly IFileDownloader downloader = downloader;
 
         public async Task<string> GetUrlAsync(StreamInfo streamInfo)
         {

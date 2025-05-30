@@ -13,7 +13,6 @@ namespace StreamToM3U.Service
 {
     public sealed class FileDownloader : IFileDownloader
     {
-        readonly ApplicationSettings applicationSettings;
         readonly ILogger logger;
         readonly HttpClient httpClient;
 
@@ -21,11 +20,12 @@ namespace StreamToM3U.Service
             ApplicationSettings applicationSettings,
             ILogger logger)
         {
-            this.applicationSettings = applicationSettings;
             this.logger = logger;
 
-            httpClient = new HttpClient();
-            httpClient.Timeout = TimeSpan.FromMilliseconds(applicationSettings.RequestTimeout);
+            httpClient = new HttpClient
+            {
+                Timeout = TimeSpan.FromMilliseconds(applicationSettings.RequestTimeout)
+            };
             httpClient.DefaultRequestHeaders.Add("User-Agent", applicationSettings.UserAgent);
         }
 
@@ -37,7 +37,7 @@ namespace StreamToM3U.Service
                 MyOperation.FileDownload,
                 OperationStatus.Started,
                 new LogInfo(MyLogInfoKey.Url, normalisedUrl));
-            
+
             try
             {
                 string result = await GetAsync(normalisedUrl);
@@ -63,25 +63,21 @@ namespace StreamToM3U.Service
 
         async Task<string> GetAsync(string url)
         {
-            using (HttpResponseMessage response = await httpClient.GetAsync(url))
-            {
-                using (HttpContent content = response.Content)
-                {
-                    byte[] bytes = await content.ReadAsByteArrayAsync();
-                    string text = Encoding.UTF8.GetString(bytes);
-                    
-                    return text;
-                }
-            }
+            using HttpResponseMessage response = await httpClient.GetAsync(url);
+            using HttpContent content = response.Content;
+            byte[] bytes = await content.ReadAsByteArrayAsync();
+            string text = Encoding.UTF8.GetString(bytes);
+
+            return text;
         }
 
-        string NormaliseUrl(string url)
+        static string NormaliseUrl(string url)
         {
             if (url is null)
             {
                 return null;
             }
-            
+
             return HttpUtility
                 .UrlDecode(url)
                 .Replace("\\/", "/")

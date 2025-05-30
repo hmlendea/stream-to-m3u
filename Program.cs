@@ -85,12 +85,14 @@ namespace StreamToM3U
 
         static void GetPlaylistForStream(Options options)
         {
-            StreamInfo streamInfo = new StreamInfo();
-            streamInfo.Provider = options.Provider;
-            streamInfo.ChannelId = options.ChannelId;
-            streamInfo.Title = options.Title;
-            streamInfo.Url = options.Url;
-            streamInfo.StreamBaseUrl = options.StreamBaseUrl;
+            StreamInfo streamInfo = new()
+            {
+                Provider = options.Provider,
+                ChannelId = options.ChannelId,
+                Title = options.Title,
+                Url = options.Url,
+                StreamBaseUrl = options.StreamBaseUrl
+            };
 
             IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
             string playlistUrl = urlRetriever.GetStreamUrlAsync(streamInfo).Result;
@@ -104,11 +106,8 @@ namespace StreamToM3U
             fileGenerator.GeneratePlaylist();
         }
 
-        static IConfiguration LoadConfiguration()
-        {
-            return new ConfigurationBuilder()
+        static IConfiguration LoadConfiguration() => new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-        }
     }
 }

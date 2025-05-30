@@ -24,8 +24,8 @@ namespace StreamToM3U.Service.Processors
         {
             string endpoint = $"{TwitchApiChannelsUrl}/{streamInfo.ChannelId}/access_token/";
 
-            UriBuilder uriBuilder = new UriBuilder(endpoint);
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uriBuilder.Uri);
+            UriBuilder uriBuilder = new(endpoint);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uriBuilder.Uri);
 
             request.Headers["Client-ID"] = "jzkbprff40iqj646a697cyrvl0zt2m6";
             request.Headers["Host"] = "api.twitch.tv";
@@ -39,24 +39,23 @@ namespace StreamToM3U.Service.Processors
                 return null;
             }
 
-            using (StreamReader reader = new StreamReader(
+            using StreamReader reader = new(
                 response.GetResponseStream(),
-                ASCIIEncoding.ASCII))
-            {
-                string body = reader.ReadToEnd();
+                Encoding.ASCII);
 
-                string token = Regex.Match(body, TokenPattern).Groups[1].Value;
-                string signature = Regex.Match(body, SignaturePattern).Groups[1].Value;
+            string body = reader.ReadToEnd();
 
-                return string.Format(
-                    PlaylistUrlFormat,
-                    streamInfo.ChannelId,
-                    UrlEncodeToken(token),
-                    signature);
-            }
+            string token = Regex.Match(body, TokenPattern).Groups[1].Value;
+            string signature = Regex.Match(body, SignaturePattern).Groups[1].Value;
+
+            return string.Format(
+                PlaylistUrlFormat,
+                streamInfo.ChannelId,
+                UrlEncodeToken(token),
+                signature);
         }
 
-        private string UrlEncodeToken(string token)
+        private static string UrlEncodeToken(string token)
         {
             string processedToken = token.Replace("\\\"", "\"");
 

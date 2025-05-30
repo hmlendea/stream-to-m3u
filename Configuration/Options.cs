@@ -4,19 +4,19 @@ namespace StreamToM3U.Configuration
 {
     public sealed class Options
     {
-        static string[] InputFileOptions = { "-i", "--input" };
-        static string[] OutputFileOptions = { "-o", "--output-file" };
-        static string[] OutputDirectoryOptions = { "-O", "--output-dir", "--output-directory" };
+        static readonly string[] InputFileOptions = { "-i", "--input" };
+        static readonly string[] OutputFileOptions = { "-o", "--output-file" };
+        static readonly string[] OutputDirectoryOptions = { "-O", "--output-dir", "--output-directory" };
 
-        static string[] ChannelIdOptions = { "-c", "--channel" };
-        static string[] TitleOptions = { "-t", "--title" };
-        static string[] UrlOptions = { "-u", "--url" };
-        static string[] StreamBaseUrlOptions = { "-U", "--baseurl" };
+        static readonly string[] ChannelIdOptions = { "-c", "--channel" };
+        static readonly string[] TitleOptions = { "-t", "--title" };
+        static readonly string[] UrlOptions = { "-u", "--url" };
+        static readonly string[] StreamBaseUrlOptions = { "-U", "--baseurl" };
 
-        static string[] TwitchProcessorOptions = { "--twitch" };
-        static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
-        static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
-        static string[] OkLiveProcessorOptions = { "--ok", "--oklive" };
+        static readonly string[] TwitchProcessorOptions = { "--twitch" };
+        static readonly string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
+        static readonly string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
+        static readonly string[] OkLiveProcessorOptions = { "--ok", "--oklive" };
 
         public StreamProvider Provider { get; set; }
 
@@ -31,15 +31,17 @@ namespace StreamToM3U.Configuration
 
         public static Options FromArguments(string[] args)
         {
-            Options options = new Options();
-            options.Provider = DetermineProviderFromArgs(args);
-            options.InputFile = GetArgumentIfExists(args, InputFileOptions);
-            options.OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u");
-            options.OutputDirectory = GetArgumentIfExists(args, OutputDirectoryOptions);
-            options.ChannelId = GetArgumentIfExists(args, ChannelIdOptions);
-            options.Title = GetArgumentIfExists(args, TitleOptions);
-            options.Url = GetArgumentIfExists(args, UrlOptions);
-            options.StreamBaseUrl = GetArgumentIfExists(args, StreamBaseUrlOptions);
+            Options options = new()
+            {
+                Provider = DetermineProviderFromArgs(args),
+                InputFile = GetArgumentIfExists(args, InputFileOptions),
+                OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u"),
+                OutputDirectory = GetArgumentIfExists(args, OutputDirectoryOptions),
+                ChannelId = GetArgumentIfExists(args, ChannelIdOptions),
+                Title = GetArgumentIfExists(args, TitleOptions),
+                Url = GetArgumentIfExists(args, UrlOptions),
+                StreamBaseUrl = GetArgumentIfExists(args, StreamBaseUrlOptions)
+            };
 
             return options;
         }
@@ -73,13 +75,8 @@ namespace StreamToM3U.Configuration
             => GetArgumentIfExists(args, argumentOptions, null);
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions, string fallbackValue)
-        {
-            if (CliArgumentsReader.HasOption(args, argumentOptions))
-            {
-                return CliArgumentsReader.GetOptionValue(args, argumentOptions);
-            }
-
-            return fallbackValue;
-        }
+            => CliArgumentsReader.HasOption(args, argumentOptions)
+                ? CliArgumentsReader.GetOptionValue(args, argumentOptions)
+                : fallbackValue;
     }
 }

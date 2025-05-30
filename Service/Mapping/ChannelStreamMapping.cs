@@ -12,14 +12,16 @@ namespace StreamToM3U.Service.Mapping
     {
         internal static ChannelStream ToServiceModel(this ChannelStreamEntity dataObject)
         {
-            ChannelStream serviceModel = new ChannelStream();
-            serviceModel.Id = dataObject.Id;
-            serviceModel.ChannelName = dataObject.ChannelName;
-            serviceModel.Provider = (StreamProvider)Enum.Parse(typeof(StreamProvider), dataObject.Provider, true);
-            serviceModel.ChannelId = dataObject.ChannelId;
-            serviceModel.Title = dataObject.Title;
-            serviceModel.Url = dataObject.Url;
-            serviceModel.StreamBaseUrl = dataObject.StreamBaseUrl;
+            ChannelStream serviceModel = new()
+            {
+                Id = dataObject.Id,
+                ChannelName = dataObject.ChannelName,
+                Provider = Enum.Parse<StreamProvider>(dataObject.Provider, true),
+                ChannelId = dataObject.ChannelId,
+                Title = dataObject.Title,
+                Url = dataObject.Url,
+                StreamBaseUrl = dataObject.StreamBaseUrl
+            };
 
             return serviceModel;
         }

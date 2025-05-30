@@ -13,13 +13,11 @@ namespace StreamToM3U.Service.Processors
         static string TvSportHdUrl => "http://www.tv-sport-hd.com";
         static string ChannelUrlFormat => $"{TvSportHdUrl}/channel/tvs.php?ch={{0}}";
 
-        const string PlaylistUrlPattern = "file: *\"(http[^\"]*)\"";
-
         readonly IWebProcessor webProcessor;
 
         public TvSportHdProcessor()
         {
-            this.webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
+            webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
         }
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)

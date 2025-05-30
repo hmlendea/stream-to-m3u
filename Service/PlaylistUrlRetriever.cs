@@ -11,21 +11,16 @@ using StreamToM3U.Service.Processors;
 
 namespace StreamToM3U.Service
 {
-    public sealed class PlaylistUrlRetriever : IPlaylistUrlRetriever
+    public sealed class PlaylistUrlRetriever(IFileDownloader downloader) : IPlaylistUrlRetriever
     {
-        readonly IFileDownloader downloader;
-
-        public PlaylistUrlRetriever(IFileDownloader downloader)
-        {
-            this.downloader = downloader;
-        }
+        readonly IFileDownloader downloader = downloader;
 
         public async Task<string> GetStreamUrlAsync(StreamInfo streamInfo)
         {
             string url = await FindStreamUrl(streamInfo);
             string content = await downloader.TryDownloadStringAsync(url);
 
-            List<string> contentLines = new List<string>();
+            List<string> contentLines = [];
 
             if (!string.IsNullOrWhiteSpace(content))
             {
@@ -67,7 +62,7 @@ namespace StreamToM3U.Service
             return NormaliseUrl(url);
         }
 
-        string ProcessStreamUrl(string playlistUrl, string streamUrl)
+        static string ProcessStreamUrl(string playlistUrl, string streamUrl)
         {
             if (streamUrl.StartsWith("http"))
             {
@@ -79,12 +74,14 @@ namespace StreamToM3U.Service
 
         public async Task<string> GetStreamUrlAsync(ChannelStream channelStream)
         {
-            StreamInfo streamInfo = new StreamInfo();
-            streamInfo.Provider = channelStream.Provider;
-            streamInfo.ChannelId = channelStream.ChannelId;
-            streamInfo.Title = channelStream.Title;
-            streamInfo.Url = channelStream.Url;
-            streamInfo.StreamBaseUrl = channelStream.StreamBaseUrl;
+            StreamInfo streamInfo = new()
+            {
+                Provider = channelStream.Provider,
+                ChannelId = channelStream.ChannelId,
+                Title = channelStream.Title,
+                Url = channelStream.Url,
+                StreamBaseUrl = channelStream.StreamBaseUrl
+            };
 
             return await GetStreamUrlAsync(streamInfo);
         }
@@ -103,36 +100,23 @@ namespace StreamToM3U.Service
             }
         }
 
-        IProcessor CreateProcessor(StreamProvider provider)
+        IProcessor CreateProcessor(StreamProvider provider) => provider switch
         {
-            switch (provider)
-            {
-                case StreamProvider.Twitch:
-                    return new TwitchProcessor();
+            StreamProvider.Twitch => new TwitchProcessor(),
+            StreamProvider.TvSportHd => new TvSportHdProcessor(),
+            StreamProvider.AntenaPlay => new AntenaPlayProcessor(),
+            StreamProvider.OkLive => new OkLiveProcessor(downloader),
+            _ => new WebsiteProcessr(downloader),
+        };
 
-                case StreamProvider.TvSportHd:
-                    return new TvSportHdProcessor();
-
-                case StreamProvider.AntenaPlay:
-                    return new AntenaPlayProcessor();
-
-                case StreamProvider.OkLive:
-                    return new OkLiveProcessor(downloader);
-
-                default:
-                    return new WebsiteProcessr(downloader);
-            }
-        }
-
-        bool IsUrlValid(string url)
+        static bool IsUrlValid(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
                 return false;
             }
 
-            Uri uriResult;
-            bool isUrl = Uri.TryCreate(url, UriKind.Absolute, out uriResult);
+            bool isUrl = Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult);
 
             if (uriResult is null)
             {
@@ -145,7 +129,7 @@ namespace StreamToM3U.Service
             return isUrl && (isHttp || isHttps);
         }
 
-        string NormaliseUrl(string url)
+        static string NormaliseUrl(string url)
         {
             return HttpUtility
                 .UrlDecode(url)
