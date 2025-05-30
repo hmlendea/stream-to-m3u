@@ -44,7 +44,7 @@ namespace StreamToM3U
                 .AddSingleton<IPlaylistFileGenerator, PlaylistFileGenerator>()
                 .AddSingleton<ILogger, NuciLogger>()
                 .BuildServiceProvider();
-            
+
             ILogger logger = serviceProvider.GetService<ILogger>();
             logger.Info(Operation.StartUp, OperationStatus.Success);
 
@@ -90,10 +90,11 @@ namespace StreamToM3U
             streamInfo.ChannelId = options.ChannelId;
             streamInfo.Title = options.Title;
             streamInfo.Url = options.Url;
+            streamInfo.StreamBaseUrl = options.StreamBaseUrl;
 
             IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
             string playlistUrl = urlRetriever.GetStreamUrlAsync(streamInfo).Result;
-            
+
             Console.WriteLine(playlistUrl);
         }
 
@@ -102,7 +103,7 @@ namespace StreamToM3U
             IPlaylistFileGenerator fileGenerator = serviceProvider.GetService<IPlaylistFileGenerator>();
             fileGenerator.GeneratePlaylist();
         }
-        
+
         static IConfiguration LoadConfiguration()
         {
             return new ConfigurationBuilder()
