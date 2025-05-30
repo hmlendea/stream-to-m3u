@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
-    <Id>AgroTVMoldova</Id>
-    <ChannelName>RO: Agro TV Moldova</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCYMqPjq4aN1OGhEK4Ovd4pg</ChannelId>
-  </ChannelStreamEntity>
-    <ChannelStreamEntity>
-    <Id>AxialTV</Id>
-    <ChannelName>MD: Axial TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC1bwPIsDGCs2fOs3SeKMIJA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>FMFTV-YouTube</Id>
-    <ChannelName>MD: FMF TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCVh6jm3bUs7R9qxZp--PqXg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>PublikaTV</Id>
     <ChannelName>MD: Publika TV</ChannelName>
     <Provider>OkLive</Provider>
@@ -29,17 +11,5 @@
     <ChannelName>MD: Jurnal TV</ChannelName>
     <Provider>Other</Provider>
     <Url>https://www.jurnaltv.md/page/live</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>JurnalTV-YouTube</Id>
-    <ChannelName>MD: Jurnal TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCJYCClZe1UppC6q3XJ4Mp2A</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>VoceaBasarabiei</Id>
-    <ChannelName>MD: Vocea Basarabiei</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC645Zlz-PDBWM1kQgSDB_xg</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>

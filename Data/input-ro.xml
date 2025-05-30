@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
-    <Id>1TV</Id>
-    <ChannelName>RO: 1 TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC6gS1m0WPJQn_YQf0FNNhIA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>6TV</Id>
-    <ChannelName>RO: 6 TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCWtYfI4WDxjjOmepETLkO2Q</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>A7TV</Id>
-    <ChannelName>RO: A7 TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCvXWhITuhnvUyHu4idMrgkA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AccentTVOltenia</Id>
-    <ChannelName>RO: Accent TV Oltenia</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC4qkYYfv4eOlxYIh0ZmbT7w</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ActualitateaTV</Id>
-    <ChannelName>RO: Actualitatea TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCQ7O9qFKHWCUjdo0LY5Y_bg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AcumTV</Id>
-    <ChannelName>RO: Acum TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCTg1OGmF1-1z2svesZECHYQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AgroTV</Id>
-    <ChannelName>RO: Agro TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC_YPMp71EyQgJ3sMpAcP1RA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>AlbaCarolinaTV-OkLive</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>OkLive</Provider>
@@ -53,24 +11,6 @@
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>Other</Provider>
     <Url>https://www.albacarolinatv.ro/live/</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AlbaCarolinaTV-YouTube</Id>
-    <ChannelName>RO: Alba Carolina TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCLuvOzOPZYI6dvsa2Wqn3wg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AlfaOmegaTV</Id>
-    <ChannelName>RO: Alfa &amp; Omega TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCiGwx8Yg1dOAr78_5v-zTKQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>AlphaMediaTV</Id>
-    <ChannelName>RO: Alpha Media TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCqsQTFXog6e33iBVDrcpW9g</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Antena1</Id>
@@ -85,53 +25,10 @@
     <Url>https://live.antena3.ro/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>ArcadiaTV</Id>
-    <ChannelName>RO: ArcadiaTV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCySoNg54OYL6oImf7XhJaUA</ChannelId>
-    <Title>ArcadiaTV World (Română)</Title>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ArdealTV</Id>
-    <ChannelName>RO: Ardeal TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCqJjUHtCUaz-QwuKPUkL8Nw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>B1TV</Id>
-    <ChannelName>RO: B1 TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCeqNP-Wt7YNjPyH6XhMYPxw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>BrasovTV</Id>
     <ChannelName>RO: Brașov TV</ChannelName>
     <Provider>Twitch</Provider>
     <ChannelId>brasovtv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>BucurestiTV</Id>
-    <ChannelName>RO: București TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCLidj8wzlO9SV6k0XDQ4SEg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>CampusTVBuzau</Id>
-    <ChannelName>RO: Campus TV Buzău</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCO95hBJLPXVFgfdl0Mned5Q</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>Canal33-YouTube</Id>
-    <ChannelName>RO: Canal33</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UChXVCKn5sa-e-bNXjX47lJw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>Ciresarii</Id>
-    <ChannelName>RO: Cireșarii</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCDpZjv-s2rft4FJwXs55j3g</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>CNS</Id>
@@ -146,66 +43,6 @@
     <Url>http://corneatv.ro/index.html</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>CromtelTV</Id>
-    <ChannelName>RO: Cromtel TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCdlBPCArmbMFmzhZVU8bfiA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>DobrogeaTV</Id>
-    <ChannelName>RO: Dobrogea TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCc5vhBLfkX4MSOEwjismqHw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>EmiTV</Id>
-    <ChannelName>RO: emiTV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UClee_FZlEUVtRELUjMCSHgg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ERCIS</Id>
-    <ChannelName>RO: Episcopia Romano-Catolică Iași</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCHRAvorhJibhiDFEDpKnNPQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ExclusivTV</Id>
-    <ChannelName>RO: Exclusiv TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCu4vT0Dtt2NKX8dfutIuYRQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>FRB</Id>
-    <ChannelName>RO: FRB TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCZDhK7aWMpa7SC5VufduE2Q</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>FRF</Id>
-    <ChannelName>RO: FRF TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCthNI7cE3k5nTodcga2yBZg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>Inedit TV</Id>
-    <ChannelName>RO: Inedit TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCb5oLgptGbLwArcnQFQkCeg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>InfinitTV</Id>
-    <ChannelName>RO: Infinit TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCIhtlsPqlSkTxLkKd5D-x3w</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>InfoPescar</Id>
-    <ChannelName>RO: Info Pescar</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCVxrKwK_5dgtY-_UbiET7wA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>JobTV</Id>
     <ChannelName>RO: Job TV</ChannelName>
     <Provider>Other</Provider>
@@ -216,12 +53,6 @@
     <ChannelName>RO: Linkpress TV</ChannelName>
     <Provider>Other</Provider>
     <Url>http://independentmedia.network/lptv/index.html</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>LitoralTV</Id>
-    <ChannelName>RO: Litoral TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC18hkjEsebdr-UFbwHcaOxg</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>LookPlus</Id>
@@ -236,48 +67,6 @@
     <Url>https://lookplus.ro/looksport-live/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>MaramuresTV</Id>
-    <ChannelName>RO: Maramureș TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCm7K3WBh6dO-rIWdZVZwbFw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>MariusTrifan</Id>
-    <ChannelName>RO: Televiziunea Marius Trifan</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCTrvfs2G5eAQrxjNFPpqXoA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>NCN</Id>
-    <ChannelName>RO: NCN TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCN4OWQYlgJzFq-and_if6rA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>NETv</Id>
-    <ChannelName>RO: NETv</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCVGwew-Ld4Ya4zSVzdvvtOw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>PartenerTV</Id>
-    <ChannelName>RO: Partener TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCARYheWlRLEsEEYzWEH3JYA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>PCGarage</Id>
-    <ChannelName>RO: PC Garage</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCioQHDZMMkcq4703aNrp9UQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>RomaniaTV</Id>
-    <ChannelName>RO: România TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCF5GcyFOwtMGiuNWioA9fOQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>RomanTV</Id>
     <ChannelName>RO: Roman TV</ChannelName>
     <Provider>Twitch</Provider>
@@ -290,46 +79,10 @@
     <ChannelId>salajeanultv</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>SavurosTV</Id>
-    <ChannelName>RO: Savuros TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UClhvADSV4F4xkPMxxH7GRzA</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TeleEuropaNova</Id>
-    <ChannelName>RO: TeleEuropa Nova</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UC_1E3SA2Q6KcoussBp-2YmQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TLPlus</Id>
-    <ChannelName>RO: TL Plus</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCFfbREhxM9QBAhqgHOaAbRg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>TraditionalTV-OkLive</Id>
     <ChannelName>RO: Tradițional TV</ChannelName>
     <Provider>OkLive</Provider>
     <ChannelId>1672412208740</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TrinitasTV</Id>
-    <ChannelName>RO: Trinitas TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCcqFHIDYfKsaJ5KXZjzW7ZQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TSTV</Id>
-    <ChannelName>RO: TSTV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCoYT16VfNY7OYFDsyBz_gnw</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TVArad</Id>
-    <ChannelName>RO: TV Arad</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCm5clG3M4Y6LFpnFvDKqpQA</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>TVTotal</Id>
@@ -338,27 +91,9 @@
     <ChannelId>tvtotalvaslui</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>VatraTV</Id>
-    <ChannelName>RO: Vatra TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCa6VbhuZbBvMzN967CGHxIg</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>VTVValcea</Id>
-    <ChannelName>RO: VTV Vâlcea</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCuNDa2q_N0h08_ALQ6HvmiQ</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>ZUTV</Id>
     <ChannelName>RO: ZU TV</ChannelName>
     <Provider>Other</Provider>
     <Url>https://radiozu.ro/live</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>ZUTV-YouTube</Id>
-    <ChannelName>RO: ZU TV</ChannelName>
-    <Provider>YouTube</Provider>
-    <ChannelId>UCjfj9BWUjn-VwP0skweJNXA</ChannelId>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
