@@ -9,7 +9,7 @@
   <ChannelStreamEntity>
     <Id>JurnalTV</Id>
     <ChannelName>MD: Jurnal TV</ChannelName>
-    <Provider>Other</Provider>
+    <Provider>Website</Provider>
     <Url>https://www.jurnaltv.md/page/live</Url>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>

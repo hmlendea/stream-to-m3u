@@ -19,6 +19,7 @@ namespace StreamToM3U.Service.Mapping
             serviceModel.ChannelId = dataObject.ChannelId;
             serviceModel.Title = dataObject.Title;
             serviceModel.Url = dataObject.Url;
+            serviceModel.StreamBaseUrl = dataObject.StreamBaseUrl;
 
             return serviceModel;
         }

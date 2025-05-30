@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -5,7 +7,7 @@ using StreamToM3U.Service.Models;
 
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class OtherProcessor : IProcessor
+    public sealed class WebsiteProcessr : IProcessor
     {
         static string[] PlaylistUrlPatterns =
         {
@@ -13,31 +15,21 @@ namespace StreamToM3U.Service.Processors
             "'(http[^\"']*\\.m3u[^\"']*)'"
         };
 
-        static string[] VideoUrlPatterns =
-        {
-            "\"(https://vk[^\"]*)\"",
-        };
-
         readonly IFileDownloader downloader;
 
-        public OtherProcessor(IFileDownloader downloader)
+        public WebsiteProcessr(IFileDownloader downloader)
         {
             this.downloader = downloader;
         }
 
         public async Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
-            return await CrawlPage(streamInfo.Url, 2);
+            return await CrawlPage(streamInfo);
         }
 
-        async Task<string> CrawlPage(string url, int remainingRecurrency)
+        async Task<string> CrawlPage(StreamInfo streamInfo)
         {
-            if (remainingRecurrency == 0)
-            {
-                return null;
-            }
-
-            string html = await downloader.TryDownloadStringAsync(url);
+            string html = await downloader.TryDownloadStringAsync(streamInfo.Url);
 
             if (string.IsNullOrWhiteSpace(html))
             {
@@ -54,20 +46,14 @@ namespace StreamToM3U.Service.Processors
                 }
             }
 
-            string videoUrl = null;
-            foreach (string pattern in VideoUrlPatterns)
+            if (!string.IsNullOrWhiteSpace(streamInfo.StreamBaseUrl))
             {
-                videoUrl = Regex.Match(html, pattern).Groups[1].Value;
+                string playlistUrl = Regex.Match(html, "[\"']([^\"']*\\.m3u[^\"']*)[\"']").Groups[1].Value;
 
-                if (!string.IsNullOrWhiteSpace(videoUrl))
+                if (!string.IsNullOrWhiteSpace(playlistUrl))
                 {
-                    break;
+                    return Path.Join(streamInfo.StreamBaseUrl, playlistUrl);
                 }
-            }
-
-            if (!string.IsNullOrWhiteSpace(videoUrl))
-            {
-                return await CrawlPage(videoUrl, remainingRecurrency - 1);
             }
 
             return null;

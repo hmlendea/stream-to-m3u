@@ -84,6 +84,7 @@ namespace StreamToM3U.Service
             streamInfo.ChannelId = channelStream.ChannelId;
             streamInfo.Title = channelStream.Title;
             streamInfo.Url = channelStream.Url;
+            streamInfo.StreamBaseUrl = channelStream.StreamBaseUrl;
 
             return await GetStreamUrlAsync(streamInfo);
         }
@@ -119,7 +120,7 @@ namespace StreamToM3U.Service
                     return new OkLiveProcessor(downloader);
 
                 default:
-                    return new OtherProcessor(downloader);
+                    return new WebsiteProcessr(downloader);
             }
         }
 

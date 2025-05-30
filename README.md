@@ -44,7 +44,7 @@ Each source will require a different set of arugments to indicate the desired li
 |-----------------|------------------------------|-----------|
 | --channel<br>-c | The host channel ID          | Mandatory |
 
-## Other
+## Website
 
 | Argument    | Description                                       | Optional  |
 |-------------|---------------------------------------------------|-----------|

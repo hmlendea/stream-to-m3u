@@ -11,6 +11,7 @@ namespace StreamToM3U.Configuration
         static string[] ChannelIdOptions = { "-c", "--channel" };
         static string[] TitleOptions = { "-t", "--title" };
         static string[] UrlOptions = { "-u", "--url" };
+        static string[] StreamBaseUrlOptions = { "-U", "--baseurl" };
 
         static string[] TwitchProcessorOptions = { "--twitch" };
         static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
@@ -26,6 +27,7 @@ namespace StreamToM3U.Configuration
         public string ChannelId { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
+        public string StreamBaseUrl { get; set; }
 
         public static Options FromArguments(string[] args)
         {
@@ -37,6 +39,7 @@ namespace StreamToM3U.Configuration
             options.ChannelId = GetArgumentIfExists(args, ChannelIdOptions);
             options.Title = GetArgumentIfExists(args, TitleOptions);
             options.Url = GetArgumentIfExists(args, UrlOptions);
+            options.StreamBaseUrl = GetArgumentIfExists(args, StreamBaseUrlOptions);
 
             return options;
         }
@@ -63,7 +66,7 @@ namespace StreamToM3U.Configuration
                 return StreamProvider.OkLive;
             }
 
-            return StreamProvider.Other;
+            return StreamProvider.Website;
         }
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions)
