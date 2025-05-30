@@ -12,7 +12,6 @@ namespace StreamToM3U.Configuration
         static string[] TitleOptions = { "-t", "--title" };
         static string[] UrlOptions = { "-u", "--url" };
 
-        static string[] YouTubeProcessorOptions = { "--yt", "--youtube" };
         static string[] TwitchProcessorOptions = { "--twitch" };
         static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
         static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
@@ -44,11 +43,6 @@ namespace StreamToM3U.Configuration
 
         static StreamProvider DetermineProviderFromArgs(string[] args)
         {
-            if (CliArgumentsReader.HasOption(args, YouTubeProcessorOptions))
-            {
-                return StreamProvider.YouTube;
-            }
-
             if (CliArgumentsReader.HasOption(args, TwitchProcessorOptions))
             {
                 return StreamProvider.Twitch;

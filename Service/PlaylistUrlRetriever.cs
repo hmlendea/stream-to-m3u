@@ -106,9 +106,6 @@ namespace StreamToM3U.Service
         {
             switch (provider)
             {
-                case StreamProvider.YouTube:
-                    return new YouTubeStreamProcessor(downloader);
-
                 case StreamProvider.Twitch:
                     return new TwitchProcessor();
 
