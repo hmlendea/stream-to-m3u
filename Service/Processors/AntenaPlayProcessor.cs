@@ -23,10 +23,7 @@ namespace StreamToM3U.Service.Processors
 
         readonly IWebProcessor webProcessor;
 
-        public AntenaPlayProcessor()
-        {
-            this.webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
-        }
+        public AntenaPlayProcessor() => webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
@@ -36,7 +33,7 @@ namespace StreamToM3U.Service.Processors
 
             RegisterAccount();
             webProcessor.GoToUrl(url);
-            
+
             string playlistUrl = GetStreamUrlFromPageSource();
 
             ClearResources();
@@ -73,7 +70,7 @@ namespace StreamToM3U.Service.Processors
             webProcessor.SetText(lastNameInputSelector, GenerateRandomName());
 
             webProcessor.UpdateCheckbox(tosCheckboxSelector, true);
-            
+
             webProcessor.Click(submitButtonSelector);
 
             webProcessor.WaitForElementToBeVisible(smsValidationButtonSelector);
@@ -101,17 +98,17 @@ namespace StreamToM3U.Service.Processors
             WebDriverHandler.ReleaseLock();
         }
 
-        string GenerateRandomEmail()
+        static string GenerateRandomEmail()
             => GenerateRandomString() + "@gmail.com";
 
-        string GenerateRandomName()
+        static string GenerateRandomName()
             => GenerateRandomString().ToSentanceCase();
 
-        string GenerateRandomString()
+        static string GenerateRandomString()
         {
             const int length = 10;
             const string chars = "abcdefghijklmnopqrstuvwxyz";
-            
+
             string result = string.Empty;
 
             for (int i = 0; i < length; i++)
