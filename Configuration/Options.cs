@@ -66,7 +66,7 @@ namespace StreamToM3U.Configuration
                 return StreamProvider.OkLive;
             }
 
-            return StreamProvider.Other;
+            return StreamProvider.Website;
         }
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions)

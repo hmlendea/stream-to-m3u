@@ -120,7 +120,7 @@ namespace StreamToM3U.Service
                     return new OkLiveProcessor(downloader);
 
                 default:
-                    return new OtherProcessor(downloader);
+                    return new WebsiteProcessr(downloader);
             }
         }
 

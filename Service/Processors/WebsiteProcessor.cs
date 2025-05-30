@@ -7,7 +7,7 @@ using StreamToM3U.Service.Models;
 
 namespace StreamToM3U.Service.Processors
 {
-    public sealed class OtherProcessor : IProcessor
+    public sealed class WebsiteProcessr : IProcessor
     {
         static string[] PlaylistUrlPatterns =
         {
@@ -17,7 +17,7 @@ namespace StreamToM3U.Service.Processors
 
         readonly IFileDownloader downloader;
 
-        public OtherProcessor(IFileDownloader downloader)
+        public WebsiteProcessr(IFileDownloader downloader)
         {
             this.downloader = downloader;
         }
