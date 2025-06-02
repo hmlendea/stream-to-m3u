@@ -13,7 +13,6 @@ namespace StreamToM3U.Configuration
         static readonly string[] UrlOptions = ["-u", "--url"];
         static readonly string[] StreamBaseUrlOptions = ["-U", "--baseurl"];
 
-        static readonly string[] TwitchProcessorOptions = ["--twitch"];
         static readonly string[] TvSportHdProcessorOptions = ["--tvs", "--tvsport", "--tvshd", "--tvsporthd"];
         static readonly string[] AntenaPlayProccessorOptions = ["--antena-play", "--antenaplay", "--antena", "--aplay", "--ap"];
         static readonly string[] OkLiveProcessorOptions = ["--ok", "--oklive"];
@@ -44,11 +43,6 @@ namespace StreamToM3U.Configuration
 
         static StreamProvider DetermineProviderFromArgs(string[] args)
         {
-            if (CliArgumentsReader.HasOption(args, TwitchProcessorOptions))
-            {
-                return StreamProvider.Twitch;
-            }
-
             if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
             {
                 return StreamProvider.TvSportHd;
