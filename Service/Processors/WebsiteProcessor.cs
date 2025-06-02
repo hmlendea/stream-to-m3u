@@ -61,7 +61,7 @@ namespace StreamToM3U.Service.Processors
                 }
             }
 
-            return null;
+            return string.Empty;
         }
     }
 }
