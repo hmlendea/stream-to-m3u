@@ -18,39 +18,43 @@ namespace StreamToM3U.Service
         public async Task<string> GetStreamUrlAsync(StreamInfo streamInfo)
         {
             string url = await FindStreamUrl(streamInfo);
-            string content = await downloader.TryDownloadStringAsync(url);
 
-            List<string> contentLines = [];
-
-            if (!string.IsNullOrWhiteSpace(content))
+            if (!streamInfo.Provider.Equals(StreamProvider.Streamlink) && !url.Contains("googlevideo"))
             {
-                contentLines = content
-                    .Replace("\r", "")
-                    .Split("\n")
-                    .ToList();
-            }
+                string content = await downloader.TryDownloadStringAsync(url);
 
-            if (!contentLines.Any() || !contentLines.First().StartsWith("#EXTM3U"))
-            {
-                return null;
-            }
+                List<string> contentLines = [];
 
-            List<string> httpSources = contentLines
-                .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith("#"))
-                .Select(x=> ProcessStreamUrl(url, x))
-                .ToList();
-
-            if (httpSources.Any())
-            {
-                if (httpSources.Count == 1)
+                if (!string.IsNullOrWhiteSpace(content))
                 {
-                    url = httpSources.First();
+                    contentLines = content
+                        .Replace("\r", "")
+                        .Split("\n")
+                        .ToList();
                 }
-                else if (
-                    httpSources.Last().EndsWith("m3u") ||
-                    httpSources.Last().EndsWith("m3u8"))
+
+                if (!contentLines.Any() || !contentLines.First().StartsWith("#EXTM3U"))
                 {
-                    url = httpSources.Last();
+                    return null;
+                }
+
+                List<string> httpSources = contentLines
+                    .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith("#"))
+                    .Select(x=> ProcessStreamUrl(url, x))
+                    .ToList();
+
+                if (httpSources.Any())
+                {
+                    if (httpSources.Count == 1)
+                    {
+                        url = httpSources.First();
+                    }
+                    else if (
+                        httpSources.Last().EndsWith("m3u") ||
+                        httpSources.Last().EndsWith("m3u8"))
+                    {
+                        url = httpSources.Last();
+                    }
                 }
             }
 
