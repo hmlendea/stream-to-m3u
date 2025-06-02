@@ -24,9 +24,9 @@ namespace StreamToM3U.Service.Processors
 
             await process.WaitForExitAsync();
 
-            if (!result.StartsWith("http"))
+            if (string.IsNullOrWhiteSpace(result) || !result.StartsWith("http"))
             {
-                throw new InvalidOperationException(result);
+                return string.Empty;
             }
 
             return result
