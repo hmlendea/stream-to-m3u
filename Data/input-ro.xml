@@ -19,6 +19,12 @@
     <Url>https://live.antena3.ro/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>ArdealTV-YouTube</Id>
+    <ChannelName>RO: Ardeal TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://kick.com/ardealtv</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>B1TV</Id>
     <ChannelName>RO: B1 TV</ChannelName>
     <Provider>Website</Provider>
