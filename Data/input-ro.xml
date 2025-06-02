@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
-    <Id>AlbaCarolinaTV-Website</Id>
+    <Id>AlbaCarolinaTV-Twitch</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>Website</Provider>
-    <Url>https://www.albacarolinatv.ro/live/</Url>
+    <Url>https://twitch.tv/albacarolinatv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Antena1</Id>
