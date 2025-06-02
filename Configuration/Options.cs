@@ -4,18 +4,18 @@ namespace StreamToM3U.Configuration
 {
     public sealed class Options
     {
-        static string[] InputFileOptions = { "-i", "--input" };
-        static string[] OutputFileOptions = { "-o", "--output-file" };
-        static string[] OutputDirectoryOptions = { "-O", "--output-dir", "--output-directory" };
+        static readonly string[] InputFileOptions = ["-i", "--input"];
+        static readonly string[] OutputFileOptions = ["-o", "--output-file"];
+        static readonly string[] OutputDirectoryOptions = ["-O", "--output-dir", "--output-directory"];
 
-        static string[] ChannelIdOptions = { "-c", "--channel" };
-        static string[] TitleOptions = { "-t", "--title" };
-        static string[] UrlOptions = { "-u", "--url" };
+        static readonly string[] ChannelIdOptions = ["-c", "--channel"];
+        static readonly string[] TitleOptions = ["-t", "--title"];
+        static readonly string[] UrlOptions = ["-u", "--url"];
+        static readonly string[] StreamBaseUrlOptions = ["-U", "--baseurl"];
 
-        static string[] TwitchProcessorOptions = { "--twitch" };
-        static string[] TvSportHdProcessorOptions = { "--tvs", "--tvsport", "--tvshd", "--tvsporthd" };
-        static string[] AntenaPlayProccessorOptions = { "--antena-play", "--antenaplay", "--antena", "--aplay", "--ap" };
-        static string[] OkLiveProcessorOptions = { "--ok", "--oklive" };
+        static readonly string[] TvSportHdProcessorOptions = ["--tvs", "--tvsport", "--tvshd", "--tvsporthd"];
+        static readonly string[] AntenaPlayProccessorOptions = ["--antena-play", "--antenaplay", "--antena", "--aplay", "--ap"];
+        static readonly string[] StreamlinkProcessorOptions = ["--sl", "--streamlink"];
 
         public StreamProvider Provider { get; set; }
 
@@ -26,28 +26,22 @@ namespace StreamToM3U.Configuration
         public string ChannelId { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
+        public string StreamBaseUrl { get; set; }
 
-        public static Options FromArguments(string[] args)
+        public static Options FromArguments(string[] args) => new()
         {
-            Options options = new Options();
-            options.Provider = DetermineProviderFromArgs(args);
-            options.InputFile = GetArgumentIfExists(args, InputFileOptions);
-            options.OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u");
-            options.OutputDirectory = GetArgumentIfExists(args, OutputDirectoryOptions);
-            options.ChannelId = GetArgumentIfExists(args, ChannelIdOptions);
-            options.Title = GetArgumentIfExists(args, TitleOptions);
-            options.Url = GetArgumentIfExists(args, UrlOptions);
-
-            return options;
-        }
+            Provider = DetermineProviderFromArgs(args),
+            InputFile = GetArgumentIfExists(args, InputFileOptions),
+            OutputFile = GetArgumentIfExists(args, OutputFileOptions, "playlist.m3u"),
+            OutputDirectory = GetArgumentIfExists(args, OutputDirectoryOptions),
+            ChannelId = GetArgumentIfExists(args, ChannelIdOptions),
+            Title = GetArgumentIfExists(args, TitleOptions),
+            Url = GetArgumentIfExists(args, UrlOptions),
+            StreamBaseUrl = GetArgumentIfExists(args, StreamBaseUrlOptions)
+        };
 
         static StreamProvider DetermineProviderFromArgs(string[] args)
         {
-            if (CliArgumentsReader.HasOption(args, TwitchProcessorOptions))
-            {
-                return StreamProvider.Twitch;
-            }
-
             if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
             {
                 return StreamProvider.TvSportHd;
@@ -58,25 +52,20 @@ namespace StreamToM3U.Configuration
                 return StreamProvider.AntenaPlay;
             }
 
-            if (CliArgumentsReader.HasOption(args, OkLiveProcessorOptions))
+            if (CliArgumentsReader.HasOption(args, StreamlinkProcessorOptions))
             {
-                return StreamProvider.OkLive;
+                return StreamProvider.Streamlink;
             }
 
-            return StreamProvider.Other;
+            return StreamProvider.Website;
         }
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions)
             => GetArgumentIfExists(args, argumentOptions, null);
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions, string fallbackValue)
-        {
-            if (CliArgumentsReader.HasOption(args, argumentOptions))
-            {
-                return CliArgumentsReader.GetOptionValue(args, argumentOptions);
-            }
-
-            return fallbackValue;
-        }
+            => CliArgumentsReader.HasOption(args, argumentOptions)
+                ? CliArgumentsReader.GetOptionValue(args, argumentOptions)
+                : fallbackValue;
     }
 }

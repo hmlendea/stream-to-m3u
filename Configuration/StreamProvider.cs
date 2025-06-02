@@ -2,10 +2,9 @@ namespace StreamToM3U.Configuration
 {
     public enum StreamProvider
     {
-        Other,
-        Twitch,
+        Website,
         TvSportHd,
         AntenaPlay,
-        OkLive
+        Streamlink
     }
 }

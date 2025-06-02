@@ -44,7 +44,7 @@ namespace StreamToM3U
                 .AddSingleton<IPlaylistFileGenerator, PlaylistFileGenerator>()
                 .AddSingleton<ILogger, NuciLogger>()
                 .BuildServiceProvider();
-            
+
             ILogger logger = serviceProvider.GetService<ILogger>();
             logger.Info(Operation.StartUp, OperationStatus.Success);
 
@@ -79,35 +79,35 @@ namespace StreamToM3U
             }
             else
             {
-                GetPlaylistForInputFile(options);
+                GetPlaylistForInputFile();
             }
         }
 
         static void GetPlaylistForStream(Options options)
         {
-            StreamInfo streamInfo = new StreamInfo();
-            streamInfo.Provider = options.Provider;
-            streamInfo.ChannelId = options.ChannelId;
-            streamInfo.Title = options.Title;
-            streamInfo.Url = options.Url;
+            StreamInfo streamInfo = new()
+            {
+                Provider = options.Provider,
+                ChannelId = options.ChannelId,
+                Title = options.Title,
+                Url = options.Url,
+                StreamBaseUrl = options.StreamBaseUrl
+            };
 
             IPlaylistUrlRetriever urlRetriever = serviceProvider.GetService<IPlaylistUrlRetriever>();
             string playlistUrl = urlRetriever.GetStreamUrlAsync(streamInfo).Result;
-            
+
             Console.WriteLine(playlistUrl);
         }
 
-        static void GetPlaylistForInputFile(Options options)
-        {
-            IPlaylistFileGenerator fileGenerator = serviceProvider.GetService<IPlaylistFileGenerator>();
-            fileGenerator.GeneratePlaylist();
-        }
-        
+        static void GetPlaylistForInputFile()
+            => serviceProvider
+                .GetService<IPlaylistFileGenerator>()
+                .GeneratePlaylist();
+
         static IConfiguration LoadConfiguration()
-        {
-            return new ConfigurationBuilder()
+            => new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-        }
     }
 }

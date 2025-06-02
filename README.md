@@ -18,19 +18,13 @@ The following arguments are used to indicate the source of the stream
 
 | Argument                                                     | Description                     |
 |--------------------------------------------------------------|---------------------------------|
-| --twitch                                                     | Sets the source to Twitch       |
 | --tvsporthd<br>--tvsport<br>--tvshd<br>--tvs                 | Sets the source to TV Sport HD  |
 | --antena-play<br>--antenaplay<br>--antena<br>--aplay<br>--ap | Sets the source to Antena Play  |
+| --streamlink<br>--sl                                         | Sets the source to Streamlink   |
 
 If no source argument is provided, a generic solution will be attempted
 
 Each source will require a different set of arugments to indicate the desired live stream, as follows
-
-## Twitch
-
-| Argument        | Description                  | Optional  |
-|-----------------|------------------------------|-----------|
-| --channel<br>-c | The host channel ID          | Mandatory |
 
 ## TV Sport HD
 
@@ -38,13 +32,19 @@ Each source will require a different set of arugments to indicate the desired li
 |-----------------|------------------------------|-----------|
 | --channel<br>-c | The host channel ID          | Mandatory |
 
+## Streamlink
+
+| Argument    | Description                                       | Optional  |
+|-------------|---------------------------------------------------|-----------|
+| --url<br>-u | The URL of the page that contains the live stream | Mandatory |
+
 ## Antena Play
 
 | Argument        | Description                  | Optional  |
 |-----------------|------------------------------|-----------|
 | --channel<br>-c | The host channel ID          | Mandatory |
 
-## Other
+## Website
 
 | Argument    | Description                                       | Optional  |
 |-------------|---------------------------------------------------|-----------|
