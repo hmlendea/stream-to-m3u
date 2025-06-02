@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+using System.Web;
 using StreamToM3U.Service.Models;
 
 namespace StreamToM3U.Service.Processors
@@ -32,7 +32,8 @@ namespace StreamToM3U.Service.Processors
 
             return result
                 .Trim()
-                .Replace(Environment.NewLine, string.Empty);
+                .Replace(Environment.NewLine, string.Empty)
+                .Replace(",", "%2c");
         }
     }
 }
