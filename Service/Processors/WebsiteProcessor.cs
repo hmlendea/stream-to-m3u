@@ -18,8 +18,19 @@ namespace StreamToM3U.Service.Processors
         readonly IFileDownloader downloader = downloader;
 
         public async Task<string> GetUrlAsync(StreamInfo streamInfo)
-            => (await CrawlStreamSource(streamInfo))
+        {
+            string url = await CrawlStreamSource(streamInfo);
+
+            if (url is null)
+            {
+                return null;
+            }
+
+            return url
+                .Trim()
+                .Replace(Environment.NewLine, string.Empty)
                 .Replace("&amp;", "&");
+        }
 
         async Task<string> CrawlStreamSource(StreamInfo streamInfo)
         {
