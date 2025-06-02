@@ -3,7 +3,7 @@
   <ChannelStreamEntity>
     <Id>AlbaCarolinaTV-Twitch</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
-    <Provider>Website</Provider>
+    <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/albacarolinatv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
