@@ -38,6 +38,12 @@ Each source will require a different set of arugments to indicate the desired li
 |-----------------|------------------------------|-----------|
 | --channel<br>-c | The host channel ID          | Mandatory |
 
+## Streamlink
+
+| Argument    | Description                                       | Optional  |
+|-------------|---------------------------------------------------|-----------|
+| --url<br>-u | The URL of the page that contains the live stream | Mandatory |
+
 ## Antena Play
 
 | Argument        | Description                  | Optional  |
