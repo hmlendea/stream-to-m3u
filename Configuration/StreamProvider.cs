@@ -6,6 +6,7 @@ namespace StreamToM3U.Configuration
         Twitch,
         TvSportHd,
         AntenaPlay,
-        OkLive
+        OkLive,
+        Streamlink
     }
 }

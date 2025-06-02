@@ -36,8 +36,7 @@ namespace StreamToM3U.Service
                 .ToServiceModels();
 
             List<Task> tasks = [];
-            ConcurrentDictionary<string, List<string>> foundChannelUrls =
-                new();
+            ConcurrentDictionary<string, List<string>> foundChannelUrls = new();
 
             Parallel.ForEach(channelStreams, channelStream =>
             {
