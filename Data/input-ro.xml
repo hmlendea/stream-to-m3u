@@ -39,34 +39,10 @@
     <Url>https://twitch.tv/cnstv1994</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>CorneaTV</Id>
-    <ChannelName>RO: Cornea TV</ChannelName>
-    <Provider>Website</Provider>
-    <Url>http://corneatv.ro/index.html</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>JobTV</Id>
     <ChannelName>RO: Job TV</ChannelName>
     <Provider>Website</Provider>
     <Url>http://jobtv.ro/index.html#/live</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>LinkpressTV</Id>
-    <ChannelName>RO: Linkpress TV</ChannelName>
-    <Provider>Website</Provider>
-    <Url>http://independentmedia.network/lptv/index.html</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>LookPlus</Id>
-    <ChannelName>RO: Look Plus</ChannelName>
-    <Provider>Website</Provider>
-    <Url>https://lookplus.ro/lookplus-live/</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>LookSport</Id>
-    <ChannelName>RO: Look Sport</ChannelName>
-    <Provider>Website</Provider>
-    <Url>https://lookplus.ro/looksport-live/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>RomanTV</Id>
