@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
-    <Id>AlbaCarolinaTV-OkLive</Id>
-    <ChannelName>RO: Alba Carolina TV</ChannelName>
-    <Provider>OkLive</Provider>
-    <ChannelId>1187725319915</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>AlbaCarolinaTV-Website</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>Website</Provider>
@@ -77,12 +71,6 @@
     <ChannelName>RO: Sălăjeanul TV</ChannelName>
     <Provider>Twitch</Provider>
     <ChannelId>salajeanultv</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
-    <Id>TraditionalTV-OkLive</Id>
-    <ChannelName>RO: Tradițional TV</ChannelName>
-    <Provider>OkLive</Provider>
-    <ChannelId>1672412208740</ChannelId>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>TVTotal</Id>

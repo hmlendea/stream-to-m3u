@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
-    <Id>PublikaTV</Id>
-    <ChannelName>MD: Publika TV</ChannelName>
-    <Provider>OkLive</Provider>
-    <ChannelId>367075001</ChannelId>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>JurnalTV</Id>
     <ChannelName>MD: Jurnal TV</ChannelName>
     <Provider>Website</Provider>
