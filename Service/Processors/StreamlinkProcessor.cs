@@ -21,11 +21,16 @@ namespace StreamToM3U.Service.Processors
 
             using var process = Process.Start(psi);
 
-            string m3uUrl = await process.StandardOutput.ReadToEndAsync();
+            string result = await process.StandardOutput.ReadToEndAsync();
 
             await process.WaitForExitAsync();
 
-            return m3uUrl
+            if (!result.StartsWith("http"))
+            {
+                throw new InvalidOperationException(result);
+            }
+
+            return result
                 .Trim()
                 .Replace(Environment.NewLine, string.Empty);
         }
