@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,9 +17,11 @@ namespace StreamToM3U.Service.Processors
 
         readonly IFileDownloader downloader = downloader;
 
-        public async Task<string> GetUrlAsync(StreamInfo streamInfo) => await CrawlPage(streamInfo);
+        public async Task<string> GetUrlAsync(StreamInfo streamInfo)
+            => (await CrawlStreamSource(streamInfo))
+                .Replace("&amp;", "&");
 
-        async Task<string> CrawlPage(StreamInfo streamInfo)
+        async Task<string> CrawlStreamSource(StreamInfo streamInfo)
         {
             string html = await downloader.TryDownloadStringAsync(streamInfo.Url);
 
