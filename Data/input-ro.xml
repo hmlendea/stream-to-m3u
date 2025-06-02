@@ -63,6 +63,12 @@
     <Url>https://youtube.com/@FRFTVofficial/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>MeteoTV-YouTube</Id>
+    <ChannelName>RO: Meteo TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@meteotv./live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>RomaniaTV-YouTube</Id>
     <ChannelName>RO: România TV</ChannelName>
     <Provider>Streamlink</Provider>
@@ -93,10 +99,22 @@
     <Url>https://youtube.com/@TRINITASTVoficial/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>TuDecizi-YouTube</Id>
+    <ChannelName>RO: Tu Decizi</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@TuDecizi-s3g/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>TVTotal-Twitch</Id>
     <ChannelName>RO: TV Total</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/tvtotalvaslui</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>ZTV-YouTube</Id>
+    <ChannelName>RO: ZU TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@ztvro/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZUTV</Id>
