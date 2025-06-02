@@ -13,13 +13,19 @@
     <Url>https://twitch.tv/albacarolinatv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Antena3</Id>
+    <Id>Antena3-Website</Id>
     <ChannelName>RO: Antena 3</ChannelName>
     <Provider>Website</Provider>
     <Url>https://live.antena3.ro/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>B1TV</Id>
+    <Id>ArdealTV-Kick</Id>
+    <ChannelName>RO: Ardeal TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://kick.com/ardealtv</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>B1TV-Website</Id>
     <ChannelName>RO: B1 TV</ChannelName>
     <Provider>Website</Provider>
     <ChannelId>b1tv</ChannelId>
@@ -27,7 +33,7 @@
     <StreamBaseUrl>https://kithnos.cdn.dejacast.com/live</StreamBaseUrl>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>BrasovTV</Id>
+    <Id>BrasovTV-Twitch</Id>
     <ChannelName>RO: Brașov TV</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/brasovtv</Url>
@@ -39,7 +45,7 @@
     <Url>https://youtube.com/@Canal33Romania/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>CNS</Id>
+    <Id>CNS-Twitch</Id>
     <ChannelName>RO: CNS TV</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/cnstv1994</Url>
@@ -81,7 +87,7 @@
     <Url>https://twitch.tv/romantv__</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>SalajeanulTV</Id>
+    <Id>SalajeanulTV-Twitch</Id>
     <ChannelName>RO: Sălăjeanul TV</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/salajeanultv</Url>
@@ -117,7 +123,7 @@
     <Url>https://youtube.com/@ztvro/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>ZUTV</Id>
+    <Id>ZUTV-Website</Id>
     <ChannelName>RO: ZU TV</ChannelName>
     <Provider>Website</Provider>
     <Url>https://radiozu.ro/live</Url>
