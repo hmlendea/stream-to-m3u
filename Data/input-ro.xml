@@ -87,6 +87,12 @@
     <Url>https://twitch.tv/romantv__</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>RTVGalatiBraila-YouTube</Id>
+    <ChannelName>RO: RTV Galați-Brăila</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@RTVGl-Br/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>SalajeanulTV-Twitch</Id>
     <ChannelName>RO: Sălăjeanul TV</ChannelName>
     <Provider>Streamlink</Provider>
