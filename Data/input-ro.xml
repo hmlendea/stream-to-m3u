@@ -45,12 +45,6 @@
     <Url>https://twitch.tv/cnstv1994</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>JobTV</Id>
-    <ChannelName>RO: Job TV</ChannelName>
-    <Provider>Website</Provider>
-    <Url>http://jobtv.ro/index.html#/live</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>RomanTV</Id>
     <ChannelName>RO: Roman TV</ChannelName>
     <Provider>Streamlink</Provider>
