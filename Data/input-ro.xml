@@ -35,14 +35,14 @@
   <ChannelStreamEntity>
     <Id>BrasovTV</Id>
     <ChannelName>RO: Brașov TV</ChannelName>
-    <Provider>Twitch</Provider>
-    <ChannelId>brasovtv</ChannelId>
+    <Provider>Streamlink</Provider>
+    <Url>https://twitch.tv/brasovtv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>CNS</Id>
     <ChannelName>RO: CNS TV</ChannelName>
-    <Provider>Twitch</Provider>
-    <ChannelId>cnstv1994</ChannelId>
+    <Provider>Streamlink</Provider>
+    <Url>https://twitch.tv/cnstv1994</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>CorneaTV</Id>
@@ -83,14 +83,14 @@
   <ChannelStreamEntity>
     <Id>RomanTV</Id>
     <ChannelName>RO: Roman TV</ChannelName>
-    <Provider>Twitch</Provider>
-    <ChannelId>romantv__</ChannelId>
+    <Provider>Streamlink</Provider>
+    <Url>https://twitch.tv/romantv__</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>SalajeanulTV</Id>
     <ChannelName>RO: Sălăjeanul TV</ChannelName>
-    <Provider>Twitch</Provider>
-    <ChannelId>salajeanultv</ChannelId>
+    <Provider>Streamlink</Provider>
+    <Url>https://twitch.tv/salajeanultv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>TraditionalTV-OkLive</Id>
@@ -101,8 +101,8 @@
   <ChannelStreamEntity>
     <Id>TVTotal</Id>
     <ChannelName>RO: TV Total</ChannelName>
-    <Provider>Twitch</Provider>
-    <ChannelId>tvtotalvaslui</ChannelId>
+    <Provider>Streamlink</Provider>
+    <Url>https://twitch.tv/tvtotalvaslui</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZUTV</Id>
