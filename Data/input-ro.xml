@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
+    <Id>A7TV-YouTube</Id>
+    <ChannelName>RO: A7 TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@a7tvlive/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>AlbaCarolinaTV-Twitch</Id>
     <ChannelName>RO: Alba Carolina TV</ChannelName>
     <Provider>Streamlink</Provider>
@@ -25,6 +31,12 @@
     <ChannelName>RO: Brașov TV</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/brasovtv</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Canal33-YouTube</Id>
+    <ChannelName>RO: canal 33</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@Canal33Romania/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>CNS</Id>
