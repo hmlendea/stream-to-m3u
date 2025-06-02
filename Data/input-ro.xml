@@ -34,7 +34,7 @@
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>Canal33-YouTube</Id>
-    <ChannelName>RO: canal 33</ChannelName>
+    <ChannelName>RO: Canal 33</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://youtube.com/@Canal33Romania/live</Url>
   </ChannelStreamEntity>
@@ -45,7 +45,31 @@
     <Url>https://twitch.tv/cnstv1994</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>RomanTV</Id>
+    <Id>Euronews-YouTube</Id>
+    <ChannelName>RO: Euronews</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@euronewsro/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>FRB-YouTube</Id>
+    <ChannelName>RO: FRB TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@romania.basketball/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>FRF-YouTube</Id>
+    <ChannelName>RO: FRF TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@FRFTVofficial/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomaniaTV-YouTube</Id>
+    <ChannelName>RO: România TV</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@RomaniaTVOFICIAL/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>RomanTV-Twitch</Id>
     <ChannelName>RO: Roman TV</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/romantv__</Url>
@@ -57,7 +81,19 @@
     <Url>https://twitch.tv/salajeanultv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>TVTotal</Id>
+    <Id>TLPlus-YouTube</Id>
+    <ChannelName>RO: TL Plus</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@plustvmaramures4367/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>Trinitas-YouTube</Id>
+    <ChannelName>RO: Trinitas</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@TRINITASTVoficial/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TVTotal-Twitch</Id>
     <ChannelName>RO: TV Total</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://twitch.tv/tvtotalvaslui</Url>
