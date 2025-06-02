@@ -102,7 +102,6 @@ namespace StreamToM3U.Service
 
         IProcessor CreateProcessor(StreamProvider provider) => provider switch
         {
-            StreamProvider.Twitch => new TwitchProcessor(),
             StreamProvider.TvSportHd => new TvSportHdProcessor(),
             StreamProvider.AntenaPlay => new AntenaPlayProcessor(),
             StreamProvider.OkLive => new OkLiveProcessor(downloader),
