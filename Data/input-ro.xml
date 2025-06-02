@@ -45,12 +45,6 @@
     <Url>http://corneatv.ro/index.html</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>EtnoTV</Id>
-    <ChannelName>RO: Etno TV</ChannelName>
-    <Provider>Other</Provider>
-    <Url>https://etno.ro</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>JobTV</Id>
     <ChannelName>RO: Job TV</ChannelName>
     <Provider>Website</Provider>
