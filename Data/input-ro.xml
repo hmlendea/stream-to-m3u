@@ -21,7 +21,7 @@
   <ChannelStreamEntity>
     <Id>B1TV</Id>
     <ChannelName>RO: B1 TV</ChannelName>
-    <Provider>Other</Provider>
+    <Provider>Website</Provider>
     <ChannelId>b1tv</ChannelId>
     <Url>https://www.b1tv.ro/wp-json/strawberry/v1/live?v=1</Url>
     <StreamBaseUrl>https://kithnos.cdn.dejacast.com/live</StreamBaseUrl>
