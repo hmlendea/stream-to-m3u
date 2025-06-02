@@ -5,7 +5,6 @@ namespace StreamToM3U.Configuration
         Website,
         TvSportHd,
         AntenaPlay,
-        OkLive,
         Streamlink
     }
 }

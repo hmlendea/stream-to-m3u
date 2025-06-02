@@ -104,7 +104,6 @@ namespace StreamToM3U.Service
         {
             StreamProvider.TvSportHd => new TvSportHdProcessor(),
             StreamProvider.AntenaPlay => new AntenaPlayProcessor(),
-            StreamProvider.OkLive => new OkLiveProcessor(downloader),
             StreamProvider.Streamlink => new StreamlinkProcessor(),
             _ => new WebsiteProcessr(downloader),
         };
