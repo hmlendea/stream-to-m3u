@@ -7,12 +7,6 @@
     <Url>https://twitch.tv/albacarolinatv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
-    <Id>Antena1</Id>
-    <ChannelName>RO: Antena 1</ChannelName>
-    <Provider>Website</Provider>
-    <Url>https://sportbar.biz/antena1.html</Url>
-  </ChannelStreamEntity>
-  <ChannelStreamEntity>
     <Id>Antena3</Id>
     <ChannelName>RO: Antena 3</ChannelName>
     <Provider>Website</Provider>
