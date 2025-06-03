@@ -69,6 +69,12 @@
     <Url>https://youtube.com/@FRFTVofficial/live</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>MeteoRomaniaBucurestiWebcam-YouTube</Id>
+    <ChannelName>RO: Meteo România București Webcam</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@Chatlive/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>MeteoTV-YouTube</Id>
     <ChannelName>RO: Meteo TV</ChannelName>
     <Provider>Streamlink</Provider>
