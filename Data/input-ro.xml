@@ -124,7 +124,7 @@
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZTV-YouTube</Id>
-    <ChannelName>RO: ZU TV</ChannelName>
+    <ChannelName>RO: Z-TV</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://youtube.com/@z-tv./live</Url>
   </ChannelStreamEntity>
