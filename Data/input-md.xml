@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ChannelStreamEntity>
-    <Id>JurnalTV</Id>
+    <Id>JurnalTV-Website</Id>
     <ChannelName>MD: Jurnal TV</ChannelName>
     <Provider>Website</Provider>
     <Url>https://www.jurnaltv.md/page/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TV6Moldova-YouTube</Id>
+    <ChannelName>MD: TV6 Moldova</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@tv6md/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
+    <Id>TV8-YouTube</Id>
+    <ChannelName>MD: TV6 Moldova</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@TV8Moldova/live</Url>
   </ChannelStreamEntity>
 </ArrayOfChannelStreamEntity>
