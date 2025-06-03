@@ -19,6 +19,12 @@
     <Url>https://live.antena3.ro/</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>Antena3-YouTube</Id>
+    <ChannelName>RO: Antena 3</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@Antena3CNN/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>ArdealTV-Kick</Id>
     <ChannelName>RO: Ardeal TV</ChannelName>
     <Provider>Streamlink</Provider>
