@@ -39,6 +39,12 @@
     <Url>https://twitch.tv/brasovtv</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
+    <Id>BTOK-YouTube</Id>
+    <ChannelName>RO: BTOK</ChannelName>
+    <Provider>Streamlink</Provider>
+    <Url>https://youtube.com/@BTOKNEWS/live</Url>
+  </ChannelStreamEntity>
+  <ChannelStreamEntity>
     <Id>Canal33-YouTube</Id>
     <ChannelName>RO: Canal 33</ChannelName>
     <Provider>Streamlink</Provider>
