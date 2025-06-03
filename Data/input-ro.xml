@@ -138,7 +138,7 @@
     <Id>TVTotal-Twitch</Id>
     <ChannelName>RO: TV Total</ChannelName>
     <Provider>Streamlink</Provider>
-    <Url>https://twitch.tv/tvtotalvaslui</Url>
+    <Url>https://twitch.tv/tvtotal</Url>
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>ZTV-YouTube</Id>
