@@ -102,7 +102,7 @@ namespace StreamToM3U.Service.Processors
             => GenerateRandomString() + "@gmail.com";
 
         static string GenerateRandomName()
-            => GenerateRandomString().ToSentanceCase();
+            => GenerateRandomString().ToSentenceCase();
 
         static string GenerateRandomString()
         {
