@@ -14,7 +14,7 @@
   </ChannelStreamEntity>
   <ChannelStreamEntity>
     <Id>TV8-YouTube</Id>
-    <ChannelName>MD: TV6 Moldova</ChannelName>
+    <ChannelName>MD: TV8</ChannelName>
     <Provider>Streamlink</Provider>
     <Url>https://youtube.com/@TV8Moldova/live</Url>
   </ChannelStreamEntity>
