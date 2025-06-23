@@ -18,12 +18,12 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
-    <PackageReference Include="NuciCLI" Version="1.4.2" />
+    <PackageReference Include="NuciCLI" Version="2.0.1" />
     <PackageReference Include="NuciDAL" Version="2.2.1" />
-    <PackageReference Include="NuciExtensions" Version="5.0.0" />
+    <PackageReference Include="NuciExtensions" Version="5.1.0" />
     <PackageReference Include="NuciLog" Version="1.1.1" />
     <PackageReference Include="NuciLog.Core" Version="2.4.0" />
-    <PackageReference Include="NuciWeb" Version="2.2.4" />
+    <PackageReference Include="NuciWeb" Version="3.1.0" />
     <PackageReference Include="Selenium.Support" Version="4.33.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.33.0" />
   </ItemGroup>
