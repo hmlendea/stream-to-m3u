@@ -1,61 +1,156 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html) [![Build Status](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml)
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html)
+[![Latest Release](https://img.shields.io/github/v/release/hmlendea/stream-to-m3u)](https://github.com/hmlendea/stream-to-m3u/releases/latest)
+[![Build Status](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
 
-# About
+# StreamToM3U
 
-Tool for retrieving the M3U playlist URL for a given live stream
+StreamToM3U is a .NET console tool that resolves live stream URLs and generates playlists in M3U format.
 
-# Usage
+It supports:
+- one-off URL resolution for a single stream
+- batch playlist generation from an XML input file
+- multiple providers: website parsing, Streamlink, TVSportHD, and AntenaPlay
 
-The tool is used as just another console application.
+## How It Works
 
-Open a terminal and run the `SteamToM3U` executable, making sure that all the desired arguments are supplied.
+The app has two operating modes:
 
-# Configuration
+1. Single stream mode (no input file)
+Returns one playable URL to stdout.
 
-The settings are supplied via CLI arguments
+2. Batch mode (input file provided)
+Reads channels from XML, resolves each stream URL, and generates playlist files.
 
-The following arguments are used to indicate the source of the stream
+## Requirements
 
-| Argument                                                     | Description                     |
-|--------------------------------------------------------------|---------------------------------|
-| --tvsporthd<br>--tvsport<br>--tvshd<br>--tvs                 | Sets the source to TV Sport HD  |
-| --antena-play<br>--antenaplay<br>--antena<br>--aplay<br>--ap | Sets the source to Antena Play  |
-| --streamlink<br>--sl                                         | Sets the source to Streamlink   |
+- .NET SDK (`net10.0` or newer)
+- Internet access
+- For Streamlink provider: streamlink installed and available in PATH
+- For TVSportHD and AntenaPlay providers: Chrome/Chromium available for headless Selenium sessions
 
-If no source argument is provided, a generic solution will be attempted
+## Quick Start
 
-Each source will require a different set of arugments to indicate the desired live stream, as follows
+Build:
 
-## TV Sport HD
-
-| Argument        | Description                  | Optional  |
-|-----------------|------------------------------|-----------|
-| --channel<br>-c | The host channel ID          | Mandatory |
-
-## Streamlink
-
-| Argument    | Description                                       | Optional  |
-|-------------|---------------------------------------------------|-----------|
-| --url<br>-u | The URL of the page that contains the live stream | Mandatory |
-
-## Antena Play
-
-| Argument        | Description                  | Optional  |
-|-----------------|------------------------------|-----------|
-| --channel<br>-c | The host channel ID          | Mandatory |
-
-## Website
-
-| Argument    | Description                                       | Optional  |
-|-------------|---------------------------------------------------|-----------|
-| --url<br>-u | The URL of the page that contains the live stream | Mandatory |
-
-## Running in background as a service
-
-**Note:** The following instructions only apply for *Linux* distributions using *systemd*.
-
-Create the following service file: /usr/lib/systemd/system/stream-to-m3u@.service
+```bash
+dotnet build
 ```
+
+Run with default options:
+
+```bash
+dotnet run -- --url "https://example.com/live"
+```
+
+## Command-Line Reference
+
+### General options
+
+| Option | Alias | Description | Default |
+|---|---|---|---|
+| --input | -i | Input XML path for batch mode | empty |
+| --output-file | -o | Output playlist path (when no output directory is set) | playlist.m3u |
+| --output-dir, --output-directory | -O | Output directory for per-channel playlists + index | empty |
+| --channel | -c | Channel identifier (used by TVSportHD/AntenaPlay) | empty |
+| --title | -t | Optional stream title | empty |
+| --url | -u | Source page URL | empty |
+| --baseurl | -U | Base URL used to build relative playlist links | empty |
+
+### Provider selection flags
+
+If no provider flag is supplied, the app uses the Website provider.
+
+| Provider | Flags |
+|---|---|
+| TVSportHD | --tvs, --tvsport, --tvshd, --tvsporthd |
+| AntenaPlay | --antena-play, --antenaplay, --antena, --aplay, --ap |
+| Streamlink | --sl, --streamlink |
+| Website (default) | no flag |
+
+## Usage Examples
+
+### 1) Single stream: Website provider (default)
+
+```bash
+dotnet run -- --url "https://live.antena3.ro/"
+```
+
+### 2) Single stream: Streamlink provider
+
+```bash
+dotnet run -- --streamlink --url "https://youtube.com/@a7tvlive/live"
+```
+
+### 3) Single stream: TVSportHD provider
+
+```bash
+dotnet run -- --tvsporthd --channel "digi1"
+```
+
+### 4) Batch generation from XML to one playlist file
+
+```bash
+dotnet run -- --input "Data/input-ro.xml" --output-file "playlist.m3u"
+```
+
+### 5) Batch generation to directory (index + per-channel .m3u8 files)
+
+```bash
+dotnet run -- --input "Data/input-ro.xml" --output-dir "./out" --url "https://mydomain.example/iptv"
+```
+
+## Input XML Format
+
+The XML is deserialized into channel stream entities. A typical item contains:
+
+- Id
+- ChannelName
+- Provider
+- Url
+- Optional: ChannelId, Title, StreamBaseUrl
+
+Example:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfChannelStreamEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<ChannelStreamEntity>
+		<Id>Antena3-Website</Id>
+		<ChannelName>RO: Antena 3</ChannelName>
+		<Provider>Website</Provider>
+		<Url>https://live.antena3.ro/</Url>
+	</ChannelStreamEntity>
+</ArrayOfChannelStreamEntity>
+```
+
+See sample files in the Data directory.
+
+## Output Behavior
+
+- No input file:
+	Prints a single resolved URL to stdout.
+- Input file + no output directory:
+	Writes one merged playlist file (default: playlist.m3u).
+- Input file + output directory:
+	Writes one index playlist plus one file per channel.
+
+## Runtime Configuration
+
+Runtime settings are read from appsettings.json.
+
+Notable values:
+- applicationSettings.requestTimeout
+- applicationSettings.userAgent
+- nuciLoggerSettings.logFilePath
+- nuciLoggerSettings.minimumLevel
+- nuciLoggerSettings.isFileOutputEnabled
+
+## Running as a Linux systemd Service
+
+Create service file: /usr/lib/systemd/system/stream-to-m3u@.service
+
+```ini
 [Unit]
 Description=Stream to M3U (%i channels)
 
@@ -69,8 +164,9 @@ MemoryMax=256M
 WantedBy=multi-user.target
 ```
 
-Create the following timer file: /lib/systemd/system/stream-to-m3u.timer
-```
+Create timer file: /lib/systemd/system/stream-to-m3u.timer
+
+```ini
 [Unit]
 Description=Periodically creates an M3U playlist out of livestreams (%i channels)
 
@@ -82,9 +178,36 @@ OnUnitActiveSec=40min
 WantedBy=timers.target
 ```
 
-Values that you might want to change:
- - *OnBootSec*: the delay before the service is started after the OS is booted
- - *OnUnitActiveSec*: how often the service will be triggered
- - *MemoryMax*: RAM usage limit
+Tune these values as needed:
+- OnBootSec: delay after boot
+- OnUnitActiveSec: execution interval
+- MemoryMax: RAM cap per service instance
 
-In the above example, the service will start 3 minutes after boot, and then again once every 40 minutes, being allocated 256M RAM per instance
+## Development
+
+Build:
+
+```bash
+dotnet build
+```
+
+Run:
+
+```bash
+dotnet run -- [arguments]
+```
+
+## Contributing
+
+Contributions are welcome.
+
+Please:
+- keep the changes cross-platform
+- keep the pull requests focused and consistent with the existing style
+- update the documentation when the behaviour changes
+- add or update the tests for new behaviour
+
+## License
+
+Licensed under GNU General Public License v3.0 or later.
+See [LICENSE](./LICENSE) for details.
