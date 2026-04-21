@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 
 using NuciExtensions;
 using NuciWeb;
+using NuciWeb.Automation;
+using NuciWeb.Automation.Selenium;
 using OpenQA.Selenium;
 
 using StreamToM3U.Service.Models;
@@ -21,9 +23,7 @@ namespace StreamToM3U.Service.Processors
 
         const string StreamUrlPattern = "streamURL: \"([^\"]*)\"";
 
-        readonly IWebProcessor webProcessor;
-
-        public AntenaPlayProcessor() => webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
+        readonly IWebProcessor webProcessor = new SeleniumWebProcessor(WebDriverHandler.WebDriver);
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
@@ -42,7 +42,7 @@ namespace StreamToM3U.Service.Processors
 
         string GetStreamUrlFromPageSource()
         {
-            By startStreamButtonSelector = By.Id("start-video");
+            string startStreamButtonSelector = Select.ById("start-video");
 
             webProcessor.Click(startStreamButtonSelector);
 
@@ -52,13 +52,13 @@ namespace StreamToM3U.Service.Processors
 
         void RegisterAccount()
         {
-            By emailInputSelector = By.Name("email");
-            By passwordInputSelector = By.Name("password");
-            By firstNameInputSelector = By.Name("firstname");
-            By lastNameInputSelector = By.Name("lastname");
-            By tosCheckboxSelector = By.Id("agree");
-            By submitButtonSelector = By.XPath(@"//form/button");
-            By smsValidationButtonSelector = By.Id("js-btn-sms");
+            string emailInputSelector = Select.ByName("email");
+            string passwordInputSelector = Select.ByName("password");
+            string firstNameInputSelector = Select.ByName("firstname");
+            string lastNameInputSelector = Select.ByName("lastname");
+            string tosCheckboxSelector = Select.ById("agree");
+            string submitButtonSelector = Select.ByXPath(@"//form/button");
+            string smsValidationButtonSelector = Select.ById("js-btn-sms");
 
             webProcessor.GoToUrl(RegistrationUrl);
 
@@ -83,7 +83,7 @@ namespace StreamToM3U.Service.Processors
                 return;
             }
 
-            By acceptGdprButtonSelector = By.XPath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button");
+            string acceptGdprButtonSelector = Select.ByXPath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button");
 
             webProcessor.WaitForElementToBeVisible(acceptGdprButtonSelector);
             webProcessor.Click(acceptGdprButtonSelector);

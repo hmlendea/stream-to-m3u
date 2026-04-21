@@ -38,7 +38,7 @@ namespace StreamToM3U
                 .AddSingleton(applicationSettings)
                 .AddSingleton(nuciLoggerSettings)
                 .AddSingleton(options)
-                .AddSingleton<IRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
+                .AddSingleton<IFileRepository<ChannelStreamEntity>>(x => new XmlRepository<ChannelStreamEntity>(options.InputFile))
                 .AddSingleton<IFileDownloader, FileDownloader>()
                 .AddSingleton<IPlaylistUrlRetriever, PlaylistUrlRetriever>()
                 .AddSingleton<IPlaylistFileGenerator, PlaylistFileGenerator>()

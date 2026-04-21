@@ -1,5 +1,3 @@
-using NuciCLI;
-
 namespace StreamToM3U.Configuration
 {
     public sealed class Options
@@ -42,17 +40,17 @@ namespace StreamToM3U.Configuration
 
         static StreamProvider DetermineProviderFromArgs(string[] args)
         {
-            if (CliArgumentsReader.HasOption(args, TvSportHdProcessorOptions))
+            if (HasOption(args, TvSportHdProcessorOptions))
             {
                 return StreamProvider.TvSportHd;
             }
 
-            if (CliArgumentsReader.HasOption(args, AntenaPlayProccessorOptions))
+            if (HasOption(args, AntenaPlayProccessorOptions))
             {
                 return StreamProvider.AntenaPlay;
             }
 
-            if (CliArgumentsReader.HasOption(args, StreamlinkProcessorOptions))
+            if (HasOption(args, StreamlinkProcessorOptions))
             {
                 return StreamProvider.Streamlink;
             }
@@ -64,8 +62,40 @@ namespace StreamToM3U.Configuration
             => GetArgumentIfExists(args, argumentOptions, null);
 
         static string GetArgumentIfExists(string[] args, string[] argumentOptions, string fallbackValue)
-            => CliArgumentsReader.HasOption(args, argumentOptions)
-                ? CliArgumentsReader.GetOptionValue(args, argumentOptions)
+            => HasOption(args, argumentOptions)
+                ? GetOptionValue(args, argumentOptions)
                 : fallbackValue;
+
+        static bool HasOption(string[] args, string[] options)
+            => GetOptionValue(args, options) is not null;
+
+        static string GetOptionValue(string[] args, string[] options)
+        {
+            for (int i = 0; i < args.Length; i++)
+            {
+                string arg = args[i];
+
+                foreach (string option in options)
+                {
+                    if (arg == option)
+                    {
+                        if (i + 1 < args.Length && !args[i + 1].StartsWith('-'))
+                        {
+                            return args[i + 1];
+                        }
+
+                        return string.Empty;
+                    }
+
+                    string optionPrefix = $"{option}=";
+                    if (arg.StartsWith(optionPrefix))
+                    {
+                        return arg[optionPrefix.Length..];
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }

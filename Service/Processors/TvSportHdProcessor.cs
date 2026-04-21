@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 
 using NuciWeb;
+using NuciWeb.Automation;
+using NuciWeb.Automation.Selenium;
 using OpenQA.Selenium;
 
 using StreamToM3U.Service.Models;
@@ -13,9 +15,7 @@ namespace StreamToM3U.Service.Processors
         static string TvSportHdUrl => "http://www.tv-sport-hd.com";
         static string ChannelUrlFormat => $"{TvSportHdUrl}/channel/tvs.php?ch={{0}}";
 
-        readonly IWebProcessor webProcessor;
-
-        public TvSportHdProcessor() => webProcessor = new WebProcessor(WebDriverHandler.WebDriver);
+        readonly IWebProcessor webProcessor = new SeleniumWebProcessor(WebDriverHandler.WebDriver);
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
@@ -33,20 +33,18 @@ namespace StreamToM3U.Service.Processors
             webProcessor.GoToUrl(url);
             SwitchToVideoIframe();
 
-            By playlistUrlSelector = By.XPath(@"//*[@id='playerDIV_html5_api']/source");
+            string playlistUrlSelector = Select.ByXPath(@"//*[@id='playerDIV_html5_api']/source");
             webProcessor.WaitForElementToExist(playlistUrlSelector);
 
-            return WebDriverHandler.WebDriver
-                .FindElement(playlistUrlSelector)
-                .GetAttribute("src");
+            return webProcessor.GetAttribute(playlistUrlSelector, "src");
         }
 
         void SwitchToVideoIframe()
         {
-            By iframeSelector = By.Id("thatframe");
+            string iframeSelector = Select.ById("thatframe");
             webProcessor.WaitForElementToExist(iframeSelector);
 
-            IWebElement iframe = WebDriverHandler.WebDriver.FindElement(iframeSelector);
+            IWebElement iframe = WebDriverHandler.WebDriver.FindElement(By.XPath(iframeSelector));
             WebDriverHandler.WebDriver.SwitchTo().Frame(iframe);
         }
     }
