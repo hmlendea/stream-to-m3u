@@ -6,19 +6,19 @@ Declared in `StreamToM3U/StreamToM3U.csproj`.
 
 | Package | Version | Kind | Purpose in this repository |
 |---------|---------|------|----------------------------|
-| `Microsoft.Extensions.Configuration` | 10.0.6 | Framework | Configuration access |
-| `Microsoft.Extensions.Configuration.Binder` | 10.0.6 | Framework | `config.Bind(sectionName, object)` |
-| `Microsoft.Extensions.Configuration.FileExtensions` | 10.0.6 | Framework | `AddJsonFile` file provider |
-| `Microsoft.Extensions.Configuration.Json` | 10.0.6 | Framework | JSON configuration source |
-| `Microsoft.Extensions.DependencyInjection` | 10.0.6 | Framework | `ServiceCollection` composition root |
-| `NuciCLI` | 3.0.1 | Internal | Shared command-line helpers |
-| `NuciDAL` | 3.0.1 | Internal | `IRepository<T>`, `XmlRepository<T>`, `EntityBase` |
-| `NuciExtensions` | 5.3.1 | Internal | `RemoveDiacritics`, `RemovePunctuation`, `ToSentenceCase`, `GetRandomElement` |
-| `NuciLog` | 1.2.0 | Internal | `NuciLogger`, `NuciLoggerSettings` |
-| `NuciLog.Core` | 2.6.2 | Internal | `ILogger`, `Operation`, `OperationStatus`, `LogInfo`, `LogInfoKey` |
-| `NuciWeb` | 4.0.0 | Internal | `IWebProcessor`, `Select` |
-| `NuciWeb.Automation` | 1.0.0 | Internal | Browser automation abstractions |
-| `NuciWeb.Automation.Selenium` | 1.0.2 | Internal | `SeleniumWebProcessor` implementation |
+| `Microsoft.Extensions.Configuration` | 11.0.0 | Framework | Configuration access |
+| `Microsoft.Extensions.Configuration.Binder` | 11.0.0 | Framework | `config.Bind(sectionName, object)` |
+| `Microsoft.Extensions.Configuration.FileExtensions` | 11.0.0 | Framework | `AddJsonFile` file provider |
+| `Microsoft.Extensions.Configuration.Json` | 11.0.0 | Framework | JSON configuration source |
+| `Microsoft.Extensions.DependencyInjection` | 11.0.0 | Framework | `ServiceCollection` composition root |
+| `NuciCLI` | 3.0.4 | Internal | Shared command-line helpers |
+| `NuciDAL` | 4.3.1 | Internal | `IRepository<T>`, `XmlRepository<T>`, `EntityBase` |
+| `NuciExtensions` | 6.0.3 | Internal | `RemoveDiacritics`, `RemovePunctuation`, `ToSentenceCase`, `GetRandomElement` |
+| `NuciLog` | 1.2.4 | Internal | `NuciLogger`, `NuciLoggerSettings` |
+| `NuciLog.Core` | 3.1.2 | Internal | `ILogger`, `Operation`, `OperationStatus`, `LogInfo`, `LogInfoKey` |
+| `NuciWeb` | 4.1.0 | Internal | `IWebProcessor`, `Select` |
+| `NuciWeb.Automation` | 1.0.1 | Internal | Browser automation abstractions |
+| `NuciWeb.Automation.Selenium` | 1.0.3 | Internal | `SeleniumWebProcessor` implementation |
 
 `Selenium.WebDriver` and `OpenQA.Selenium` types (`ChromeDriver`, `ChromeOptions`,
 `ChromeDriverService`, `IWebElement`, `By`, `PageLoadStrategy`) are consumed directly and arrive
@@ -32,7 +32,7 @@ Declared in `StreamToM3U.UnitTests/StreamToM3U.UnitTests.csproj`.
 |---------|---------|---------|
 | `Microsoft.NET.Test.Sdk` | 18.12.0 | Test host |
 | `Moq` | 4.21.0 | Doubles for `IFileDownloader`, `IPlaylistUrlRetriever`, `IRepository<T>`, `ILogger` |
-| `NUnit` | 4.6.1 | Test framework |
+| `NUnit` | 5.0.0 | Test framework |
 | `NUnit.Analyzers` | 4.15.0 | Test-quality analyzers |
 | `NUnit3TestAdapter` | 6.3.1 | Adapter for the test host |
 

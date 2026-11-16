@@ -229,20 +229,20 @@ The workflow:
 
 **Note:** Piping into `bash` is an intensely controversial topic. Please review any external scripts before running them in your environment!
 
-To publish a release, create and publish a GitHub Release with a semantic-version tag such as `v5.0.6`.
+To publish a release, create and publish a GitHub Release with a semantic-version tag such as `v5.0.7`.
 
 ### Dependencies
 
 | Package | Version | Scope | Purpose |
 |---------|---------|-------|---------|
-| `NuciCLI` | 3.0.1 | Runtime | Shared command-line helpers |
-| `NuciDAL` | 3.0.1 | Runtime | File-backed repository abstractions used for XML input |
-| `NuciExtensions` | 5.3.1 | Runtime | Shared extension methods |
-| `NuciLog` | 1.2.0 | Runtime | Application logging |
-| `NuciLog.Core` | 2.6.2 | Runtime | Logging contracts |
-| `NuciWeb` | 4.0.0 | Runtime | Web content processing |
-| `NuciWeb.Automation` | 1.0.0 | Runtime | Browser automation abstractions |
-| `NuciWeb.Automation.Selenium` | 1.0.2 | Runtime | Selenium implementation of the browser automation abstractions |
+| `NuciCLI` | 3.0.4 | Runtime | Shared command-line helpers |
+| `NuciDAL` | 4.3.1 | Runtime | File-backed repository abstractions used for XML input |
+| `NuciExtensions` | 6.0.3 | Runtime | Shared extension methods |
+| `NuciLog` | 1.2.4 | Runtime | Application logging |
+| `NuciLog.Core` | 3.1.2 | Runtime | Logging contracts |
+| `NuciWeb` | 4.1.0 | Runtime | Web content processing |
+| `NuciWeb.Automation` | 1.0.1 | Runtime | Browser automation abstractions |
+| `NuciWeb.Automation.Selenium` | 1.0.3 | Runtime | Selenium implementation of the browser automation abstractions |
 
 ## ⚙️ GitHub Actions
 

@@ -10,7 +10,7 @@ a browser, or Streamlink. Integration and end-to-end verification is manual.
 
 | Aspect | Choice |
 |--------|--------|
-| Framework | NUnit 4.6.1 |
+| Framework | NUnit 5.0.0 |
 | Doubles | Moq 4.21.0 |
 | Adapter | NUnit3TestAdapter 6.3.1 |
 | Analyzers | NUnit.Analyzers 4.15.0 |
