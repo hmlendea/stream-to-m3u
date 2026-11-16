@@ -197,6 +197,12 @@ Run:
 dotnet run -- [arguments]
 ```
 
+Test:
+
+```bash
+dotnet test
+```
+
 ## Contributing
 
 Contributions are welcome.
