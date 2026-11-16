@@ -70,20 +70,20 @@ namespace StreamToM3U.UnitTests.Service
 
         [TestCase("")]
         [TestCase("   ")]
-        public void GivenAnEmptyPlaylistPage_WhenResolving_ThenANullReferenceExceptionIsThrown(string page)
+        public async Task GivenAnEmptyPlaylistPage_WhenResolving_ThenANullReferenceExceptionIsThrown(string page)
         {
             SetPageContent(page);
 
-            Assert.ThrowsAsync<NullReferenceException>(
+            await Assert.ThrowsAsync<NullReferenceException>(
                 () => BuildRetriever().GetStreamUrlAsync(BuildStreamInfo()));
         }
 
         [Test]
-        public void GivenANullPlaylistPage_WhenResolving_ThenANullReferenceExceptionIsThrown()
+        public async Task GivenANullPlaylistPage_WhenResolving_ThenANullReferenceExceptionIsThrown()
         {
             SetPageContent(null!);
 
-            Assert.ThrowsAsync<NullReferenceException>(
+            await Assert.ThrowsAsync<NullReferenceException>(
                 () => BuildRetriever().GetStreamUrlAsync(BuildStreamInfo()));
         }
 

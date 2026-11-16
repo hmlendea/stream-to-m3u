@@ -2,7 +2,7 @@
 
 ## Framework
 
-Logging uses **NuciLog** (`NuciLog` 1.2.0 with contracts in `NuciLog.Core` 2.6.2). The
+Logging uses **NuciLog** (`NuciLog` 1.2.4 with contracts in `NuciLog.Core` 3.1.2). The
 application supplies `NuciLoggerSettings` and a vocabulary of operations and keys; the library
 owns formatting and sinks. Configuration is bound from the `nuciLoggerSettings` section of
 `appsettings.json`.
