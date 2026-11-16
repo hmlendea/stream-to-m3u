@@ -1,4 +1,4 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html)
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/hmlendea/stream-to-m3u)](https://github.com/hmlendea/stream-to-m3u/releases/latest)
 [![Build Status](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml)
 [![License](https://img.shields.io/github/license/hmlendea/stream-to-m3u)](https://github.com/hmlendea/stream-to-m3u/blob/master/LICENSE)
@@ -369,9 +369,9 @@ For support, please [open an issue](https://github.com/hmlendea/stream-to-m3u/is
 
 Discovered a problem with StreamToM3U or have a suggestion for it? [Open an issue](https://github.com/hmlendea/stream-to-m3u/issues)!
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/fund.html) or starring ⭐️ it on GitHub!
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
 
-[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/fund.html)
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
 
 ## 📄 License
 
