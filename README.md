@@ -331,6 +331,8 @@ When doing so, please:
 - Include tests for additional or modified functionality
 - Raise a new [issue](https://github.com/hmlendea/stream-to-m3u/issues) for problems or suggestions
 
+See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
 ## 💬 Support
 
 For support, please [open an issue](https://github.com/hmlendea/stream-to-m3u/issues).
