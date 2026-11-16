@@ -40,6 +40,7 @@ StreamToM3U is a .NET console tool that resolves live stream URLs and generates 
   - [Environments](#environments)
   - [Observability](#observability)
 - [Architecture](#-architecture)
+- [Documentation](#-documentation)
 - [Data Formats and Protocols](#-data-formats-and-protocols)
 - [Contributing](#-contributing)
 - [Code of Conduct](#-code-of-conduct)
@@ -328,6 +329,25 @@ Tune these values as needed:
 ### Observability
 
 Runtime diagnostics are written to the log file configured through `nuciLoggerSettings.logFilePath`. Log output is controlled by `nuciLoggerSettings.minimumLevel` and `nuciLoggerSettings.isFileOutputEnabled`.
+
+## 📚 Documentation
+
+The project documentation is maintained in the `docs/` directory, starting from the navigation index, and complements the [Architecture Documentation](./ARCHITECTURE.md) without duplicating it.
+
+| Resource | Description |
+|----------|-------------|
+| [docs/INDEX.md](./docs/INDEX.md) | Navigation index for the whole knowledge base |
+| [docs/quick-start.md](./docs/quick-start.md) | Getting started for newcomers |
+| [docs/architecture.md](./docs/architecture.md) | Layered pipeline, provider strategy, and dependency rules |
+| [docs/configuration.md](./docs/configuration.md) | Configuration sources, keys, defaults, and precedence |
+| [docs/api-reference/INDEX.md](./docs/api-reference/INDEX.md) | Public surface index |
+| [docs/api-reference/command-line-interface.md](./docs/api-reference/command-line-interface.md) | Complete command-line interface reference |
+| [docs/data-model.md](./docs/data-model.md) | XML input schema and generated playlist formats |
+| [docs/flows/](./docs/flows/) | End-to-end execution flows |
+| [docs/components/](./docs/components/) | Per-component implementation deep dives |
+| [docs/troubleshooting.md](./docs/troubleshooting.md) | Common issues and diagnosis |
+| [docs/testing.md](./docs/testing.md) | Test strategy, fixtures, and coverage gaps |
+| [docs/change-guide.md](./docs/change-guide.md) | How to modify common areas safely |
 
 ## 🧾 Data Formats and Protocols
 
