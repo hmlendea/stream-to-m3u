@@ -14,6 +14,7 @@ This document covers the guidelines and processes for contributing to this proje
     - [Pull Request Guidelines](#pull-request-guidelines)
   - [Testing](#testing)
   - [Documentation](#documentation)
+- [Code of Conduct](#-code-of-conduct)
 - [Security](#-security)
 - [License](#-license)
 - [Getting Assistance](#-getting-assistance)
@@ -88,11 +89,15 @@ dotnet test --filter "FullyQualifiedName~PlaylistFileGeneratorTests"
 - Preview changes locally if possible.
 - When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
 
-## � Security
+## 📜 Code of Conduct
+
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## 🔒 Security
 
 Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
-## �📄 License
+## 📄 License
 
 By contributing, you agree that your contributions will be licensed under the `GNU General Public License v3.0`.
 
