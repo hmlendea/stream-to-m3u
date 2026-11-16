@@ -23,6 +23,7 @@ StreamToM3U is a .NET console tool that resolves live stream URLs and generates 
 - [Integrations](#-integrations)
 - [Privacy and Data](#-privacy-and-data)
   - [Data Locations](#data-locations)
+  - [Telemetry Controls](#telemetry-controls)
 - [Development](#-development)
   - [Requirements](#requirements)
   - [Setup](#setup)
@@ -156,13 +157,28 @@ The subsequent settings are recognised:
 
 ## 🛡️ Privacy and Data
 
-StreamToM3U is a stateless command-line tool: it does not collect telemetry and it does not transmit project data to the maintainer. Stream URLs and source pages are requested directly by the tool, and diagnostics are written only to the local log file.
+StreamToM3U is a stateless, self-hosted command-line tool: it collects no telemetry, sends nothing to the project maintainers, and requests channel pages, playlists, and stream URLs directly from the sources configured by the operator. Diagnostics are written only to the local log file, and the only persistence surfaces are the files the operator's own run produces.
+
+For the detailed description of how the application handles privacy and personal data, see the [Privacy Statement](./PRIVACY.md).
+
+| Data | Purpose | Storage | Retention | Optional |
+|------|---------|---------|-----------|----------|
+| Channel definitions | Describe the channels to resolve, including `Id`, `ChannelName`, `Provider`, `ChannelId`, `Title`, `Url`, and `StreamBaseUrl` | XML input file supplied through `--input` | Operator-managed file; never written by the application | No, when batch mode is used |
+| Operational log | Record operations, outcomes, channel stream identifiers, and normalised request URLs | `logfile.log`, or the path set in `nuciLoggerSettings.logFilePath` | No rotation or automatic deletion implemented; the file persists until the operator removes it | Yes, through `nuciLoggerSettings.minimumLevel` and `nuciLoggerSettings.isFileOutputEnabled` |
+| Generated playlists | Provide the resolved channel names and stream URLs to the operator's player or web directory | `--output-file` path, or the `--output-dir` directory | Overwritten on every run that writes to the same path | Yes, batch mode only |
+| Disposable AntenaPlay account details | Satisfy the registration form required to read a stream URL from an AntenaPlay channel page | Not stored by the application; submitted to antenaplay.ro and released with the browser session | In memory for the duration of the attempt; the account remains with antenaplay.ro | Yes, only when the AntenaPlay provider is selected |
 
 ### Data Locations
 
 | Platform or Scope | Location | Contents |
 |-------------------|----------|----------|
 | Working directory | `logfile.log`, or the path set in `nuciLoggerSettings.logFilePath` | Operational log lines, including resolved URLs |
+| Configured output path | The path supplied through `--output-file`, or the directory supplied through `--output-dir` | Generated M3U and M3U8 playlists containing channel names and stream URLs |
+| Operator configuration | `appsettings.json` and the XML input file in the working directory | HTTP and logging settings, and the channel definitions processed in batch mode |
+
+### Telemetry Controls
+
+The application emits no telemetry, so nothing needs to be disabled. Diagnostics can be reduced or deactivated through `nuciLoggerSettings.minimumLevel`, which raises the log threshold, and `nuciLoggerSettings.isFileOutputEnabled`, which stops writing the log file.
 
 ## 🛠️ Development
 
