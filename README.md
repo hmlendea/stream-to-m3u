@@ -42,6 +42,7 @@ StreamToM3U is a .NET console tool that resolves live stream URLs and generates 
 - [Architecture](#-architecture)
 - [Data Formats and Protocols](#-data-formats-and-protocols)
 - [Contributing](#-contributing)
+- [Code of Conduct](#-code-of-conduct)
 - [Security](#-security)
 - [Support](#-support)
 - [Project Engagement](#-project-engagement)
@@ -349,6 +350,10 @@ When doing so, please:
 - Raise a new [issue](https://github.com/hmlendea/stream-to-m3u/issues) for problems or suggestions
 
 See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
+## 📜 Code of Conduct
+
+See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
 
 ## 🔒 Security
 
