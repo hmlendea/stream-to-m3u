@@ -38,6 +38,7 @@ StreamToM3U is a .NET console tool that resolves live stream URLs and generates 
 - [Deployment](#-deployment)
   - [Environments](#environments)
   - [Observability](#observability)
+- [Architecture](#-architecture)
 - [Data Formats and Protocols](#-data-formats-and-protocols)
 - [Contributing](#-contributing)
 - [Support](#-support)
@@ -253,6 +254,12 @@ To publish a release, create and publish a GitHub Release with a semantic-versio
 | `StreamToM3U/Service/Processors` | Provider-specific stream URL processors |
 | `StreamToM3U/Utils` | Shared utilities, including the Selenium web-driver handler |
 | `StreamToM3U.UnitTests` | Unit tests and test doubles |
+
+## 🏗️ Architecture
+
+StreamToM3U is a stateless, single-process console pipeline that resolves live stream URLs through provider-specific processors and generates M3U playlists from XML channel definitions.
+
+See the [Architecture Documentation](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
 ## 🚢 Deployment
 
