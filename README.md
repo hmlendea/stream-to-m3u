@@ -42,6 +42,7 @@ StreamToM3U is a .NET console tool that resolves live stream URLs and generates 
 - [Architecture](#-architecture)
 - [Data Formats and Protocols](#-data-formats-and-protocols)
 - [Contributing](#-contributing)
+- [Security](#-security)
 - [Support](#-support)
 - [Project Engagement](#-project-engagement)
 - [License](#-license)
@@ -348,6 +349,12 @@ When doing so, please:
 - Raise a new [issue](https://github.com/hmlendea/stream-to-m3u/issues) for problems or suggestions
 
 See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
+## 🔒 Security
+
+StreamToM3U is a self-hosted command-line tool that resolves stream URLs and writes local playlist files. It exposes no network service, stores no credentials, and sends no data to the project maintainers.
+
+For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
 ## 💬 Support
 
