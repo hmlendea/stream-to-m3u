@@ -8,6 +8,7 @@ This policy states how security issues in StreamToM3U are reported, validated, a
 - [Reporting a Vulnerability](#-reporting-a-vulnerability)
 - [Scope](#-scope)
 - [Disclosure Policy](#-disclosure-policy)
+- [Automated Security Scanning](#-automated-security-scanning)
 
 ## 🛡️ Supported Versions
 
@@ -53,3 +54,11 @@ This project follows coordinated disclosure:
 2. A remediation plan is prepared and validated.
 3. Public disclosure is published after a fix, mitigation, or agreed risk decision is available.
 4. Credit is attributed in accordance with reporter preference and project policy.
+
+## 🔍 Automated Security Scanning
+
+This repository runs automated security scans on every push and pull request to `master`, and weekly on a schedule. The scan includes:
+- **Vulnerable dependencies** Direct and transitive NuGet packages are checked against known vulnerability advisories.
+- **Static code analysis** The C# sources are analysed with CodeQL for security-relevant coding patterns.
+
+Results are published to the [Security](https://github.com/hmlendea/stream-to-m3u/security) tab and the [Actions](https://github.com/hmlendea/stream-to-m3u/actions/workflows/security.yml) workflow page.

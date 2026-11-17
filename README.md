@@ -1,6 +1,7 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/hmlendea/stream-to-m3u)](https://github.com/hmlendea/stream-to-m3u/releases/latest)
 [![Build Status](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/dotnet.yml)
+[![Security Scan](https://github.com/hmlendea/stream-to-m3u/actions/workflows/security.yml/badge.svg)](https://github.com/hmlendea/stream-to-m3u/actions/workflows/security.yml)
 [![License](https://img.shields.io/github/license/hmlendea/stream-to-m3u)](https://github.com/hmlendea/stream-to-m3u/blob/master/LICENSE)
 
 # StreamToM3U
@@ -250,6 +251,7 @@ To publish a release, create and publish a GitHub Release with a semantic-versio
 |----------|---------|--------------|
 | [ dotnet.yml ](https://github.com/hmlendea/stream-to-m3u/blob/master/.github/workflows/dotnet.yml) | Continuous integration | Restores dependencies, builds the solution, and runs the unit tests on every push and pull request to `master` |
 | [ github-release.yml ](https://github.com/hmlendea/stream-to-m3u/blob/master/.github/workflows/github-release.yml) | Release asset distribution | Builds the self-contained archives for every supported runtime identifier and attaches them to the GitHub Release when a release is published |
+| [ security.yml ](https://github.com/hmlendea/stream-to-m3u/blob/master/.github/workflows/security.yml) | Security scanning | Checks for vulnerable direct and transitive NuGet packages and runs CodeQL analysis over the C# sources on every push and pull request to `master`, and weekly on a schedule |
 
 ## 🗂️ Project Structure
 
