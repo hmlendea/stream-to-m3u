@@ -645,6 +645,7 @@ Output changes must remain confined to `PlaylistFileGenerator`; no other compone
 | Application settings | `StreamToM3U/appsettings.json` |
 | Unit tests and test doubles | `StreamToM3U.UnitTests` |
 | Release automation | `.github/workflows/github-release.yml` |
+| Security scanning automation | `.github/workflows/security.yml` |
 
 ## 📚 Related Documentation
 

@@ -31,6 +31,20 @@ because `StreamToM3U.csproj` marks them `CopyToOutputDirectory=PreserveNewest`.
 The workflow does not require Chrome, Chromium, or Streamlink, because no test exercises those
 paths.
 
+## Security scanning
+
+`.github/workflows/security.yml`:
+
+| Property | Value |
+|----------|-------|
+| Trigger | Push and pull request to `master`, plus a weekly `schedule` (`0 0 * * 0`) |
+| Runner | `ubuntu-latest` |
+| .NET | `10.0.x` |
+| Permissions | `security-events: write`, `contents: read` |
+| Steps | Checkout, setup .NET, `dotnet restore`, `dotnet list package --vulnerable --include-transitive`, CodeQL `init` for `csharp`, `dotnet build --no-restore`, CodeQL `analyze` |
+
+Findings are uploaded as SARIF to GitHub Code Scanning, which requires a public repository.
+
 ## Release
 
 `.github/workflows/github-release.yml` runs when a GitHub Release is published:
