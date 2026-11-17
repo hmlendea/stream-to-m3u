@@ -37,7 +37,7 @@ The subsequent report categories are in scope for this repository:
 - Unsafe handling of downloaded content, including file paths or playlist markers derived from untrusted input
 - Exposure of local data by the application, including log files that may contain provider-issued playback tokens
 - Vulnerability in the release automation under `.github/workflows/`
-- Vulnerable or malicious dependency declared in `StreamToM3U/StreamToM3U.csproj` or `StreamToM3U.UnitTests/StreamToM3U.UnitTests.csproj`
+- Vulnerable or malicious dependency declared in `StreamToM3U/StreamToM3U.csproj`, `StreamToM3U.ArchitectureTests/StreamToM3U.ArchitectureTests.csproj`, or `StreamToM3U.UnitTests/StreamToM3U.UnitTests.csproj`
 
 The subsequent categories are out of scope unless explicitly stated to the contrary:
 - Channel pages, playlist documents, streaming sources, and provider websites operated by third parties, including TVSportHD and AntenaPlay
