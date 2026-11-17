@@ -12,10 +12,10 @@ namespace StreamToM3U.Service.Processors
 {
     public sealed class TvSportHdProcessor : IProcessor
     {
-        static string TvSportHdUrl => "http://www.tv-sport-hd.com";
-        static string ChannelUrlFormat => $"{TvSportHdUrl}/channel/tvs.php?ch={{0}}";
+        private readonly IWebProcessor webProcessor = new SeleniumWebProcessor(WebDriverHandler.WebDriver);
 
-        readonly IWebProcessor webProcessor = new SeleniumWebProcessor(WebDriverHandler.WebDriver);
+        private static string TvSportHdUrl => "http://www.tv-sport-hd.com";
+        private static string ChannelUrlFormat => $"{TvSportHdUrl}/channel/tvs.php?ch={{0}}";
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
@@ -25,10 +25,11 @@ namespace StreamToM3U.Service.Processors
             string playlistUrl = GetPlaylistUrlFromPage(channelUrl);
 
             WebDriverHandler.ReleaseLock();
+
             return Task.FromResult(playlistUrl);
         }
 
-        string GetPlaylistUrlFromPage(string url)
+        private string GetPlaylistUrlFromPage(string url)
         {
             webProcessor.GoToUrl(url);
             SwitchToVideoIframe();
@@ -39,7 +40,7 @@ namespace StreamToM3U.Service.Processors
             return webProcessor.GetAttribute(playlistUrlSelector, "src");
         }
 
-        void SwitchToVideoIframe()
+        private void SwitchToVideoIframe()
         {
             string iframeSelector = Select.ById("thatframe");
             webProcessor.WaitForElementToExist(iframeSelector);

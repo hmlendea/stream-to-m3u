@@ -23,11 +23,11 @@ namespace StreamToM3U.Service
         IRepository<ChannelStreamEntity> channelStreamRepository,
         ILogger logger) : IPlaylistFileGenerator
     {
-        readonly IFileDownloader fileDownloader = fileDownloader;
-        readonly IPlaylistUrlRetriever urlRetriever = urlRetriever;
-        readonly Options options = options;
-        readonly IRepository<ChannelStreamEntity> channelStreamRepository = channelStreamRepository;
-        readonly ILogger logger = logger;
+        private readonly IFileDownloader fileDownloader = fileDownloader;
+        private readonly IPlaylistUrlRetriever urlRetriever = urlRetriever;
+        private readonly Options options = options;
+        private readonly IRepository<ChannelStreamEntity> channelStreamRepository = channelStreamRepository;
+        private readonly ILogger logger = logger;
 
         public void GeneratePlaylist()
         {
@@ -148,7 +148,7 @@ namespace StreamToM3U.Service
             File.WriteAllLines(playlistFilePath, playlistLines);
         }
 
-        static string GenerateChannelFileName(string channelName)
+        private static string GenerateChannelFileName(string channelName)
         {
             string normalisedChannelName = channelName;
 

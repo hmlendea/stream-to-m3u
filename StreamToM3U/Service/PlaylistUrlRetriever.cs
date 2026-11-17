@@ -13,48 +13,26 @@ namespace StreamToM3U.Service
 {
     public sealed class PlaylistUrlRetriever(IFileDownloader downloader) : IPlaylistUrlRetriever
     {
-        readonly IFileDownloader downloader = downloader;
+        private readonly IFileDownloader downloader = downloader;
+
+        private static string PlaylistHeader => "#EXTM3U";
+
+        private static string GoogleVideoHost => "googlevideo";
 
         public async Task<string> GetStreamUrlAsync(StreamInfo streamInfo)
         {
             string url = await FindStreamUrl(streamInfo);
 
-            if (!streamInfo.Provider.Equals(StreamProvider.Streamlink) && !url.Contains("googlevideo"))
+            bool requiresValidation = !Equals(streamInfo.Provider, StreamProvider.Streamlink) &&
+                !url.Contains(GoogleVideoHost);
+
+            if (requiresValidation)
             {
-                string content = await downloader.TryDownloadStringAsync(url);
+                url = await ResolveStreamUrl(url);
 
-                List<string> contentLines = [];
-
-                if (!string.IsNullOrWhiteSpace(content))
-                {
-                    contentLines = content
-                        .Replace("\r", "")
-                        .Split("\n")
-                        .ToList();
-                }
-
-                if (!contentLines.Any() || !contentLines.First().StartsWith("#EXTM3U"))
+                if (url is null)
                 {
                     return null;
-                }
-
-                List<string> httpSources = contentLines
-                    .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith("#"))
-                    .Select(x=> ProcessStreamUrl(url, x))
-                    .ToList();
-
-                if (httpSources.Any())
-                {
-                    if (httpSources.Count == 1)
-                    {
-                        url = httpSources.First();
-                    }
-                    else if (
-                        httpSources.Last().EndsWith("m3u") ||
-                        httpSources.Last().EndsWith("m3u8"))
-                    {
-                        url = httpSources.Last();
-                    }
                 }
             }
 
@@ -64,16 +42,6 @@ namespace StreamToM3U.Service
             }
 
             return NormaliseUrl(url);
-        }
-
-        static string ProcessStreamUrl(string playlistUrl, string streamUrl)
-        {
-            if (streamUrl.StartsWith("http"))
-            {
-                return streamUrl;
-            }
-
-            return Regex.Replace(playlistUrl, "[A-Za-z0-9_-]*\\.m3u[8]*\\?.*$", streamUrl);
         }
 
         public async Task<string> GetStreamUrlAsync(ChannelStream channelStream)
@@ -90,29 +58,17 @@ namespace StreamToM3U.Service
             return await GetStreamUrlAsync(streamInfo);
         }
 
-        async Task<string> FindStreamUrl(StreamInfo streamInfo)
+        private static string ProcessStreamUrl(string playlistUrl, string streamUrl)
         {
-            IProcessor processor = CreateProcessor(streamInfo.Provider);
+            if (streamUrl.StartsWith("http"))
+            {
+                return streamUrl;
+            }
 
-            try
-            {
-                return await processor.GetUrlAsync(streamInfo);
-            }
-            catch
-            {
-                return null;
-            }
+            return Regex.Replace(playlistUrl, "[A-Za-z0-9_-]*\\.m3u[8]*\\?.*$", streamUrl);
         }
 
-        IProcessor CreateProcessor(StreamProvider provider) => provider switch
-        {
-            StreamProvider.TvSportHd => new TvSportHdProcessor(),
-            StreamProvider.AntenaPlay => new AntenaPlayProcessor(),
-            StreamProvider.Streamlink => new StreamlinkProcessor(),
-            _ => new WebsiteProcessr(downloader),
-        };
-
-        static bool IsUrlValid(string url)
+        private static bool IsUrlValid(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -126,16 +82,88 @@ namespace StreamToM3U.Service
                 return false;
             }
 
-            bool isHttp = uriResult.Scheme == Uri.UriSchemeHttp;
-            bool isHttps =  uriResult.Scheme == Uri.UriSchemeHttps;
+            bool isHttp = Equals(uriResult.Scheme, Uri.UriSchemeHttp);
+            bool isHttps = Equals(uriResult.Scheme, Uri.UriSchemeHttps);
 
             return isUrl && (isHttp || isHttps);
         }
 
-        static string NormaliseUrl(string url)
+        private static string NormaliseUrl(string url)
             => HttpUtility
                 .UrlDecode(url)
                 .Replace("\\/", "/")
                 .Replace("#038;", "");
+
+        private static string SelectStreamUrl(string playlistUrl, List<string> contentLines)
+        {
+            List<string> httpSources = contentLines
+                .Where(x => !string.IsNullOrWhiteSpace(x) && !x.StartsWith('#'))
+                .Select(x => ProcessStreamUrl(playlistUrl, x))
+                .ToList();
+
+            if (!httpSources.Any())
+            {
+                return playlistUrl;
+            }
+
+            if (httpSources.Count == 1)
+            {
+                return httpSources.First();
+            }
+
+            string lastSource = httpSources.Last();
+
+            if (lastSource.EndsWith("m3u") || lastSource.EndsWith("m3u8"))
+            {
+                return lastSource;
+            }
+
+            return playlistUrl;
+        }
+
+        private async Task<string> ResolveStreamUrl(string url)
+        {
+            string content = await downloader.TryDownloadStringAsync(url);
+
+            List<string> contentLines = [];
+
+            if (!string.IsNullOrWhiteSpace(content))
+            {
+                contentLines = content
+                    .Replace("\r", "")
+                    .Split("\n")
+                    .ToList();
+            }
+
+            if (!contentLines.Any() ||
+                !contentLines.First().StartsWith(PlaylistHeader))
+            {
+                return null;
+            }
+
+            return SelectStreamUrl(url, contentLines);
+        }
+
+        private async Task<string> FindStreamUrl(StreamInfo streamInfo)
+        {
+            IProcessor processor = CreateProcessor(streamInfo.Provider);
+
+            try
+            {
+                return await processor.GetUrlAsync(streamInfo);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private IProcessor CreateProcessor(StreamProvider provider) => provider switch
+        {
+            StreamProvider.TvSportHd => new TvSportHdProcessor(),
+            StreamProvider.AntenaPlay => new AntenaPlayProcessor(),
+            StreamProvider.Streamlink => new StreamlinkProcessor(),
+            _ => new WebsiteProcessr(downloader),
+        };
     }
 }
