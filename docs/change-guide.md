@@ -68,7 +68,7 @@ the steps, the contracts to preserve, and the tests to extend.
 ## Changing resolution or validation
 
 **Files.** `Service/PlaylistUrlRetriever.cs`, `Service/FileDownloader.cs`,
-`Service/Processors/WebsiteProcessor.cs`.
+`Service/Processors/WebsiteProcessr.cs`.
 
 **Steps.**
 

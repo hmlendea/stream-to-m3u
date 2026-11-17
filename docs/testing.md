@@ -32,7 +32,7 @@ Integration and end-to-end verification is manual.
 | `FileDownloaderTests` | 33 | Construction guards, URL normalisation, non-transmission of invalid URLs, logging, loopback download, status codes, user agent |
 | `PlaylistFileGeneratorTests` | 23 | Empty input, alphabetical order, multiple streams, skipping, logging, directory creation, naming, index forms, merged filtering |
 | `PlaylistUrlRetrieverTests` | 24 | Absolute and relative references, base URL joining, `googlevideo` bypass, entry selection, non-playlist bodies, escaped URLs, `NullReferenceException` |
-| `WebsiteProcessorTests` | 18 | Quoting preference, base URL joining, empty pages, sanitisation, single download |
+| `WebsiteProcessrTests` | 18 | Quoting preference, base URL joining, empty pages, sanitisation, single download |
 | `WebDriverHandlerTests` | 3 | Lock free/taken/released |
 
 Total: **172 unit-test cases**.

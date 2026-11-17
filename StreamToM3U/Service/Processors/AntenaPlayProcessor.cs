@@ -14,16 +14,16 @@ namespace StreamToM3U.Service.Processors
 {
     public sealed class AntenaPlayProcessor : IProcessor
     {
-        static bool acceptedGdpr = false;
+        private static bool acceptedGdpr = false;
 
-        static string HomeUrl => "https://antenaplay.ro";
-        static string RegistrationUrl => $"{HomeUrl}/cont-nou";
-        static string LogOutUrl => $"{HomeUrl}/logout";
-        static string ChannelUrlFormat => $"{HomeUrl}/live/{{0}}";
+        private readonly IWebProcessor webProcessor = new SeleniumWebProcessor(WebDriverHandler.WebDriver);
 
-        const string StreamUrlPattern = "streamURL: \"([^\"]*)\"";
+        private static string HomeUrl => "https://antenaplay.ro";
+        private static string RegistrationUrl => $"{HomeUrl}/cont-nou";
+        private static string LogOutUrl => $"{HomeUrl}/logout";
+        private static string ChannelUrlFormat => $"{HomeUrl}/live/{{0}}";
 
-        readonly IWebProcessor webProcessor = new SeleniumWebProcessor(WebDriverHandler.WebDriver);
+        private static string StreamUrlPattern => "streamURL: \"([^\"]*)\"";
 
         public Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
@@ -37,20 +37,22 @@ namespace StreamToM3U.Service.Processors
             string playlistUrl = GetStreamUrlFromPageSource();
 
             ClearResources();
+
             return Task.FromResult(playlistUrl);
         }
 
-        string GetStreamUrlFromPageSource()
+        private string GetStreamUrlFromPageSource()
         {
             string startStreamButtonSelector = Select.ById("start-video");
 
             webProcessor.Click(startStreamButtonSelector);
 
             string html = webProcessor.GetPageSource();
+
             return Regex.Match(html, StreamUrlPattern).Groups[1].Value;
         }
 
-        void RegisterAccount()
+        private void RegisterAccount()
         {
             string emailInputSelector = Select.ByName("email");
             string passwordInputSelector = Select.ByName("password");
@@ -76,7 +78,7 @@ namespace StreamToM3U.Service.Processors
             webProcessor.WaitForElementToBeVisible(smsValidationButtonSelector);
         }
 
-        void AcceptGdpr()
+        private void AcceptGdpr()
         {
             if (acceptedGdpr)
             {
@@ -91,20 +93,20 @@ namespace StreamToM3U.Service.Processors
             acceptedGdpr = true;
         }
 
-        void ClearResources()
+        private void ClearResources()
         {
             webProcessor.GoToUrl(LogOutUrl);
             webProcessor.Dispose();
             WebDriverHandler.ReleaseLock();
         }
 
-        static string GenerateRandomEmail()
+        private static string GenerateRandomEmail()
             => GenerateRandomString() + "@gmail.com";
 
-        static string GenerateRandomName()
+        private static string GenerateRandomName()
             => GenerateRandomString().ToSentenceCase();
 
-        static string GenerateRandomString()
+        private static string GenerateRandomString()
         {
             const int length = 10;
             const string chars = "abcdefghijklmnopqrstuvwxyz";

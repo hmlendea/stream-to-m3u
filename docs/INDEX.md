@@ -84,7 +84,7 @@ no `ROADMAP.md`.
 | [components/service-layer.md](./components/service-layer.md) | `FileDownloader`, `PlaylistUrlRetriever`, `PlaylistFileGenerator`, mapping, models |
 | [components/processors.md](./components/processors.md) | The four `IProcessor` implementations |
 | [components/browser-automation.md](./components/browser-automation.md) | `WebDriverHandler` and NuciWeb automation |
-| [components/data-access-and-mapping.md](./components/data-access-and-mapping.md) | `ChannelStreamEntity` and `ChannelStreamMapping` |
+| [components/data-access-and-mapping.md](./components/data-access-and-mapping.md) | `ChannelStreamEntity` and `ChannelStreamMappingExtensions` |
 | [components/logging-and-observability.md](./components/logging-and-observability.md) | Log vocabulary and diagnostics |
 
 ### Operational

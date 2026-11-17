@@ -18,7 +18,7 @@ namespace StreamToM3U.Service.Processors
                 CreateNoWindow = true
             };
 
-            using var process = Process.Start(psi);
+            using Process process = Process.Start(psi);
 
             string result = await process.StandardOutput.ReadToEndAsync();
 

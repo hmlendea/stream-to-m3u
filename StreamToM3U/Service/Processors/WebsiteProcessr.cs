@@ -9,13 +9,13 @@ namespace StreamToM3U.Service.Processors
 {
     public sealed class WebsiteProcessr(IFileDownloader downloader) : IProcessor
     {
-        static readonly string[] PlaylistUrlPatterns =
+        private static readonly string[] playlistUrlPatterns =
         [
             "\"(http[^\"']*\\.m3u[^\"']*)\"",
             "'(http[^\"']*\\.m3u[^\"']*)'"
         ];
 
-        readonly IFileDownloader downloader = downloader;
+        private readonly IFileDownloader downloader = downloader;
 
         public async Task<string> GetUrlAsync(StreamInfo streamInfo)
         {
@@ -32,7 +32,7 @@ namespace StreamToM3U.Service.Processors
                 .Replace("&amp;", "&");
         }
 
-        async Task<string> CrawlStreamSource(StreamInfo streamInfo)
+        private async Task<string> CrawlStreamSource(StreamInfo streamInfo)
         {
             string html = await downloader.TryDownloadStringAsync(streamInfo.Url);
 
@@ -41,7 +41,7 @@ namespace StreamToM3U.Service.Processors
                 return null;
             }
 
-            foreach (string pattern in PlaylistUrlPatterns)
+            foreach (string pattern in playlistUrlPatterns)
             {
                 string playlistUrl = Regex.Match(html, pattern).Groups[1].Value;
 

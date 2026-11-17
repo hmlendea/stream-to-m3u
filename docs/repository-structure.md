@@ -29,11 +29,11 @@
 | `StreamToM3U/Service/IFileDownloader.cs`, `FileDownloader.cs` | HTTP text retrieval |
 | `StreamToM3U/Service/IPlaylistUrlRetriever.cs`, `PlaylistUrlRetriever.cs` | Provider dispatch and validation |
 | `StreamToM3U/Service/IPlaylistFileGenerator.cs`, `PlaylistFileGenerator.cs` | Batch resolution and output writing |
-| `StreamToM3U/Service/Mapping/ChannelStreamMapping.cs` | Entity → service-model mapping |
+| `StreamToM3U/Service/Mapping/ChannelStreamMappingExtensions.cs` | Entity → service-model mapping |
 | `StreamToM3U/Service/Models/ChannelStream.cs` | Batch-mode service model |
 | `StreamToM3U/Service/Models/StreamInfo.cs` | Single-resolution request model |
 | `StreamToM3U/Service/Processors/IProcessor.cs` | Provider contract |
-| `StreamToM3U/Service/Processors/WebsiteProcessor.cs` | HTML playlist-link extraction |
+| `StreamToM3U/Service/Processors/WebsiteProcessr.cs` | HTML playlist-link extraction |
 | `StreamToM3U/Service/Processors/StreamlinkProcessor.cs` | Streamlink CLI invocation |
 | `StreamToM3U/Service/Processors/TvSportHdProcessor.cs` | TVSportHD browser automation |
 | `StreamToM3U/Service/Processors/AntenaPlayProcessor.cs` | AntenaPlay browser automation with disposable registration |
@@ -54,7 +54,7 @@ name is used consistently in this documentation and in tests.
 | `StreamToM3U.UnitTests/Service/FileDownloaderTests.cs` | Construction guards, URL normalisation, loopback download (33 cases) |
 | `StreamToM3U.UnitTests/Service/PlaylistFileGeneratorTests.cs` | Ordering, skipping, naming, index forms (23 cases) |
 | `StreamToM3U.UnitTests/Service/PlaylistUrlRetrieverTests.cs` | Validation and entry selection (24 cases) |
-| `StreamToM3U.UnitTests/Service/Processors/WebsiteProcessorTests.cs` | HTML extraction and base URL joining (18 cases) |
+| `StreamToM3U.UnitTests/Service/Processors/WebsiteProcessrTests.cs` | HTML extraction and base URL joining (18 cases) |
 | `StreamToM3U.UnitTests/Utils/WebDriverHandlerTests.cs` | Lock semantics (3 cases) |
 | `StreamToM3U.UnitTests/TestDoubles/LoopbackHttpServer.cs` | Hermetic `TcpListener` HTTP double |
 

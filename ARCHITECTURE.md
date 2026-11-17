@@ -180,7 +180,7 @@ The principal runtime sequence is:
 | `IPlaylistUrlRetriever` / `PlaylistUrlRetriever` | Provider dispatch, playlist validation, stream-entry selection | `IFileDownloader`, processors | Singleton |
 | `IProcessor` implementations | Extract a playlist or stream URL for one provider | `IFileDownloader`, `WebDriverHandler`, external CLI | Instantiated per resolution call by `PlaylistUrlRetriever` |
 | `IPlaylistFileGenerator` / `PlaylistFileGenerator` | Batch resolution, channel grouping, playlist file and directory writing | Repository, retriever, downloader, `Options`, `ILogger` | Singleton |
-| `ChannelStreamMapping` | Maps `ChannelStreamEntity` to `ChannelStream` and parses the provider name | `Enum.Parse<StreamProvider>` | Static |
+| `ChannelStreamMappingExtensions` | Maps `ChannelStreamEntity` to `ChannelStream` and parses the provider name | `Enum.Parse<StreamProvider>` | Static |
 | `WebDriverHandler` | Lazily creates one headless `ChromeDriver`, serialises access, quits the driver at shutdown | Selenium `ChromeDriver` | Process-wide static state |
 | `ILogger` (`NuciLogger`) | Structured operation logging to console and file | `NuciLogSettings` | Singleton |
 
@@ -235,7 +235,7 @@ Paths:
 - `StreamToM3U/Service/PlaylistUrlRetriever.cs`
 - `StreamToM3U/Service/IPlaylistFileGenerator.cs`
 - `StreamToM3U/Service/PlaylistFileGenerator.cs`
-- `StreamToM3U/Service/Mapping/ChannelStreamMapping.cs`
+- `StreamToM3U/Service/Mapping/ChannelStreamMappingExtensions.cs`
 - `StreamToM3U/Service/Models/ChannelStream.cs`
 - `StreamToM3U/Service/Models/StreamInfo.cs`
 
@@ -251,7 +251,7 @@ Boundary rules:
 
 Paths:
 - `StreamToM3U/Service/Processors/IProcessor.cs`
-- `StreamToM3U/Service/Processors/WebsiteProcessor.cs`
+- `StreamToM3U/Service/Processors/WebsiteProcessr.cs`
 - `StreamToM3U/Service/Processors/StreamlinkProcessor.cs`
 - `StreamToM3U/Service/Processors/TvSportHdProcessor.cs`
 - `StreamToM3U/Service/Processors/AntenaPlayProcessor.cs`
@@ -328,7 +328,7 @@ flowchart LR
 | Data or Store | Owner | Representation and Storage | Lifecycle or Consistency |
 |---------------|-------|----------------------------|--------------------------|
 | `ChannelStreamEntity` | `NuciDAL.Repositories.XmlRepository` | XML elements in `Data/input-*.xml`; `Provider` is a free-form string | Read once per run through `GetAll()`; no writes |
-| `ChannelStream` | `ChannelStreamMapping` | In-memory service model with a parsed `StreamProvider` | Created per batch run; discarded at exit |
+| `ChannelStream` | `ChannelStreamMappingExtensions` | In-memory service model with a parsed `StreamProvider` | Created per batch run; discarded at exit |
 | `StreamInfo` | `Program` and `PlaylistUrlRetriever` | In-memory request model for one resolution | Per resolution call |
 | Grouped channel URLs | `PlaylistFileGenerator` | `ConcurrentDictionary<string, List<string>>` keyed by `ChannelName`, then flattened into an ordered `Dictionary` | Populated in parallel, ordered by channel name before writing |
 | `playlist.m3u` | `PlaylistFileGenerator` | `#EXTM3U` text file at `options.OutputFile`, or the index file inside `options.OutputDirectory` | Overwritten on every run; no merge with prior content |
@@ -553,7 +553,7 @@ StreamToM3U is distributed as a self-contained archive per runtime identifier th
 | Contract | Owner | Invariant | Verification | Change Policy |
 |----------|-------|-----------|--------------|---------------|
 | XML input schema | `ChannelStreamEntity` | Element names `ArrayOfChannelStreamEntity` and `ChannelStreamEntity` with fields `Id`, `ChannelName`, `Provider`, `ChannelId`, `Title`, `Url`, `StreamBaseUrl` | Exercised indirectly through repository consumption in batch tests and the shipped `Data/input-*.xml` files | Existing files in the wild require a compatibility path before any rename |
-| Provider name values | `ChannelStreamMapping` | `Provider` must parse case-insensitively into `StreamProvider` (`Website`, `TvSportHd`, `AntenaPlay`, `Streamlink`) | Presence of the enumeration and `Enum.Parse` call; invalid values raise `AggregateException` | New providers must be added to the enumeration and the dispatch switch together |
+| Provider name values | `ChannelStreamMappingExtensions` | `Provider` must parse case-insensitively into `StreamProvider` (`Website`, `TvSportHd`, `AntenaPlay`, `Streamlink`) | Presence of the enumeration and `Enum.Parse` call; invalid values raise `AggregateException` | New providers must be added to the enumeration and the dispatch switch together |
 | Command-line aliases | `Options` | Documented aliases and defaults, including `playlist.m3u` as the default output file and `Website` as the default provider | `OptionsTests` and README option table | Aliases may be added; existing aliases must not be repurposed |
 | M3U output markers | `PlaylistFileGenerator` | `#EXTM3U` header, `#EXTINF:-1,<name>` entries, `#EXT-X-STREAM-INF:BANDWIDTH=873` lines, alphabetical channel order | `PlaylistFileGeneratorTests` | Consumers parse these markers; format changes require a migration note |
 | Channel file naming | `PlaylistFileGenerator` | Channel name after the first `:` with diacritics, punctuation, and spaces removed, suffixed with `.m3u8` | `PlaylistFileGeneratorTests` naming cases | Renaming invalidates published index references |
@@ -609,7 +609,7 @@ The processor must not log, must not write files, must not construct `Options`, 
 
 1. Provide an alternative `IFileRepository<ChannelStreamEntity>` (or a different repository contract) that yields `ChannelStreamEntity` instances.
 2. Replace the registration in `Program.Main`; no other component reads the input file directly.
-3. Keep `ChannelStreamMapping` able to parse the provider value and keep the mapping tests passing.
+3. Keep `ChannelStreamMappingExtensions` able to parse the provider value and keep the mapping tests passing.
 
 The replacement must preserve entity property names used by the mapping, or supply its own mapping, because `ChannelStreamEntity` is the only shape the service layer consumes.
 

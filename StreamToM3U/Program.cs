@@ -16,11 +16,11 @@ using StreamToM3U.Utils;
 
 namespace StreamToM3U
 {
-    public class Program
+    public sealed class Program
     {
-        static ApplicationSettings applicationSettings;
-        static NuciLoggerSettings nuciLoggerSettings;
-        static IServiceProvider serviceProvider;
+        private static ApplicationSettings applicationSettings;
+        private static NuciLoggerSettings nuciLoggerSettings;
+        private static IServiceProvider serviceProvider;
 
         public static void Main(string[] args)
         {
@@ -71,7 +71,7 @@ namespace StreamToM3U
             logger.Info(Operation.ShutDown, OperationStatus.Success);
         }
 
-        static void GetPlaylist(Options options)
+        private static void GetPlaylist(Options options)
         {
             if (string.IsNullOrWhiteSpace(options.InputFile))
             {
@@ -83,7 +83,7 @@ namespace StreamToM3U
             }
         }
 
-        static void GetPlaylistForStream(Options options)
+        private static void GetPlaylistForStream(Options options)
         {
             StreamInfo streamInfo = new()
             {
@@ -100,12 +100,12 @@ namespace StreamToM3U
             Console.WriteLine(playlistUrl);
         }
 
-        static void GetPlaylistForInputFile()
+        private static void GetPlaylistForInputFile()
             => serviceProvider
                 .GetService<IPlaylistFileGenerator>()
                 .GeneratePlaylist();
 
-        static IConfiguration LoadConfiguration()
+        private static IConfiguration LoadConfiguration()
             => new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
