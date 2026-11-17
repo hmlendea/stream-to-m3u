@@ -29,13 +29,13 @@ Sample files shipped in `StreamToM3U/Data/`:
 ```mermaid
 flowchart LR
     XML["Data/input-*.xml"] -->|"XmlRepository.GetAll"| Entity["ChannelStreamEntity"]
-    Entity -->|"ChannelStreamMapping.ToServiceModel"| Channel["ChannelStream"]
+    Entity -->|"ChannelStreamMappingExtensions.ToServiceModel"| Channel["ChannelStream"]
     Channel -->|"PlaylistUrlRetriever.GetStreamUrlAsync"| Info["StreamInfo"]
     Info -->|"processor dispatch"| Url["Resolved URL"]
 ```
 
 `ChannelStreamEntity` is a `NuciDAL.DataObjects.EntityBase` subclass and never reaches
-processors; it is converted to `ChannelStream` in `Service/Mapping/ChannelStreamMapping.cs`. The
+processors; it is converted to `ChannelStream` in `Service/Mapping/ChannelStreamMappingExtensions.cs`. The
 `StreamInfo` request model is used for single-stream resolution and is built from `ChannelStream`
 inside `PlaylistUrlRetriever`.
 

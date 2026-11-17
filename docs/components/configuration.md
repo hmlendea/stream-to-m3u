@@ -65,7 +65,7 @@ Website, TvSportHd, AntenaPlay, Streamlink
 | Name contract | The member names are matched against the XML `Provider` value case-insensitively |
 | Default | `Website` when no provider flag is present |
 
-Consumers: `Options.DetermineProviderFromArgs`, `ChannelStreamMapping.ToServiceModel`,
+Consumers: `Options.DetermineProviderFromArgs`, `ChannelStreamMappingExtensions.ToServiceModel`,
 `PlaylistUrlRetriever.CreateProcessor` and the validation guard.
 
 ## Modification impact

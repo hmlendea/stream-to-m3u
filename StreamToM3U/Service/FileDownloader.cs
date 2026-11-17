@@ -13,8 +13,8 @@ namespace StreamToM3U.Service
 {
     public sealed class FileDownloader : IFileDownloader
     {
-        readonly ILogger logger;
-        readonly HttpClient httpClient;
+        private readonly ILogger logger;
+        private readonly HttpClient httpClient;
 
         public FileDownloader(
             ApplicationSettings applicationSettings,
@@ -62,7 +62,7 @@ namespace StreamToM3U.Service
             }
         }
 
-        async Task<string> GetAsync(string url)
+        private async Task<string> GetAsync(string url)
         {
             using HttpResponseMessage response = await httpClient.GetAsync(url);
             using HttpContent content = response.Content;
@@ -72,7 +72,7 @@ namespace StreamToM3U.Service
             return text;
         }
 
-        static string NormaliseUrl(string url)
+        private static string NormaliseUrl(string url)
         {
             if (url is null)
             {

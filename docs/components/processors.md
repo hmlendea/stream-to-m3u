@@ -56,7 +56,7 @@ Default provider. Exists under this spelling in source (`WebsiteProcessr`, missi
   fails to validate and returns as `null`.
 - The `.m3u` pattern matches `.m3u8` too, because `.m3u` is a prefix.
 
-**Tests.** `WebsiteProcessorTests` (18 cases).
+**Tests.** `WebsiteProcessrTests` (18 cases).
 
 ## `StreamlinkProcessor`
 

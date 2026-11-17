@@ -8,7 +8,7 @@ using StreamToM3U.Service.Models;
 
 namespace StreamToM3U.Service.Mapping
 {
-    static class ChannelStreamMapping
+    internal static class ChannelStreamMappingExtensions
     {
         internal static ChannelStream ToServiceModel(this ChannelStreamEntity dataObject) => new()
         {
@@ -21,7 +21,8 @@ namespace StreamToM3U.Service.Mapping
             StreamBaseUrl = dataObject.StreamBaseUrl
         };
 
-        internal static IEnumerable<ChannelStream> ToServiceModels(this IEnumerable<ChannelStreamEntity> dataObjects)
+        internal static IEnumerable<ChannelStream> ToServiceModels(
+            this IEnumerable<ChannelStreamEntity> dataObjects)
             => dataObjects.Select(dataObject => dataObject.ToServiceModel());
     }
 }

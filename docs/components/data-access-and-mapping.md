@@ -3,7 +3,7 @@
 Sources:
 
 - `StreamToM3U/DataAccess/DataObjects/ChannelStreamEntity.cs`
-- `StreamToM3U/Service/Mapping/ChannelStreamMapping.cs`
+- `StreamToM3U/Service/Mapping/ChannelStreamMappingExtensions.cs`
 
 ## `ChannelStreamEntity`
 
@@ -22,7 +22,7 @@ A sealed XML-serialisable class deriving from `NuciDAL.DataObjects.EntityBase`.
 The property names define the XML contract; renaming any of them invalidates existing
 `Data/input-*.xml` files. The document root is `ArrayOfChannelStreamEntity`.
 
-## `ChannelStreamMapping`
+## `ChannelStreamMappingExtensions`
 
 A static internal mapping class with two extension methods:
 

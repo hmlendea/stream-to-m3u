@@ -28,7 +28,7 @@ invariant, where it is enforced, and how it is verified.
 | Invariant | Enforced by | Verified by |
 |-----------|-------------|-------------|
 | `StreamProvider` numeric values are `Website=0`, `TvSportHd=1`, `AntenaPlay=2`, `Streamlink=3` | Declaration order | `StreamProviderTests.GivenAProvider_WhenReadingItsNumericValue_ThenItMatchesThePersistedContract` |
-| Provider names parse case-insensitively | `Enum.Parse<StreamProvider>(value, true)` in `ChannelStreamMapping` | `StreamProviderTests.GivenAProviderName_WhenParsingIt_ThenTheMatchingProviderIsReturned` |
+| Provider names parse case-insensitively | `Enum.Parse<StreamProvider>(value, true)` in `ChannelStreamMappingExtensions` | `StreamProviderTests.GivenAProviderName_WhenParsingIt_ThenTheMatchingProviderIsReturned` |
 
 ## HTTP retrieval
 

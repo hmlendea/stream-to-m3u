@@ -24,7 +24,7 @@ successful outcome.
 | `streamlink` missing | `StreamlinkProcessor` | `Win32Exception` | Channel skipped; `AggregateException` in batch mode |
 | Streamlink returns non-`http` | `StreamlinkProcessor` | `string.Empty` | Channel skipped |
 | Browser element timeout | `TvSportHdProcessor`, `AntenaPlayProcessor` | `WebDriverTimeoutException` | Channel skipped; lock possibly retained |
-| Unparsable `Provider` | `ChannelStreamMapping` | `ArgumentException` | `AggregateException`; logged per inner exception |
+| Unparsable `Provider` | `ChannelStreamMappingExtensions` | `ArgumentException` | `AggregateException`; logged per inner exception |
 | Output path unwritable | `PlaylistFileGenerator` writers | `IOException`/`UnauthorizedAccessException` | Logged `Fatal`; partial output possible |
 
 ## Design intent

@@ -11,7 +11,7 @@ using StreamToM3U.Service.Processors;
 namespace StreamToM3U.UnitTests.Service.Processors
 {
     [TestFixture]
-    public sealed class WebsiteProcessorTests
+    public sealed class WebsiteProcessrTests
     {
         const string PageUrl = "http://dummy-url.ro/live/ro";
         const string PlaylistUrl = "http://cdn.nucilandia.ro/live/playmaster.m3u8";
