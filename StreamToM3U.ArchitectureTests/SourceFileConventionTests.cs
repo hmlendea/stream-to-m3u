@@ -1066,8 +1066,8 @@ namespace StreamToM3U.ArchitectureTests
 
                             Assert.That(
                                 classDeclaration.Identifier.Text,
-                                Does.EndWith("Mapping"),
-                                $"The mapping type '{classDeclaration.Identifier.Text}' in '{fileName}' must be named '<Noun>Mapping' or '<Noun>MappingExtensions'.");
+                                Does.EndWith("MappingExtensions"),
+                                $"The mapping type '{classDeclaration.Identifier.Text}' in '{fileName}' must be named '<Noun>MappingExtensions'.");
                         });
                 }
             }
@@ -1840,6 +1840,11 @@ namespace StreamToM3U.ArchitectureTests
         static bool RequiresExplicitAccessibility(MemberDeclarationSyntax member)
         {
             if (member is BaseNamespaceDeclarationSyntax || member is IncompleteMemberSyntax || member is GlobalStatementSyntax)
+            {
+                return false;
+            }
+
+            if (member is EnumMemberDeclarationSyntax)
             {
                 return false;
             }

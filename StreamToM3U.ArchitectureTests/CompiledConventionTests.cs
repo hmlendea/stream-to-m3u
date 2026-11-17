@@ -203,7 +203,8 @@ namespace StreamToM3U.ArchitectureTests
         {
             Type[] mappingTypes = [.. productionAssembly
                 .GetTypes()
-                .Where(type => string.Equals(type.Namespace, mappingNamespace, StringComparison.Ordinal))];
+                .Where(type => string.Equals(type.Namespace, mappingNamespace, StringComparison.Ordinal))
+                .Where(type => !type.IsDefined(typeof(CompilerGeneratedAttribute), false) && !type.Name.Contains('<'))];
 
             Assert.That(mappingTypes, Is.Not.Empty, "The mapping namespace must contain mapping types.");
 
@@ -231,7 +232,7 @@ namespace StreamToM3U.ArchitectureTests
                                         $"The mapping method '{mappingType.Name}.{method.Name}' must be internal.");
 
                                     Assert.That(
-                                        method.GetParameters()[0].GetCustomAttribute<ExtensionAttribute>() is not null,
+                                        method.GetCustomAttribute<ExtensionAttribute>() is not null,
                                         Is.True,
                                         $"The mapping method '{mappingType.Name}.{method.Name}' must be an extension method.");
                                 });
