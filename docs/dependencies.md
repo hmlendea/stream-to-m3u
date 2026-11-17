@@ -26,6 +26,17 @@ transitively through `NuciWeb.Automation.Selenium`.
 
 ## Test packages
 
+Declared in `StreamToM3U.ArchitectureTests/StreamToM3U.ArchitectureTests.csproj`.
+
+| Package | Purpose |
+|---------|---------|
+| `Microsoft.CodeAnalysis.CSharp` | Roslyn syntax analysis over the staged sources |
+| `Microsoft.NET.Test.Sdk` | Test host |
+| `NUnit` | Test framework |
+| `NUnit3TestAdapter` | Adapter for the test host |
+| `TngTech.ArchUnitNET` | Compiled dependency rules |
+| `TngTech.ArchUnitNET.NUnit` | NUnit integration for ArchUnit.NET |
+
 Declared in `StreamToM3U.UnitTests/StreamToM3U.UnitTests.csproj`.
 
 | Package | Version | Purpose |
@@ -36,8 +47,9 @@ Declared in `StreamToM3U.UnitTests/StreamToM3U.UnitTests.csproj`.
 | `NUnit.Analyzers` | 4.15.0 | Test-quality analyzers |
 | `NUnit3TestAdapter` | 6.3.1 | Adapter for the test host |
 
-The test project references the application project, and the application project never
-references the test project.
+The test projects reference the application project, and the application project never
+references a test project. The architecture test project references only the application project,
+so every dependency assertion is measured against production code alone.
 
 ## External process and service dependencies
 

@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="StreamToM3U/StreamToM3U.csproj" />
+  <Project Path="StreamToM3U.ArchitectureTests/StreamToM3U.ArchitectureTests.csproj" />
   <Project Path="StreamToM3U.UnitTests/StreamToM3U.UnitTests.csproj" />
 </Solution>

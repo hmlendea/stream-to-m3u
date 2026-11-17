@@ -564,7 +564,9 @@ StreamToM3U is distributed as a self-contained archive per runtime identifier th
 
 ## ✅ Testing and Verification
 
-`StreamToM3U.UnitTests` is an NUnit 4 fixture set using Moq doubles, covering `FileDownloader` (construction guards, unresolvable URLs, logging of started and failed downloads), `PlaylistUrlRetriever` (absolute and relative playlist references, base URL handling, Google Video bypass, entry selection), `WebsiteProcessr` (quoting preference and base URL joining), `PlaylistFileGenerator` (empty input, alphabetical ordering, multiple streams, skipped channels, directory creation, naming, index forms, merged mode), `Options` and `StreamProvider` defaults, `MyOperation` and `MyLogInfoKey` values, and `WebDriverHandler` lock semantics.
+`StreamToM3U.ArchitectureTests` is an NUnit 5 architecture-test project using ArchUnit.NET and Roslyn syntax analysis. It verifies compiled layer dependencies, absence of dependency cycles outside the documented processors/service relationship, project and solution conventions, reference directions, sealed class rules, interface contracts, and source-file conventions.
+
+`StreamToM3U.UnitTests` is an NUnit 5 fixture set using Moq doubles, covering `FileDownloader` (construction guards, unresolvable URLs, logging of started and failed downloads), `PlaylistUrlRetriever` (absolute and relative playlist references, base URL handling, Google Video bypass, entry selection), `WebsiteProcessr` (quoting preference and base URL joining), `PlaylistFileGenerator` (empty input, alphabetical ordering, multiple streams, skipped channels, directory creation, naming, index forms, merged mode), `Options` and `StreamProvider` defaults, `MyOperation` and `MyLogInfoKey` values, and `WebDriverHandler` lock semantics.
 
 `LoopbackHttpServer` binds `TcpListener` to `127.0.0.1` on an ephemeral port and serves a canned status and body, which keeps downloader tests hermetic without patching `HttpClient`. Request capture proves that invalid URLs are never transmitted.
 

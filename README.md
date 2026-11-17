@@ -260,6 +260,7 @@ To publish a release, create and publish a GitHub Release with a semantic-versio
 | Project | Type | Purpose |
 |---------|------|---------|
 | `StreamToM3U` | Console Application | Main CLI application |
+| `StreamToM3U.ArchitectureTests` | Architecture Test Project | Fitness, dependency, and convention tests |
 | `StreamToM3U.UnitTests` | Unit Test Project | Unit tests for the application |
 
 ### Directories
@@ -274,6 +275,7 @@ To publish a release, create and publish a GitHub Release with a semantic-versio
 | `StreamToM3U/Service` | Playlist URL resolution, playlist generation, and file download services |
 | `StreamToM3U/Service/Processors` | Provider-specific stream URL processors |
 | `StreamToM3U/Utils` | Shared utilities, including the Selenium web-driver handler |
+| `StreamToM3U.ArchitectureTests` | Architecture, layer dependency, project, and source convention tests |
 | `StreamToM3U.UnitTests` | Unit tests and test doubles |
 
 ## 🏗️ Architecture

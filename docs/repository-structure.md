@@ -4,8 +4,9 @@
 
 | Path | Kind | Purpose |
 |------|------|---------|
-| `StreamToM3U.slnx` | Solution (XML) | Lists the application and unit-test projects |
+| `StreamToM3U.slnx` | Solution (XML) | Lists the application and test projects |
 | `StreamToM3U/` | Console application | The tool itself |
+| `StreamToM3U.ArchitectureTests/` | Test project | ArchUnit.NET and Roslyn architecture checks |
 | `StreamToM3U.UnitTests/` | Test project | NUnit fixtures and `LoopbackHttpServer` |
 | `ARCHITECTURE.md` | Document | Root architecture record |
 | `README.md` | Document | Primary user documentation |

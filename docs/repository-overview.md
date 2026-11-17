@@ -42,6 +42,7 @@ The system owns:
 | Single-stream mode | `Program.GetPlaylistForStream` | Resolves one URL and writes it to standard output |
 | Batch mode | `Program.GetPlaylistForInputFile` → `PlaylistFileGenerator.GeneratePlaylist` | Resolves a channel list and writes playlists |
 | Test entry | `StreamToM3U.UnitTests` | NUnit fixtures and a loopback HTTP test double |
+| Architecture entry | `StreamToM3U.ArchitectureTests` | ArchUnit.NET layer and Roslyn source-convention fitness functions |
 
 ## Principal capabilities
 

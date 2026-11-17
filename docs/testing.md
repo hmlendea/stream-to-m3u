@@ -2,9 +2,12 @@
 
 ## Strategy
 
-The suite is a hermetic unit-test set. It verifies resolution, generation, configuration defaults,
-logging vocabulary, and browser-lock semantics with Moq doubles, and it never touches the network,
-a browser, or Streamlink. Integration and end-to-end verification is manual.
+The suite consists of hermetic unit tests and automated architecture checks.
+Unit tests verify resolution, generation, configuration defaults, logging vocabulary, and browser-lock
+semantics with Moq doubles, and they never touch the network, a browser, or Streamlink.
+Architecture tests verify compiled layer dependencies, project and solution conventions, reference
+directions, and Roslyn source-file conventions via ArchUnit.NET.
+Integration and end-to-end verification is manual.
 
 ## Framework and conventions
 
@@ -32,7 +35,27 @@ a browser, or Streamlink. Integration and end-to-end verification is manual.
 | `WebsiteProcessorTests` | 18 | Quoting preference, base URL joining, empty pages, sanitisation, single download |
 | `WebDriverHandlerTests` | 3 | Lock free/taken/released |
 
-Total: **172 cases**.
+Total: **172 unit-test cases**.
+
+## Architecture tests
+
+`StreamToM3U.ArchitectureTests` holds the fitness functions. It never contacts the network, a
+browser, or Streamlink, and it resolves every input from metadata staged beside the test assembly
+by the `CopyArchitectureSources` MSBuild target, so it does not read the host file-system layout.
+
+| Fixture | Covers |
+|---------|--------|
+| `LayerDependencyTests` | Production-assembly loading, populated layers, the documented layering matrix, leaf-area independence, processors/retriever separation, composition-root dependencies, and cycle detection with the documented processors/service relationship permitted |
+| `CompiledConventionTests` | Sealing, model and settings shape, interface naming and pairing, processor contracts, mapping type and method vocabulary, logging placement, `InternalsVisibleTo` absence, preview-language and `init`-accessor checks, enumeration placement and value uniqueness, public-method casing, type accessibility, entry-point declaration, and test-assembly isolation |
+| `SourceFileConventionTests` | One type per file with a matching filename stem, block namespaces matching the folder path, brace-only control flow with braces on their own line, prohibited `var`/ternary/tuple/`ref`/optional/`params`/`out` forms, seven-parameter limit, no `const` or `init`, explicit accessibility, kind and overload ordering, expression-bodied single-statement methods, indentation and blank-line rules, the 72/96-character line-splitting thresholds, else-if layout, method spacing, compound increments, `StartsWith`/`EndsWith` character overloads, `as`-cast preference, equality-operator avoidance, null-pattern and bare-rethrow rules, built-in alias and Boolean naming, collection expressions, mapping shape, custom exceptions, serialisation culture and cached serializer options, sensitive log keys, and NuciLog operation/exception rules |
+| `TestSourceConventionTests` | Test file structure, block namespaces, no nested types or regions, unapproved-framework absence, `TestFixture`/`Test`/`TestCase` attribution, `Given_When_Then` naming, at least two rows per parameterised test, assertion presence, and internal test doubles |
+| `ProjectFileConventionTests` | `net10.0`, disabled implicit usings, latest language version, nullable enabled, non-packable projects, alphabetised package references, test-project flags, `.slnx` structure, project ordering, and sibling project folders |
+| `ProjectReferenceConventionTests` | Test-to-production reference direction, production isolation from tests, architecture-project references and packages, staged source inputs, and `InternalsVisibleTo` absence |
+
+The architecture project stages the production and unit-test sources through `ArchitectureSource`
+items and the project files, solution file, through `ArchitectureProjectFile` and
+`ArchitectureSolutionFile` items. A missing staged input fails the run explicitly rather than
+silently skipping the checks.
 
 ## Test doubles
 
@@ -72,9 +95,11 @@ the listener.
 ```bash
 dotnet test
 dotnet test --filter "FullyQualifiedName~PlaylistFileGeneratorTests"
+dotnet test StreamToM3U.ArchitectureTests/StreamToM3U.ArchitectureTests.csproj
 ```
 
-CI runs `dotnet test --no-build --verbosity normal` on `ubuntu-latest` after `dotnet build`.
+CI runs `dotnet test --no-build --verbosity normal` on `ubuntu-latest` after `dotnet build`, which
+executes both the unit and the architecture projects.
 
 ## Guidance for new tests
 
@@ -83,6 +108,8 @@ CI runs `dotnet test --no-build --verbosity normal` on `ubuntu-latest` after `do
 - Assert the observable contract (output lines, log records, file names) rather than internals.
 - When a hazard listed in [invariants.md](./invariants.md) is fixed, replace the pinning test
   rather than deleting it silently.
+- When an architecture rule is violated, correct the source. Architecture tests are only modified
+  when the documented convention itself changes, and never to make a failure pass.
 
 ## Related documentation
 
